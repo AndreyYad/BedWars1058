@@ -1,7 +1,7 @@
 package com.andrei1058.bedwars.listeners;
 
-import com.andrei1058.bedwars.api.arena.IArena;
-import com.andrei1058.bedwars.api.configuration.ConfigPath;
+import com.andrei1058.bedwars.arena.IArena;
+import com.andrei1058.bedwars.configuration.ConfigPath;
 import com.andrei1058.bedwars.arena.Arena;
 import com.andrei1058.bedwars.arena.LastHit;
 import org.bukkit.Location;
@@ -20,7 +20,6 @@ import org.bukkit.util.Vector;
 import java.util.*;
 
 import static com.andrei1058.bedwars.BedWars.config;
-import static com.andrei1058.bedwars.BedWars.getAPI;
 
 public class FireballListener implements Listener {
 
@@ -65,7 +64,7 @@ public class FireballListener implements Listener {
         for(Entity entity : nearbyEntities) {
             if(!(entity instanceof Player)) continue;
             Player player = (Player) entity;
-            if(!getAPI().getArenaUtil().isPlaying(player)) continue;
+            if(!Arena.isPlaying(player)) continue;
 
 
             Vector playerVector = player.getLocation().toVector();

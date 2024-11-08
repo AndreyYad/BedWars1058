@@ -1,36 +1,17 @@
-/*
- * BedWars1058 - A bed wars mini-game.
- * Copyright (C) 2021 Andrei Dascălu
- *
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <https://www.gnu.org/licenses/>.
- *
- * Contact e-mail: andrew.dascalu@gmail.com
- */
-
 package com.andrei1058.bedwars.upgrades.menu;
 
 import com.andrei1058.bedwars.BedWars;
-import com.andrei1058.bedwars.api.arena.team.ITeam;
-import com.andrei1058.bedwars.api.configuration.ConfigPath;
-import com.andrei1058.bedwars.api.events.upgrades.UpgradeBuyEvent;
-import com.andrei1058.bedwars.api.language.Language;
-import com.andrei1058.bedwars.api.language.Messages;
-import com.andrei1058.bedwars.api.upgrades.MenuContent;
-import com.andrei1058.bedwars.api.upgrades.TeamUpgrade;
-import com.andrei1058.bedwars.api.upgrades.UpgradeAction;
+import com.andrei1058.bedwars.arena.team.ITeam;
+import com.andrei1058.bedwars.configuration.ConfigPath;
+import com.andrei1058.bedwars.events.upgrades.UpgradeBuyEvent;
+import com.andrei1058.bedwars.language.Language;
+import com.andrei1058.bedwars.language.Messages;
+import com.andrei1058.bedwars.upgrades.MenuContent;
+import com.andrei1058.bedwars.upgrades.TeamUpgrade;
+import com.andrei1058.bedwars.upgrades.UpgradeAction;
 import com.andrei1058.bedwars.arena.Arena;
 import com.andrei1058.bedwars.configuration.Sounds;
+import com.andrei1058.bedwars.shop.main.CategoryContent;
 import com.andrei1058.bedwars.upgrades.UpgradesManager;
 import com.google.common.collect.ImmutableMap;
 import org.bukkit.Bukkit;
@@ -153,7 +134,7 @@ public class MenuUpgrade implements MenuContent, TeamUpgrade {
             if (ut.getCurrency() == Material.AIR) {
                 BedWars.getEconomy().buyAction(player, ut.getCost());
             } else {
-                BedWars.getAPI().getShopUtil().takeMoney(player, ut.getCurrency(), ut.getCost());
+                CategoryContent.takeMoney(player, ut.getCurrency(), ut.getCost());
             }
 
             if (team.getTeamUpgradeTiers().containsKey(getName())) {

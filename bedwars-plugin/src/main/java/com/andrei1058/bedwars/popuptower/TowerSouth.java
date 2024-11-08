@@ -1,7 +1,7 @@
 package com.andrei1058.bedwars.popuptower;
 
 import com.andrei1058.bedwars.BedWars;
-import com.andrei1058.bedwars.api.arena.team.TeamColor;
+import com.andrei1058.bedwars.arena.team.TeamColor;
 import com.andrei1058.bedwars.configuration.Sounds;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;

@@ -1,58 +1,37 @@
-/*
- * BedWars1058 - A bed wars mini-game.
- * Copyright (C) 2021 Andrei Dascălu
- *
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <https://www.gnu.org/licenses/>.
- *
- * Contact e-mail: andrew.dascalu@gmail.com
- */
-
 package com.andrei1058.bedwars.arena;
 
+import com.andrei1058.bedwars.AFKSystem;
 import com.andrei1058.bedwars.BedWars;
-import com.andrei1058.bedwars.api.arena.GameState;
-import com.andrei1058.bedwars.api.arena.IArena;
-import com.andrei1058.bedwars.api.arena.NextEvent;
-import com.andrei1058.bedwars.api.arena.generator.GeneratorType;
-import com.andrei1058.bedwars.api.arena.generator.IGenerator;
-import com.andrei1058.bedwars.api.arena.shop.ShopHolo;
-import com.andrei1058.bedwars.api.arena.stats.*;
-import com.andrei1058.bedwars.api.arena.team.ITeam;
-import com.andrei1058.bedwars.api.arena.team.ITeamAssigner;
-import com.andrei1058.bedwars.api.arena.team.TeamColor;
-import com.andrei1058.bedwars.api.configuration.ConfigPath;
-import com.andrei1058.bedwars.api.entity.Despawnable;
-import com.andrei1058.bedwars.api.events.gameplay.GameEndEvent;
-import com.andrei1058.bedwars.api.events.gameplay.GameStateChangeEvent;
-import com.andrei1058.bedwars.api.events.gameplay.NextEventChangeEvent;
-import com.andrei1058.bedwars.api.events.player.PlayerJoinArenaEvent;
-import com.andrei1058.bedwars.api.events.player.PlayerKillEvent;
-import com.andrei1058.bedwars.api.events.player.PlayerLeaveArenaEvent;
-import com.andrei1058.bedwars.api.events.player.PlayerReJoinEvent;
-import com.andrei1058.bedwars.api.events.server.ArenaDisableEvent;
-import com.andrei1058.bedwars.api.events.server.ArenaEnableEvent;
-import com.andrei1058.bedwars.api.events.server.ArenaRestartEvent;
-import com.andrei1058.bedwars.api.language.Language;
-import com.andrei1058.bedwars.api.language.Messages;
-import com.andrei1058.bedwars.api.region.Region;
-import com.andrei1058.bedwars.api.server.ServerType;
-import com.andrei1058.bedwars.api.sidebar.ISidebar;
-import com.andrei1058.bedwars.api.tasks.PlayingTask;
-import com.andrei1058.bedwars.api.tasks.RestartingTask;
-import com.andrei1058.bedwars.api.tasks.StartingTask;
-import com.andrei1058.bedwars.arena.stats.GameStatsManager;
-import com.andrei1058.bedwars.arena.stats.StatisticsOrdered;
+import com.andrei1058.bedwars.arena.GameState;
+import com.andrei1058.bedwars.arena.IArena;
+import com.andrei1058.bedwars.arena.NextEvent;
+import com.andrei1058.bedwars.arena.generator.GeneratorType;
+import com.andrei1058.bedwars.arena.generator.IGenerator;
+import com.andrei1058.bedwars.arena.shop.ShopHolo;
+import com.andrei1058.bedwars.arena.stats.*;
+import com.andrei1058.bedwars.arena.team.ITeam;
+import com.andrei1058.bedwars.arena.team.ITeamAssigner;
+import com.andrei1058.bedwars.arena.team.TeamColor;
+import com.andrei1058.bedwars.configuration.ConfigPath;
+import com.andrei1058.bedwars.entity.Despawnable;
+import com.andrei1058.bedwars.events.gameplay.GameEndEvent;
+import com.andrei1058.bedwars.events.gameplay.GameStateChangeEvent;
+import com.andrei1058.bedwars.events.gameplay.NextEventChangeEvent;
+import com.andrei1058.bedwars.events.player.PlayerJoinArenaEvent;
+import com.andrei1058.bedwars.events.player.PlayerKillEvent;
+import com.andrei1058.bedwars.events.player.PlayerLeaveArenaEvent;
+import com.andrei1058.bedwars.events.player.PlayerReJoinEvent;
+import com.andrei1058.bedwars.events.server.ArenaDisableEvent;
+import com.andrei1058.bedwars.events.server.ArenaEnableEvent;
+import com.andrei1058.bedwars.events.server.ArenaRestartEvent;
+import com.andrei1058.bedwars.language.Language;
+import com.andrei1058.bedwars.language.Messages;
+import com.andrei1058.bedwars.region.Region;
+import com.andrei1058.bedwars.server.ServerType;
+import com.andrei1058.bedwars.sidebar.ISidebar;
+import com.andrei1058.bedwars.tasks.PlayingTask;
+import com.andrei1058.bedwars.tasks.RestartingTask;
+import com.andrei1058.bedwars.tasks.StartingTask;
 import com.andrei1058.bedwars.arena.tasks.GamePlayingTask;
 import com.andrei1058.bedwars.arena.tasks.GameRestartingTask;
 import com.andrei1058.bedwars.arena.tasks.GameStartingTask;
@@ -99,7 +78,7 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.logging.Level;
 
 import static com.andrei1058.bedwars.BedWars.*;
-import static com.andrei1058.bedwars.api.language.Language.*;
+import static com.andrei1058.bedwars.language.Language.*;
 import static com.andrei1058.bedwars.arena.upgrades.BaseListener.isOnABase;
 
 @SuppressWarnings("WeakerAccess")
@@ -237,7 +216,7 @@ public class Arena implements IArena {
         }
 
 
-        if (!BedWars.getAPI().getRestoreAdapter().isWorld(name)) {
+        if (!BedWars.getRestoreAdapter().isWorld(name)) {
             if (p != null) p.sendMessage(ChatColor.RED + "There isn't any map called " + name);
             plugin.getLogger().log(Level.WARNING, "There isn't any map called " + name);
             return;
@@ -756,7 +735,7 @@ public class Arena implements IArena {
         ITeam team = null;
 
         Arena.afkCheck.remove(p.getUniqueId());
-        BedWars.getAPI().getAFKUtil().setPlayerAFK(p, false);
+        AFKSystem.setPlayerAFK(p, false);
 
         if (status == GameState.playing) {
             for (ITeam t : getTeams()) {
@@ -1035,7 +1014,7 @@ public class Arena implements IArena {
         nms.setCollide(p, this, true);
 
         Arena.afkCheck.remove(p.getUniqueId());
-        BedWars.getAPI().getAFKUtil().setPlayerAFK(p, false);
+        AFKSystem.setPlayerAFK(p, false);
 
         if (getServerType() == ServerType.SHARED) {
             SidebarService.getInstance().remove(p);
@@ -1195,7 +1174,7 @@ public class Arena implements IArena {
         for (Player inWorld : getWorld().getPlayers()) {
             inWorld.kickPlayer("You're not supposed to be here.");
         }
-        BedWars.getAPI().getRestoreAdapter().onDisable(this);
+        BedWars.getRestoreAdapter().onDisable(this);
         Bukkit.getPluginManager().callEvent(new ArenaDisableEvent(getArenaName(), getWorldName()));
         destroyData();
     }
@@ -1218,7 +1197,7 @@ public class Arena implements IArena {
         for (Player inWorld : getWorld().getPlayers()) {
             inWorld.kickPlayer("You're not supposed to be here.");
         }
-        BedWars.getAPI().getRestoreAdapter().onRestart(this);
+        BedWars.getRestoreAdapter().onRestart(this);
         destroyData();
     }
 
@@ -1505,11 +1484,11 @@ public class Arena implements IArena {
         if (status == GameState.playing) {
             for (Player p : players) {
                 Arena.afkCheck.remove(p.getUniqueId());
-                BedWars.getAPI().getAFKUtil().setPlayerAFK(p, false);
+                AFKSystem.setPlayerAFK(p, false);
             }
             for (Player p : spectators) {
                 Arena.afkCheck.remove(p.getUniqueId());
-                BedWars.getAPI().getAFKUtil().setPlayerAFK(p, false);
+                AFKSystem.setPlayerAFK(p, false);
             }
 
             // Initialize game stats
@@ -2436,7 +2415,7 @@ public class Arena implements IArena {
     public static void removeFromEnableQueue(IArena a) {
         enableQueue.remove(a);
         if (!enableQueue.isEmpty()) {
-            BedWars.getAPI().getRestoreAdapter().onEnable(enableQueue.get(0));
+            BedWars.getRestoreAdapter().onEnable(enableQueue.get(0));
             plugin.getLogger().info("Loading arena: " + enableQueue.get(0).getWorldName());
         }
     }
@@ -2445,7 +2424,7 @@ public class Arena implements IArena {
         enableQueue.add(a);
         plugin.getLogger().info("Arena " + a.getWorldName() + " was added to the enable queue.");
         if (enableQueue.size() == 1) {
-            BedWars.getAPI().getRestoreAdapter().onEnable(a);
+            BedWars.getRestoreAdapter().onEnable(a);
             plugin.getLogger().info("Loading arena: " + a.getWorldName());
         }
     }
@@ -2702,5 +2681,18 @@ public class Arena implements IArena {
     @Override
     public GameStatsHolder getStatsHolder() {
         return gameStats;
+    }
+
+
+    public static boolean isPlaying(Player p) {
+        return isInArena(p) && getArenaByPlayer(p).isPlayer(p);
+    }
+
+    public static boolean isSpectating(Player p) {
+        return isInArena(p) && getArenaByPlayer(p).isSpectator(p);
+    }
+
+    public static void loadArena(String worldName, Player sender) {
+        new Arena(worldName, sender);
     }
 }

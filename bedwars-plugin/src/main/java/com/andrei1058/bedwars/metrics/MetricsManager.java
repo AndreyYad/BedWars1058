@@ -1,7 +1,7 @@
 package com.andrei1058.bedwars.metrics;
 
 import com.andrei1058.bedwars.BedWars;
-import com.andrei1058.bedwars.api.language.Language;
+import com.andrei1058.bedwars.language.Language;
 import com.andrei1058.bedwars.support.citizens.JoinNPC;
 import org.bstats.bukkit.Metrics;
 import org.bstats.charts.SimplePie;
@@ -25,7 +25,7 @@ public class MetricsManager {
         metrics.addCustomChart(new SimplePie("chat_adapter", () -> BedWars.getChatSupport().getClass().getName()));
         metrics.addCustomChart(new SimplePie("level_adapter", () -> BedWars.getLevelSupport().getClass().getName()));
         metrics.addCustomChart(new SimplePie("db_adapter", () -> BedWars.getRemoteDatabase().getClass().getName()));
-        metrics.addCustomChart(new SimplePie("map_adapter", () -> BedWars.getAPI().getRestoreAdapter().getClass().getName()));
+        metrics.addCustomChart(new SimplePie("map_adapter", () -> BedWars.getRestoreAdapter().getClass().getName()));
         metrics.addCustomChart(new SimplePie("citizens_support", () -> String.valueOf(JoinNPC.isCitizensSupport())));
     }
 

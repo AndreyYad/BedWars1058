@@ -1,15 +1,15 @@
 package com.andrei1058.bedwars.sidebar;
 
 import com.andrei1058.bedwars.BedWars;
-import com.andrei1058.bedwars.api.arena.GameState;
-import com.andrei1058.bedwars.api.arena.IArena;
-import com.andrei1058.bedwars.api.arena.stats.DefaultStatistics;
-import com.andrei1058.bedwars.api.arena.team.ITeam;
-import com.andrei1058.bedwars.api.configuration.ConfigPath;
-import com.andrei1058.bedwars.api.language.Language;
-import com.andrei1058.bedwars.api.language.Messages;
-import com.andrei1058.bedwars.api.server.ServerType;
-import com.andrei1058.bedwars.api.sidebar.ISidebar;
+import com.andrei1058.bedwars.arena.GameState;
+import com.andrei1058.bedwars.arena.IArena;
+import com.andrei1058.bedwars.arena.stats.DefaultStatistics;
+import com.andrei1058.bedwars.arena.team.ITeam;
+import com.andrei1058.bedwars.configuration.ConfigPath;
+import com.andrei1058.bedwars.language.Language;
+import com.andrei1058.bedwars.language.Messages;
+import com.andrei1058.bedwars.server.ServerType;
+import com.andrei1058.bedwars.sidebar.ISidebar;
 import com.andrei1058.bedwars.arena.Arena;
 import com.andrei1058.bedwars.arena.stats.StatisticsOrdered;
 import com.andrei1058.bedwars.levels.internal.PlayerLevel;
@@ -27,7 +27,7 @@ import java.util.*;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
 import static com.andrei1058.bedwars.BedWars.*;
-import static com.andrei1058.bedwars.api.language.Language.*;
+import static com.andrei1058.bedwars.language.Language.*;
 
 public class BwSidebar implements ISidebar {
 
@@ -151,7 +151,7 @@ public class BwSidebar implements ISidebar {
                                 .replace("{TeamColor}", team.getColor().chat().toString())
                                 .replace("{TeamName}", teamName);
 
-                        if (line.contains("{TeamStatus}") && getAPI().getVersionSupport().getVersion() >= 10) {
+                        if (line.contains("{TeamStatus}") && BedWars.nms.getVersion() >= 10) {
                             line = line.replace("{TeamStatus}", "");
                             scoreLine = "{Team" + team.getName() + "Status}";
                         } else {

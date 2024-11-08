@@ -1,6 +1,6 @@
 package com.andrei1058.bedwars.support.party;
 
-import com.andrei1058.bedwars.api.party.Party;
+import com.andrei1058.bedwars.party.Party;
 import de.simonsator.partyandfriends.spigot.api.pafplayers.PAFPlayer;
 import de.simonsator.partyandfriends.spigot.api.pafplayers.PAFPlayerManager;
 import de.simonsator.partyandfriends.spigot.api.party.PartyManager;

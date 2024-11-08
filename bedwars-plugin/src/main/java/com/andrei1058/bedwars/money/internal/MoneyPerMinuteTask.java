@@ -1,8 +1,8 @@
 package com.andrei1058.bedwars.money.internal;
 
 import com.andrei1058.bedwars.BedWars;
-import com.andrei1058.bedwars.api.language.Language;
-import com.andrei1058.bedwars.api.language.Messages;
+import com.andrei1058.bedwars.language.Language;
+import com.andrei1058.bedwars.language.Messages;
 import com.andrei1058.bedwars.arena.Arena;
 import com.andrei1058.bedwars.configuration.MoneyConfig;
 import org.bukkit.Bukkit;

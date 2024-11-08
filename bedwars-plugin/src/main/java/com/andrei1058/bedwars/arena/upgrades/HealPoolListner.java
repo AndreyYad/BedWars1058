@@ -1,12 +1,12 @@
 package com.andrei1058.bedwars.arena.upgrades;
 
-import com.andrei1058.bedwars.api.arena.IArena;
-import com.andrei1058.bedwars.api.arena.team.ITeam;
-import com.andrei1058.bedwars.api.events.gameplay.GameEndEvent;
-import com.andrei1058.bedwars.api.events.player.PlayerLeaveArenaEvent;
-import com.andrei1058.bedwars.api.events.server.ArenaDisableEvent;
-import com.andrei1058.bedwars.api.events.team.TeamEliminatedEvent;
-import com.andrei1058.bedwars.api.events.upgrades.UpgradeBuyEvent;
+import com.andrei1058.bedwars.arena.IArena;
+import com.andrei1058.bedwars.arena.team.ITeam;
+import com.andrei1058.bedwars.events.gameplay.GameEndEvent;
+import com.andrei1058.bedwars.events.player.PlayerLeaveArenaEvent;
+import com.andrei1058.bedwars.events.server.ArenaDisableEvent;
+import com.andrei1058.bedwars.events.team.TeamEliminatedEvent;
+import com.andrei1058.bedwars.events.upgrades.UpgradeBuyEvent;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 

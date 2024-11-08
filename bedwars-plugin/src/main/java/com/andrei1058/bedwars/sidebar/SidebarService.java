@@ -1,16 +1,16 @@
 package com.andrei1058.bedwars.sidebar;
 
 import com.andrei1058.bedwars.BedWars;
-import com.andrei1058.bedwars.api.arena.GameState;
-import com.andrei1058.bedwars.api.arena.IArena;
-import com.andrei1058.bedwars.api.arena.team.ITeam;
-import com.andrei1058.bedwars.api.configuration.ConfigPath;
-import com.andrei1058.bedwars.api.events.sidebar.PlayerSidebarInitEvent;
-import com.andrei1058.bedwars.api.language.Language;
-import com.andrei1058.bedwars.api.language.Messages;
-import com.andrei1058.bedwars.api.server.ServerType;
-import com.andrei1058.bedwars.api.sidebar.ISidebar;
-import com.andrei1058.bedwars.api.sidebar.ISidebarService;
+import com.andrei1058.bedwars.arena.GameState;
+import com.andrei1058.bedwars.arena.IArena;
+import com.andrei1058.bedwars.arena.team.ITeam;
+import com.andrei1058.bedwars.configuration.ConfigPath;
+import com.andrei1058.bedwars.events.sidebar.PlayerSidebarInitEvent;
+import com.andrei1058.bedwars.language.Language;
+import com.andrei1058.bedwars.language.Messages;
+import com.andrei1058.bedwars.server.ServerType;
+import com.andrei1058.bedwars.sidebar.ISidebar;
+import com.andrei1058.bedwars.sidebar.ISidebarService;
 import com.andrei1058.bedwars.metrics.MetricsManager;
 import com.andrei1058.bedwars.sidebar.thread.*;
 import com.andrei1058.spigot.sidebar.SidebarManager;
@@ -23,7 +23,7 @@ import org.jetbrains.annotations.Nullable;
 import java.util.*;
 
 import static com.andrei1058.bedwars.BedWars.config;
-import static com.andrei1058.bedwars.api.language.Language.getScoreboard;
+import static com.andrei1058.bedwars.language.Language.getScoreboard;
 
 public class SidebarService implements ISidebarService {
 

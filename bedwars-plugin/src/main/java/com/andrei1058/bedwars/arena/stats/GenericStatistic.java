@@ -1,10 +1,10 @@
 package com.andrei1058.bedwars.arena.stats;
 
 import com.andrei1058.bedwars.BedWars;
-import com.andrei1058.bedwars.api.arena.stats.Incrementable;
-import com.andrei1058.bedwars.api.arena.stats.GameStatistic;
-import com.andrei1058.bedwars.api.arena.stats.GameStatisticProvider;
-import com.andrei1058.bedwars.api.language.Language;
+import com.andrei1058.bedwars.arena.stats.Incrementable;
+import com.andrei1058.bedwars.arena.stats.GameStatistic;
+import com.andrei1058.bedwars.arena.stats.GameStatisticProvider;
+import com.andrei1058.bedwars.language.Language;
 import org.bukkit.plugin.Plugin;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;

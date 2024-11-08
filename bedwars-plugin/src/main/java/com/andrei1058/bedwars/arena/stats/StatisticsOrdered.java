@@ -1,11 +1,11 @@
 package com.andrei1058.bedwars.arena.stats;
 
-import com.andrei1058.bedwars.api.arena.IArena;
-import com.andrei1058.bedwars.api.arena.stats.GameStatisticProvider;
-import com.andrei1058.bedwars.api.arena.stats.PlayerGameStats;
-import com.andrei1058.bedwars.api.arena.stats.GameStatistic;
-import com.andrei1058.bedwars.api.arena.team.ITeam;
-import com.andrei1058.bedwars.api.language.Language;
+import com.andrei1058.bedwars.arena.IArena;
+import com.andrei1058.bedwars.arena.stats.GameStatisticProvider;
+import com.andrei1058.bedwars.arena.stats.PlayerGameStats;
+import com.andrei1058.bedwars.arena.stats.GameStatistic;
+import com.andrei1058.bedwars.arena.team.ITeam;
+import com.andrei1058.bedwars.language.Language;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;

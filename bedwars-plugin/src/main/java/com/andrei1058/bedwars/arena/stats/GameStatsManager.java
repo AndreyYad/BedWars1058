@@ -1,9 +1,9 @@
 package com.andrei1058.bedwars.arena.stats;
 
 import com.andrei1058.bedwars.BedWars;
-import com.andrei1058.bedwars.api.arena.GameState;
-import com.andrei1058.bedwars.api.arena.IArena;
-import com.andrei1058.bedwars.api.arena.stats.*;
+import com.andrei1058.bedwars.arena.GameState;
+import com.andrei1058.bedwars.arena.IArena;
+import com.andrei1058.bedwars.arena.stats.*;
 import com.andrei1058.bedwars.arena.stats.defaults.PlayerGameStatsContainer;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;

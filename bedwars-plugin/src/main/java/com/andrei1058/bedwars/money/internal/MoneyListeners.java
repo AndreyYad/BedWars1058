@@ -1,13 +1,13 @@
 package com.andrei1058.bedwars.money.internal;
 
 import com.andrei1058.bedwars.BedWars;
-import com.andrei1058.bedwars.api.arena.IArena;
-import com.andrei1058.bedwars.api.arena.team.ITeam;
-import com.andrei1058.bedwars.api.events.gameplay.GameEndEvent;
-import com.andrei1058.bedwars.api.events.player.PlayerBedBreakEvent;
-import com.andrei1058.bedwars.api.events.player.PlayerKillEvent;
-import com.andrei1058.bedwars.api.language.Language;
-import com.andrei1058.bedwars.api.language.Messages;
+import com.andrei1058.bedwars.arena.IArena;
+import com.andrei1058.bedwars.arena.team.ITeam;
+import com.andrei1058.bedwars.events.gameplay.GameEndEvent;
+import com.andrei1058.bedwars.events.player.PlayerBedBreakEvent;
+import com.andrei1058.bedwars.events.player.PlayerKillEvent;
+import com.andrei1058.bedwars.language.Language;
+import com.andrei1058.bedwars.language.Messages;
 import com.andrei1058.bedwars.configuration.MoneyConfig;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;

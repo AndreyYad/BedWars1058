@@ -1,6 +1,6 @@
 package com.andrei1058.bedwars.listeners;
 
-import com.andrei1058.bedwars.api.events.gameplay.GameEndEvent;
+import com.andrei1058.bedwars.events.gameplay.GameEndEvent;
 import org.bukkit.Bukkit;
 import org.bukkit.World;
 import org.bukkit.entity.Entity;

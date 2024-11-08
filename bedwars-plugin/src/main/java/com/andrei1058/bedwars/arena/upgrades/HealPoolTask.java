@@ -1,9 +1,9 @@
 package com.andrei1058.bedwars.arena.upgrades;
 
 import com.andrei1058.bedwars.BedWars;
-import com.andrei1058.bedwars.api.arena.IArena;
-import com.andrei1058.bedwars.api.arena.team.ITeam;
-import com.andrei1058.bedwars.api.configuration.ConfigPath;
+import com.andrei1058.bedwars.arena.IArena;
+import com.andrei1058.bedwars.arena.team.ITeam;
+import com.andrei1058.bedwars.configuration.ConfigPath;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;

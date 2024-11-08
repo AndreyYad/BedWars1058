@@ -1,31 +1,11 @@
-/*
- * BedWars1058 - A bed wars mini-game.
- * Copyright (C) 2021 Andrei Dascălu
- *
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <https://www.gnu.org/licenses/>.
- *
- * Contact e-mail: andrew.dascalu@gmail.com
- */
-
 package com.andrei1058.bedwars.commands.bedwars;
 
 import com.andrei1058.bedwars.BedWars;
-import com.andrei1058.bedwars.api.command.ParentCommand;
-import com.andrei1058.bedwars.api.command.SubCommand;
-import com.andrei1058.bedwars.api.language.Language;
-import com.andrei1058.bedwars.api.language.Messages;
-import com.andrei1058.bedwars.api.server.ServerType;
+import com.andrei1058.bedwars.commands.ParentCommand;
+import com.andrei1058.bedwars.commands.SubCommand;
+import com.andrei1058.bedwars.language.Language;
+import com.andrei1058.bedwars.language.Messages;
+import com.andrei1058.bedwars.server.ServerType;
 import com.andrei1058.bedwars.arena.SetupSession;
 import com.andrei1058.bedwars.commands.bedwars.subcmds.regular.*;
 import com.andrei1058.bedwars.commands.bedwars.subcmds.sensitive.Level;
@@ -48,7 +28,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import static com.andrei1058.bedwars.BedWars.*;
-import static com.andrei1058.bedwars.api.language.Language.getMsg;
+import static com.andrei1058.bedwars.language.Language.getMsg;
 
 public class MainCommand extends BukkitCommand implements ParentCommand {
 
@@ -185,7 +165,7 @@ public class MainCommand extends BukkitCommand implements ParentCommand {
     public void sendSubCommands(Player p) {
         for (int i = 0; i <= 20; i++) {
             for (SubCommand sb : getSubCommands()) {
-                if (sb.getPriority() == i && sb.isShow() && sb.canSee(p, BedWars.getAPI())) {
+                if (sb.getPriority() == i && sb.isShow() && sb.canSee(p)) {
                     p.spigot().sendMessage(sb.getDisplayInfo());
                 }
             }
@@ -196,12 +176,12 @@ public class MainCommand extends BukkitCommand implements ParentCommand {
         if (args.length == 1) {
             List<String> sub = new ArrayList<>();
             for (SubCommand sb : getSubCommands()) {
-                if (sb.canSee(s, BedWars.getAPI())) sub.add(sb.getSubCommandName());
+                if (sb.canSee(s)) sub.add(sb.getSubCommandName());
             }
             return sub;
         } else if (args.length == 2) {
             if (hasSubCommand(args[0])) {
-                if (getSubCommand(args[0]).canSee(s, BedWars.getAPI()))
+                if (getSubCommand(args[0]).canSee(s))
                     return getSubCommand(args[0]).getTabComplete();
             }
         }

@@ -1,29 +1,9 @@
-/*
- * BedWars1058 - A bed wars mini-game.
- * Copyright (C) 2021 Andrei Dascălu
- *
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <https://www.gnu.org/licenses/>.
- *
- * Contact e-mail: andrew.dascalu@gmail.com
- */
-
 package com.andrei1058.bedwars.commands.bedwars.subcmds.sensitive;
 
 import com.andrei1058.bedwars.BedWars;
-import com.andrei1058.bedwars.api.command.ParentCommand;
-import com.andrei1058.bedwars.api.command.SubCommand;
-import com.andrei1058.bedwars.api.events.player.PlayerXpGainEvent;
+import com.andrei1058.bedwars.commands.ParentCommand;
+import com.andrei1058.bedwars.commands.SubCommand;
+import com.andrei1058.bedwars.events.player.PlayerXpGainEvent;
 import com.andrei1058.bedwars.arena.Arena;
 import com.andrei1058.bedwars.arena.Misc;
 import com.andrei1058.bedwars.arena.SetupSession;
@@ -52,7 +32,7 @@ public class Level extends SubCommand {
     @Override
     public boolean execute(String[] args, CommandSender s) {
         if (args.length == 0) {
-            sendSubCommands(s, BedWars.getAPI());
+            sendSubCommands(s);
             return true;
         }
         if (args[0].equalsIgnoreCase("setlevel")) {
@@ -75,7 +55,7 @@ public class Level extends SubCommand {
                 return true;
             }
 
-            BedWars.getAPI().getLevelsUtil().setLevel(pl, level);
+            BedWars.getLevelSupport().setLevel(pl, level);
 
             int nextLevelCost =  LevelsConfig.levels.getYml().get("levels." + level + ".rankup-cost") == null ?
                     LevelsConfig.levels.getInt("levels.others.rankup-cost") : LevelsConfig.levels.getInt("levels." + level + ".rankup-cost");
@@ -109,7 +89,7 @@ public class Level extends SubCommand {
                 return true;
             }
 
-            BedWars.getAPI().getLevelsUtil().addXp(pl, amount, PlayerXpGainEvent.XpSource.OTHER);
+            BedWars.getLevelSupport().addXp(pl, amount, PlayerXpGainEvent.XpSource.OTHER);
 
             BedWars.plugin.getServer().getScheduler().runTaskAsynchronously(BedWars.plugin, () -> {
                 Object[] data = BedWars.getRemoteDatabase().getLevelData(pl.getUniqueId());
@@ -118,12 +98,12 @@ public class Level extends SubCommand {
                 s.sendMessage(ChatColor.GOLD + " ▪ " + ChatColor.GRAY + "The player may need to rejoin to see it updated.");
             });
         } else {
-            sendSubCommands(s, BedWars.getAPI());
+            sendSubCommands(s);
         }
         return true;
     }
 
-    private void sendSubCommands(CommandSender s, com.andrei1058.bedwars.api.BedWars api) {
+    private void sendSubCommands(CommandSender s) {
         if (s instanceof Player) {
             Player p = (Player) s;
             p.spigot().sendMessage(Misc.msgHoverClick("§6 ▪ §7/" + getParent().getName() + " " + getSubCommandName() + " setLevel §o<player> <level>",
@@ -144,7 +124,7 @@ public class Level extends SubCommand {
     }
 
     @Override
-    public boolean canSee(CommandSender s, com.andrei1058.bedwars.api.BedWars api) {
+    public boolean canSee(CommandSender s) {
         if (s instanceof ConsoleCommandSender) return false;
 
         Player p = (Player) s;

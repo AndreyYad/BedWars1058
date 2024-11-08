@@ -1,39 +1,19 @@
-/*
- * BedWars1058 - A bed wars mini-game.
- * Copyright (C) 2021 Andrei Dascălu
- *
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <https://www.gnu.org/licenses/>.
- *
- * Contact e-mail: andrew.dascalu@gmail.com
- */
-
 package com.andrei1058.bedwars.listeners;
 
 import com.andrei1058.bedwars.BedWars;
-import com.andrei1058.bedwars.api.arena.GameState;
-import com.andrei1058.bedwars.api.arena.IArena;
-import com.andrei1058.bedwars.api.arena.NextEvent;
-import com.andrei1058.bedwars.api.arena.generator.IGenerator;
-import com.andrei1058.bedwars.api.arena.team.ITeam;
-import com.andrei1058.bedwars.api.arena.team.TeamColor;
-import com.andrei1058.bedwars.api.configuration.ConfigPath;
-import com.andrei1058.bedwars.api.events.player.PlayerBedBreakEvent;
-import com.andrei1058.bedwars.api.language.Language;
-import com.andrei1058.bedwars.api.language.Messages;
-import com.andrei1058.bedwars.api.region.Region;
-import com.andrei1058.bedwars.api.server.ServerType;
-import com.andrei1058.bedwars.api.util.BlastProtectionUtil;
+import com.andrei1058.bedwars.arena.GameState;
+import com.andrei1058.bedwars.arena.IArena;
+import com.andrei1058.bedwars.arena.NextEvent;
+import com.andrei1058.bedwars.arena.generator.IGenerator;
+import com.andrei1058.bedwars.arena.team.ITeam;
+import com.andrei1058.bedwars.arena.team.TeamColor;
+import com.andrei1058.bedwars.configuration.ConfigPath;
+import com.andrei1058.bedwars.events.player.PlayerBedBreakEvent;
+import com.andrei1058.bedwars.language.Language;
+import com.andrei1058.bedwars.language.Messages;
+import com.andrei1058.bedwars.region.Region;
+import com.andrei1058.bedwars.server.ServerType;
+import com.andrei1058.bedwars.util.BlastProtectionUtil;
 import com.andrei1058.bedwars.arena.Arena;
 import com.andrei1058.bedwars.configuration.Sounds;
 import com.andrei1058.bedwars.support.paper.TeleportManager;
@@ -66,7 +46,7 @@ import java.io.File;
 import java.util.*;
 
 import static com.andrei1058.bedwars.BedWars.*;
-import static com.andrei1058.bedwars.api.language.Language.getMsg;
+import static com.andrei1058.bedwars.language.Language.getMsg;
 
 public class BreakPlace implements Listener {
 
@@ -76,7 +56,7 @@ public class BreakPlace implements Listener {
 
     public BreakPlace() {
         allowFireBreak = config.getBoolean(ConfigPath.GENERAL_CONFIGURATION_ALLOW_FIRE_EXTINGUISH);
-        blastProtection = new BlastProtectionUtil(nms, BedWars.getAPI());
+        blastProtection = new BlastProtectionUtil(nms);
     }
 
     @EventHandler

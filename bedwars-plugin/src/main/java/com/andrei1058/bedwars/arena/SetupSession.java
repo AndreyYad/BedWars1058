@@ -1,33 +1,13 @@
-/*
- * BedWars1058 - A bed wars mini-game.
- * Copyright (C) 2021 Andrei Dascălu
- *
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <https://www.gnu.org/licenses/>.
- *
- * Contact e-mail: andrew.dascalu@gmail.com
- */
-
 package com.andrei1058.bedwars.arena;
 
 import com.andrei1058.bedwars.BedWars;
-import com.andrei1058.bedwars.api.arena.team.TeamColor;
-import com.andrei1058.bedwars.api.configuration.ConfigPath;
-import com.andrei1058.bedwars.api.events.server.SetupSessionCloseEvent;
-import com.andrei1058.bedwars.api.events.server.SetupSessionStartEvent;
-import com.andrei1058.bedwars.api.server.ISetupSession;
-import com.andrei1058.bedwars.api.server.ServerType;
-import com.andrei1058.bedwars.api.server.SetupType;
+import com.andrei1058.bedwars.arena.team.TeamColor;
+import com.andrei1058.bedwars.configuration.ConfigPath;
+import com.andrei1058.bedwars.events.server.SetupSessionCloseEvent;
+import com.andrei1058.bedwars.events.server.SetupSessionStartEvent;
+import com.andrei1058.bedwars.server.ISetupSession;
+import com.andrei1058.bedwars.server.ServerType;
+import com.andrei1058.bedwars.server.SetupType;
 import com.andrei1058.bedwars.commands.bedwars.MainCommand;
 import com.andrei1058.bedwars.configuration.ArenaConfig;
 import com.andrei1058.bedwars.support.paper.TeleportManager;
@@ -125,7 +105,7 @@ public class SetupSession implements ISetupSession {
     public boolean startSetup() {
         getPlayer().sendMessage("§6 ▪ §7Loading " + getWorldName());
         cm = new ArenaConfig(BedWars.plugin, getWorldName(), plugin.getDataFolder().getPath() + "/Arenas");
-        BedWars.getAPI().getRestoreAdapter().onSetupSessionStart(this);
+        BedWars.getRestoreAdapter().onSetupSessionStart(this);
         return true;
     }
 
@@ -163,7 +143,7 @@ public class SetupSession implements ISetupSession {
      * End setup session
      */
     public void done() {
-        BedWars.getAPI().getRestoreAdapter().onSetupSessionClose(this);
+        BedWars.getRestoreAdapter().onSetupSessionClose(this);
         getSetupSessions().remove(this);
         if (BedWars.getServerType() != ServerType.BUNGEE) {
             try {

@@ -1,34 +1,14 @@
-/*
- * BedWars1058 - A bed wars mini-game.
- * Copyright (C) 2021 Andrei Dascălu
- *
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <https://www.gnu.org/licenses/>.
- *
- * Contact e-mail: andrew.dascalu@gmail.com
- */
-
 package com.andrei1058.bedwars;
 
-import com.andrei1058.bedwars.api.arena.IArena;
-import com.andrei1058.bedwars.api.configuration.ConfigManager;
-import com.andrei1058.bedwars.api.configuration.ConfigPath;
-import com.andrei1058.bedwars.api.language.Language;
-import com.andrei1058.bedwars.api.levels.Level;
-import com.andrei1058.bedwars.api.party.Party;
-import com.andrei1058.bedwars.api.server.RestoreAdapter;
-import com.andrei1058.bedwars.api.server.ServerType;
-import com.andrei1058.bedwars.api.server.VersionSupport;
+import com.andrei1058.bedwars.arena.IArena;
+import com.andrei1058.bedwars.configuration.ConfigManager;
+import com.andrei1058.bedwars.configuration.ConfigPath;
+import com.andrei1058.bedwars.language.Language;
+import com.andrei1058.bedwars.levels.Level;
+import com.andrei1058.bedwars.party.Party;
+import com.andrei1058.bedwars.server.RestoreAdapter;
+import com.andrei1058.bedwars.server.ServerType;
+import com.andrei1058.bedwars.server.VersionSupport;
 import com.andrei1058.bedwars.arena.Arena;
 import com.andrei1058.bedwars.arena.ArenaManager;
 import com.andrei1058.bedwars.arena.VoidChunkGenerator;
@@ -107,8 +87,10 @@ import java.util.*;
 public class BedWars extends JavaPlugin {
 
     private static ServerType serverType = ServerType.MULTIARENA;
-    public static boolean debug = true, autoscale = false;
-    public static String mainCmd = "bw", link = "https://www.spigotmc.org/resources/50942/";
+    public static boolean debug = true;
+    public static boolean autoscale = false;
+    public static String mainCmd = "bw";
+    public static String link = "https://www.spigotmc.org/resources/50942/";
     public static ConfigManager signs, generators;
     public static MainConfig config;
     public static ShopManager shop;
@@ -132,8 +114,6 @@ public class BedWars extends JavaPlugin {
     private static Database remoteDatabase;
 
     private boolean serverSoftwareSupport = true;
-
-    private static com.andrei1058.bedwars.api.BedWars api;
 
     @Override
     public void onLoad() {
@@ -169,9 +149,6 @@ public class BedWars extends JavaPlugin {
             return;
         }
 
-        api = new API();
-        Bukkit.getServicesManager().register(com.andrei1058.bedwars.api.BedWars.class, api, this, ServicePriority.Highest);
-
         try {
             //noinspection unchecked
             nms = (VersionSupport) supp.getConstructor(Class.forName("org.bukkit.plugin.Plugin"), String.class).newInstance(this, version);
@@ -186,19 +163,7 @@ public class BedWars extends JavaPlugin {
         this.getLogger().info("Loading support for paper/spigot: " + version);
 
         // Setup languages
-        new English();
-        new Romanian();
-        new Italian();
-        new Polish();
-        new Spanish();
         new Russian();
-        new Bangla();
-        new Persian();
-        new Hindi();
-        new Indonesia();
-        new Portuguese();
-        new SimplifiedChinese();
-        new Turkish();
 
         config = new MainConfig(this, "config");
 
@@ -219,7 +184,7 @@ public class BedWars extends JavaPlugin {
         nms.registerVersionListeners();
 
         if (!this.handleWorldAdapter()) {
-            api.setRestoreAdapter(new InternalAdapter(this));
+            setRestoreAdapter(new InternalAdapter(this));
             getLogger().info("Using internal world restore system.");
         }
 
@@ -551,7 +516,7 @@ public class BedWars extends JavaPlugin {
             } else if (major == 2 && minor == 8 && release == 0) {
                 adapterPath = "com.andrei1058.bedwars.arena.mapreset.slime.AdvancedSlimeAdapter";
             } else if (major > 2 || major == 2 && minor >= 10) {
-                adapterPath = "com.andrei1058.bedwars.arena.mapreset.slime.SlimePaperAdapter";
+                adapterPath = "com.andrei1058.slime.bedwars.arena.mapreset.slime.SlimePaperAdapter";
             } else {
                 return false;
             }
@@ -560,7 +525,7 @@ public class BedWars extends JavaPlugin {
             getLogger().info("Loading restore adapter: " + adapterPath + " ...");
 
             RestoreAdapter candidate = (RestoreAdapter) constructor.newInstance(this);
-            api.setRestoreAdapter(candidate);
+            setRestoreAdapter(candidate);
             getLogger().info("Hook into " + candidate.getDisplayName() + " as restore adapter.");
             return true;
         } catch (Exception e) {
@@ -602,7 +567,7 @@ public class BedWars extends JavaPlugin {
 
     private void loadArenasAndSigns() {
 
-        api.getRestoreAdapter().convertWorlds();
+        BedWars.getRestoreAdapter().convertWorlds();
 
         File dir = new File(plugin.getDataFolder(), "/Arenas");
         if (dir.exists()) {
@@ -744,10 +709,6 @@ public class BedWars extends JavaPlugin {
         return statsManager;
     }
 
-    public static com.andrei1058.bedwars.api.BedWars getAPI() {
-        return api;
-    }
-
     public static boolean isShuttingDown() {
         return shuttingDown;
     }
@@ -768,5 +729,29 @@ public class BedWars extends JavaPlugin {
     @Override
     public ChunkGenerator getDefaultWorldGenerator(String worldName, String id) {
         return new VoidChunkGenerator();
+    }
+
+    private static RestoreAdapter restoreAdapter;
+    public static void setRestoreAdapter(RestoreAdapter adapter) throws IllegalAccessError {
+        if (!Arena.getArenas().isEmpty()) {
+            throw new IllegalAccessError("Arenas must be unloaded when changing the adapter");
+        }
+        restoreAdapter = adapter;
+        if (adapter.getOwner() != null) {
+            if (adapter.getOwner() != BedWars.plugin) {
+                BedWars.plugin.getLogger().log(java.util.logging.Level.WARNING, adapter.getOwner().getName() + " changed the restore system to its own adapter.");
+            }
+        }
+    }
+    public static RestoreAdapter getRestoreAdapter() {
+        return restoreAdapter;
+    }
+
+    public static ConfigManager getMainConfig() {
+        return config;
+    }
+
+    public static ConfigManager getShopConfig() {
+        return shop;
     }
 }

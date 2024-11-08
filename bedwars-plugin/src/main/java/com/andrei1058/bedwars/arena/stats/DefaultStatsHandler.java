@@ -1,8 +1,8 @@
 package com.andrei1058.bedwars.arena.stats;
 
-import com.andrei1058.bedwars.api.arena.stats.*;
-import com.andrei1058.bedwars.api.events.player.PlayerBedBreakEvent;
-import com.andrei1058.bedwars.api.events.player.PlayerKillEvent;
+import com.andrei1058.bedwars.arena.stats.*;
+import com.andrei1058.bedwars.events.player.PlayerBedBreakEvent;
+import com.andrei1058.bedwars.events.player.PlayerKillEvent;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;

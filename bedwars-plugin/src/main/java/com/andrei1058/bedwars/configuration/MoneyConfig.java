@@ -1,7 +1,7 @@
 package com.andrei1058.bedwars.configuration;
 
 import com.andrei1058.bedwars.BedWars;
-import com.andrei1058.bedwars.api.configuration.ConfigManager;
+import com.andrei1058.bedwars.configuration.ConfigManager;
 
 public class MoneyConfig extends ConfigManager {
 
