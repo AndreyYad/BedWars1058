@@ -54,6 +54,12 @@
             <artifactId>api</artifactId>
             <version>1.20-R0.1-SNAPSHOT</version>
             <scope>provided</scope>
+            <exclusions>
+                <exclusion>
+                    <groupId>com.flowpowered</groupId>
+                    <artifactId>flow-nbt</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>com.flowpowered</groupId>

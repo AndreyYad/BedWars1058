@@ -49,6 +49,7 @@ buildNumber.properties
 *.iml
 *.java___jb_tmp___
 .idea/*
+!.idea/modules.xml
 *.ipr
 *.iws
 /out/
