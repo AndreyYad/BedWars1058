@@ -11,7 +11,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.function.Function;
 
-//! из АПИ
+/// из АПИ
 
 @SuppressWarnings("unused")
 public class PlayerKillEvent extends Event {

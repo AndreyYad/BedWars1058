@@ -4,7 +4,7 @@ import org.bukkit.entity.Player;
 
 import java.util.List;
 
-//! из АПИ
+/// из АПИ
 
 public interface ParentCommand {
 

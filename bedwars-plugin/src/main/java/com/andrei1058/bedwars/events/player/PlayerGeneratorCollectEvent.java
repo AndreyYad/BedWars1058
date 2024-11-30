@@ -8,7 +8,7 @@ import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
 import org.bukkit.inventory.ItemStack;
 
-//! из АПИ
+/// из АПИ
 
 public class PlayerGeneratorCollectEvent extends Event {
 

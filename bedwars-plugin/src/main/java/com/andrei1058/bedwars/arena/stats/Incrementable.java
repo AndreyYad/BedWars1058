@@ -1,6 +1,6 @@
 package com.andrei1058.bedwars.arena.stats;
 
-//! из АПИ
+/// из АПИ
 
 public interface Incrementable {
 

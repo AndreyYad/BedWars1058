@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.UUID;
 import java.util.function.Function;
 
-//! из АПИ
+/// из АПИ
 
 public class SpectatorFirstPersonEnterEvent extends Event implements Cancellable {
 

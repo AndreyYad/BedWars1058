@@ -7,7 +7,7 @@ import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
 import org.jetbrains.annotations.Nullable;
 
-//! из АПИ
+/// из АПИ
 
 public class PlayerLeaveArenaEvent extends Event {
 

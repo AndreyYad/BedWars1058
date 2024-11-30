@@ -6,7 +6,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
-//! из АПИ
+/// из АПИ
 
 public interface Party {
 

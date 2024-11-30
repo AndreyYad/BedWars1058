@@ -3,7 +3,7 @@ package com.andrei1058.bedwars.events.server;
 import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
 
-//! из АПИ
+/// из АПИ
 
 public class ArenaDisableEvent extends Event {
     private static final HandlerList HANDLERS = new HandlerList();

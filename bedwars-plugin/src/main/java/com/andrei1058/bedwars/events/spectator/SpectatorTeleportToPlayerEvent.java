@@ -10,7 +10,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.UUID;
 
-//! из АПИ
+/// из АПИ
 
 public class SpectatorTeleportToPlayerEvent extends Event {
 

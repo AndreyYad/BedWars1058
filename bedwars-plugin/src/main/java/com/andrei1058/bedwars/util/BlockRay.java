@@ -8,7 +8,7 @@ import org.bukkit.util.Vector;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
-//! из АПИ
+/// из АПИ
 
 /*
     Used for tracing blocks between two vectors.

@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-//! из АПИ
+/// из АПИ
 
 public class GameEndEvent extends Event {
 

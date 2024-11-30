@@ -5,7 +5,7 @@ import com.andrei1058.bedwars.arena.team.ITeam;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
-//! из АПИ
+/// из АПИ
 
 public interface EnemyBaseEnterTrap {
 

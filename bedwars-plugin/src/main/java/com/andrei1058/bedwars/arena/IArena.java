@@ -22,7 +22,7 @@ import java.time.Instant;
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 
-//! из АПИ
+/// из АПИ
 
 @SuppressWarnings("unused")
 public interface IArena {

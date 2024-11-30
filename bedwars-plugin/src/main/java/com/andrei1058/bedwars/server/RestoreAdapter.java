@@ -17,7 +17,7 @@ import org.jetbrains.annotations.Nullable;
 import java.util.List;
 import java.util.function.Consumer;
 
-//! из АПИ
+/// из АПИ
 
 public abstract class RestoreAdapter {
 

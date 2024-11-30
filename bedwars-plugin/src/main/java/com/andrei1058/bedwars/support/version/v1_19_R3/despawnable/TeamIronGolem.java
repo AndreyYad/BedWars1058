@@ -19,7 +19,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.Objects;
 
-//! из versionsupport_v1_19_R3
+/// из versionsupport_v1_19_R3
 
 public class TeamIronGolem extends DespawnableProvider<IronGolem> {
 

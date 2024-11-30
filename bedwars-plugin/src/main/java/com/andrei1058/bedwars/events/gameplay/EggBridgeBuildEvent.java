@@ -7,7 +7,7 @@ import org.bukkit.block.Block;
 import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
 
-//! из АПИ
+/// из АПИ
 
 public class EggBridgeBuildEvent extends Event {
 

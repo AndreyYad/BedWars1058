@@ -4,7 +4,7 @@ import com.andrei1058.bedwars.language.Language;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-//! из АПИ
+/// из АПИ
 
 /**
  * Game statistic.

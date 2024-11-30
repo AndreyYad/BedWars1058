@@ -11,7 +11,7 @@ import org.bukkit.entity.LivingEntity;
 
 import java.util.UUID;
 
-//! из АПИ
+/// из АПИ
 
 public class Despawnable {
 

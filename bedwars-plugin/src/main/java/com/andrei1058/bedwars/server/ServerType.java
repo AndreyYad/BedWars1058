@@ -1,7 +1,7 @@
 
 package com.andrei1058.bedwars.server;
 
-//! из АПИ
+/// из АПИ
 
 public enum ServerType {
     BUNGEE, MULTIARENA, SHARED

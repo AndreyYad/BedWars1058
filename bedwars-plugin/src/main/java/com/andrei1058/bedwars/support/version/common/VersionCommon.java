@@ -10,7 +10,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.Plugin;
 
-//! из versionsupport_common
+/// из versionsupport_common
 
 public class VersionCommon {
 

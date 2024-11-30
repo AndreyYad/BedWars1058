@@ -8,7 +8,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Properties;
 
-//! из АПИ
+/// из АПИ
 
 public class FileUtil {
 

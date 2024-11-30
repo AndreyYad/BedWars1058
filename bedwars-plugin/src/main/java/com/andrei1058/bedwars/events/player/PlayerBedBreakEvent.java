@@ -9,7 +9,7 @@ import org.bukkit.event.HandlerList;
 
 import java.util.function.Function;
 
-//! из АПИ
+/// из АПИ
 
 public class PlayerBedBreakEvent extends Event {
 

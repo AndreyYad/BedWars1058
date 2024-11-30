@@ -2,7 +2,7 @@ package com.andrei1058.bedwars.region;
 
 import org.bukkit.Location;
 
-//! из АПИ
+/// из АПИ
 
 public interface Region {
 

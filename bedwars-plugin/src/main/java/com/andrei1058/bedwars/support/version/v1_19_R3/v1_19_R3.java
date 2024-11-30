@@ -58,7 +58,7 @@ import java.lang.reflect.Field;
 import java.util.*;
 import java.util.logging.Level;
 
-//! из versionsupport_v1_19_R3
+/// из versionsupport_v1_19_R3
 
 @SuppressWarnings("unused")
 public class v1_19_R3 extends VersionSupport {
