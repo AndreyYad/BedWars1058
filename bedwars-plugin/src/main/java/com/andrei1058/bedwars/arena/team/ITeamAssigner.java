@@ -3,7 +3,7 @@ package com.andrei1058.bedwars.arena.team;
 
 import com.andrei1058.bedwars.arena.IArena;
 
-//! из АПИ
+/// из АПИ
 
 public interface ITeamAssigner {
 

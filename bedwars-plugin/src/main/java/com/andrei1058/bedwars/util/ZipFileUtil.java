@@ -6,7 +6,7 @@ import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
 import java.util.zip.ZipOutputStream;
 
-//! из АПИ
+/// из АПИ
 
 public final class ZipFileUtil {
     public static void zipDirectory(File dir, File zipFile) throws IOException {

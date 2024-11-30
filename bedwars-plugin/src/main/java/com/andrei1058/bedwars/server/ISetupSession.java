@@ -4,7 +4,7 @@ package com.andrei1058.bedwars.server;
 import com.andrei1058.bedwars.configuration.ConfigManager;
 import org.bukkit.entity.Player;
 
-//! из АПИ
+/// из АПИ
 
 public interface ISetupSession {
 

@@ -17,7 +17,7 @@ import java.util.List;
 import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
 
-//! из АПИ
+/// из АПИ
 
 public interface ITeam {
 

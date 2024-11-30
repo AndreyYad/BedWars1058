@@ -13,7 +13,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.LinkedList;
 import java.util.concurrent.atomic.AtomicInteger;
 
-//! из АПИ
+/// из АПИ
 
 public class BlastProtectionUtil {
 

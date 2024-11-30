@@ -14,7 +14,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.*;
 
-//! из АПИ
+/// из АПИ
 
 public class Language extends ConfigManager {
 
@@ -127,6 +127,7 @@ public class Language extends ConfigManager {
     /**
      * Get message in player's language.
      */
+    /// тут вместо нормального меседжа path потому, что все сообщения лежат в ямлах
     public static String getMsg(Player player, String path) {
         if (player == null) {
             return getDefaultLanguage().m(path);

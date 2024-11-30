@@ -1,7 +1,7 @@
 
 package com.andrei1058.bedwars.configuration;
 
-//! из АПИ
+/// из АПИ
 
 @SuppressWarnings("WeakerAccess")
 public class ConfigPath {

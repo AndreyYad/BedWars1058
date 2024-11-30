@@ -5,7 +5,7 @@ import com.andrei1058.bedwars.arena.IArena;
 import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
 
-//! из АПИ
+/// из АПИ
 
 public class ArenaEnableEvent extends Event {
     private static final HandlerList HANDLERS = new HandlerList();

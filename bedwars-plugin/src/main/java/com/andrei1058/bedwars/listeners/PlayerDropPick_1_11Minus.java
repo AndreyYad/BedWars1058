@@ -16,7 +16,7 @@ import org.bukkit.event.player.PlayerPickupItemEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
-//! из versionsupport_common
+/// из versionsupport_common
 
 public class PlayerDropPick_1_11Minus implements Listener {
 

@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
-//! из АПИ
+/// из АПИ
 
 @SuppressWarnings("unused")
 public interface GameStatsHolder {

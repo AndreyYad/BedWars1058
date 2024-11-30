@@ -10,7 +10,7 @@ import org.bukkit.inventory.ItemStack;
 
 import java.util.HashMap;
 
-//! из АПИ
+/// из АПИ
 
 public interface IGenerator {
 

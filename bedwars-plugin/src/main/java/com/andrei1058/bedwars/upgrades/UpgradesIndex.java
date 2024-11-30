@@ -3,7 +3,7 @@ package com.andrei1058.bedwars.upgrades;
 import com.google.common.collect.ImmutableMap;
 import org.bukkit.entity.Player;
 
-//! из АПИ
+/// из АПИ
 
 public interface UpgradesIndex {
 

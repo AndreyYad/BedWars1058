@@ -5,7 +5,7 @@ import com.andrei1058.bedwars.arena.team.ITeam;
 import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
 
-//! из АПИ
+/// из АПИ
 
 public class TeamEliminatedEvent extends Event {
     private static final HandlerList HANDLERS = new HandlerList();

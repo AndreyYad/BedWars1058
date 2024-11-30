@@ -6,7 +6,7 @@ import com.andrei1058.bedwars.arena.NextEvent;
 import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
 
-//! из АПИ
+/// из АПИ
 
 public class NextEventChangeEvent extends Event {
 

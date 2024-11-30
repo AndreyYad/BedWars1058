@@ -4,7 +4,7 @@ package com.andrei1058.bedwars.tasks;
 import com.andrei1058.bedwars.arena.IArena;
 import org.bukkit.scheduler.BukkitTask;
 
-//! из АПИ
+/// из АПИ
 
 public interface StartingTask {
 

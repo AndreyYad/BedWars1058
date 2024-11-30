@@ -2,7 +2,7 @@ package com.andrei1058.bedwars.arena.generator;
 
 import org.bukkit.entity.Player;
 
-//! из АПИ
+/// из АПИ
 
 public interface IGenHolo {
 

@@ -4,7 +4,7 @@ import com.andrei1058.bedwars.language.Language;
 import org.bukkit.plugin.Plugin;
 import org.jetbrains.annotations.Nullable;
 
-//! из АПИ
+/// из АПИ
 
 public interface GameStatisticProvider<T extends GameStatistic<?>> {
 

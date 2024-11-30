@@ -9,7 +9,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
-//! из versionsupport_v1_19_R3
+/// из versionsupport_v1_19_R3
 
 public class DespawnableFactory {
 

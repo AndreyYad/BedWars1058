@@ -4,7 +4,7 @@ package com.andrei1058.bedwars.levels;
 import com.andrei1058.bedwars.events.player.PlayerXpGainEvent;
 import org.bukkit.entity.Player;
 
-//! из АПИ
+/// из АПИ
 
 public interface Level {
 

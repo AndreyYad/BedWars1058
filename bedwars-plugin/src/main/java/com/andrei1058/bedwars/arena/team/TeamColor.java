@@ -6,7 +6,7 @@ import org.bukkit.DyeColor;
 import org.bukkit.Material;
 import org.jetbrains.annotations.NotNull;
 
-//! из АПИ
+/// из АПИ
 
 public enum TeamColor {
 

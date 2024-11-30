@@ -3,7 +3,7 @@ package com.andrei1058.bedwars.language;
 
 import com.andrei1058.bedwars.configuration.ConfigPath;
 
-//! из АПИ
+/// из АПИ
 
 @SuppressWarnings("WeakerAccess")
 public class Messages {

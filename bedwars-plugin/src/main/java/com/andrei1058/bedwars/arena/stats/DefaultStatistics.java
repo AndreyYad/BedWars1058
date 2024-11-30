@@ -2,7 +2,7 @@ package com.andrei1058.bedwars.arena.stats;
 
 import org.jetbrains.annotations.NotNull;
 
-//! из АПИ
+/// из АПИ
 
 @SuppressWarnings("SpellCheckingInspection")
 public enum DefaultStatistics {

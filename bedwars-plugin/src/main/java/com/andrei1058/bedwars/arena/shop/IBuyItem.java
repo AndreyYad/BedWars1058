@@ -5,7 +5,7 @@ import com.andrei1058.bedwars.arena.IArena;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
-//! из АПИ
+/// из АПИ
 
 public interface IBuyItem {
 

@@ -38,7 +38,7 @@ import java.io.IOException;
 import java.util.*;
 import java.util.logging.Level;
 
-//! из resetadapter_slimepaper
+/// из resetadapter_slimepaper
 
 @SuppressWarnings({"CallToPrintStackTrace", "unused"})
 public class SlimePaperAdapter extends RestoreAdapter {

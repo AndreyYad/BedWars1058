@@ -5,7 +5,7 @@ import org.bukkit.inventory.ItemStack;
 
 import java.util.List;
 
-//! из АПИ
+/// из АПИ
 
 public interface ICategoryContent {
 

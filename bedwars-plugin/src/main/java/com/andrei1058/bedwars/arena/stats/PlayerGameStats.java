@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
-//! из АПИ
+/// из АПИ
 
 /**
  * Player stats container for a game.

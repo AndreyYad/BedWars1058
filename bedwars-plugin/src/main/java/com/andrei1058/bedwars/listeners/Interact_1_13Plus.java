@@ -10,7 +10,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
 
-//! из versionsupport_common
+/// из versionsupport_common
 
 public class Interact_1_13Plus implements Listener {
 

@@ -5,7 +5,7 @@ import com.andrei1058.bedwars.server.ISetupSession;
 import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
 
-//! из АПИ
+/// из АПИ
 
 public class SetupSessionCloseEvent extends Event {
     private static final HandlerList HANDLERS = new HandlerList();
