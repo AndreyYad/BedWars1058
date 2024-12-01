@@ -9,6 +9,10 @@ import org.jetbrains.annotations.Nullable;
 
 /// из АПИ
 
+/// кастомный ивент, вызывается вручную когда игрока с арены ливают, передает инфу про это,
+/// потом обрабатывается как обычный ивент в коде.
+
+/// Надо бы наследовать, ибо эти HANDLERS, нужные для Баккета, автор писал во всех 10+ кастомных ивентах, лох
 public class PlayerLeaveArenaEvent extends Event {
 
     private static final HandlerList HANDLERS = new HandlerList();

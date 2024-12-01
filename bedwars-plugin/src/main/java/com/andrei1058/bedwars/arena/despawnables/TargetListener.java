@@ -9,9 +9,11 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityTargetLivingEntityEvent;
 
+/// этот обработчик отменяет твои удары по призванным твоей командой существам.
 public class TargetListener implements Listener {
 
     @EventHandler
+    /// отмена + тут дохуя проверок что чел, который бьет, вообще с нужной арены и тд
     public void onTarget(EntityTargetLivingEntityEvent e){
         if (!(e.getTarget() instanceof Player)) return;
         IArena arena = Arena.getArenaByIdentifier(e.getEntity().getWorld().getName());

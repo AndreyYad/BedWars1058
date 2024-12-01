@@ -21,6 +21,7 @@ import org.bukkit.potion.PotionEffectType;
 
 import java.util.LinkedList;
 
+/// при включении определенной области генерирует красные партиклы вокруг игроков, имеющих динамит
 public class SpoilPlayerTNTFeature {
 
     private static SpoilPlayerTNTFeature instance;
@@ -41,6 +42,7 @@ public class SpoilPlayerTNTFeature {
         MetricsManager.appendPie("tnt_spoil_enable", () -> String.valueOf(enable));
     }
 
+    /// для видимых игроков генерирует красные партиклы вокруг них
     private static class ParticleTask implements Runnable {
 
         @Override
@@ -52,6 +54,7 @@ public class SpoilPlayerTNTFeature {
         }
     }
 
+    /// отслеживает всякими способами игроков, у которых ща есть тнт
     private static class TNTListener implements Listener {
 
         @EventHandler
@@ -77,6 +80,7 @@ public class SpoilPlayerTNTFeature {
         @EventHandler(ignoreCancelled = true)
         public void onDrop(PlayerDropItemEvent event) {
             if (event.getItemDrop().getItemStack().getType() == Material.TNT) {
+                /// надо эти проверки тоже куда-то вынести... а то кал какой-то их повторять так
                 IArena arena = Arena.getArenaByPlayer(event.getPlayer());
                 if (arena == null || !arena.isPlayer(event.getPlayer()) || arena.isSpectator(event.getPlayer())) return;
                 if (!instance.playersWithTnt.contains(event.getPlayer())) return;
@@ -92,6 +96,8 @@ public class SpoilPlayerTNTFeature {
             if (arena == null || !arena.isPlayer(event.getPlayer()) || arena.isSpectator(event.getPlayer())) return;
             if (inHand.getType() == Material.TNT) {
                 if (!instance.playersWithTnt.contains(event.getPlayer())) return;
+                /// gpt: Задержка в этом случае может быть добавлена для того, чтобы учесть некоторые моменты,
+                /// которые происходят после выполнения события, такие как проверка на изменения в инвентаре игрока
                 Bukkit.getScheduler().runTaskLater(BedWars.plugin, () -> {
                     if (!event.getPlayer().getInventory().contains(Material.TNT)) {
                         instance.playersWithTnt.remove(event.getPlayer());
