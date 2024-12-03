@@ -40,7 +40,6 @@ public class OreGenerator implements IGenerator {
     ///почему и то и то
     private ItemStack ore;
     private GeneratorType type;
-
     private int rotate = 0, dropID = 0;
     private ITeam bwt;
     boolean up = true;
@@ -180,7 +179,7 @@ public class OreGenerator implements IGenerator {
                     ItemStack item = ore.clone();
                     item.setAmount(amount);
                     ///разобраться с параметрами проигрывания звуков
-                    player.playSound(player.getLocation(), Sound.valueOf(BedWars.getForCurrentVersion("ITEM_PICKUP", "ENTITY_ITEM_PICKUP", "ENTITY_ITEM_PICKUP")), 0.6f, 1.3f);
+                    player.playSound(player.getLocation(), Sound.ENTITY_ITEM_PICKUP, 0.6f, 1.3f);
                     Collection<ItemStack> excess = player.getInventory().addItem(item).values();
                     for (ItemStack value : excess) {
                         dropItem(player.getLocation(), value.getAmount());
