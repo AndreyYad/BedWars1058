@@ -4,6 +4,7 @@ import org.bukkit.entity.Player;
 
 /// из АПИ
 
+/// все понятно в общем
 public interface IGenHolo {
 
     /**

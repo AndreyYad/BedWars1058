@@ -4,6 +4,7 @@ import org.bukkit.Location;
 
 /// из АПИ
 
+///все понятно
 public interface Region {
 
     /**

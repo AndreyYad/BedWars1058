@@ -28,18 +28,24 @@ import java.util.concurrent.ConcurrentLinkedDeque;
 
 import static com.andrei1058.bedwars.BedWars.*;
 
+///ну типа понятно. Отвечает за генераторы и голограммы над ними. Много всего, не опишешь так
 @SuppressWarnings("WeakerAccess")
 public class OreGenerator implements IGenerator {
 
     private Location location;
+    /// разделить по строкам
+    /// lastSpawn это таймер до нового спавна... гении нейминга
     private int delay = 1, upgradeStage = 1, lastSpawn, spawnLimit = 0, amount = 1;
     private IArena arena;
+    ///почему и то и то
     private ItemStack ore;
     private GeneratorType type;
+
     private int rotate = 0, dropID = 0;
     private ITeam bwt;
     boolean up = true;
 
+    ///заменить станды на дисплеи. Плюс убрать поддержку мультиязычности
     /**
      * Generator holograms per language <iso, holo></iso,>
      */
@@ -48,9 +54,12 @@ public class OreGenerator implements IGenerator {
     private ArmorStand item;
     public boolean stack = getGeneratorsCfg().getBoolean(ConfigPath.GENERATOR_STACK_ITEMS);
 
+    ///и нафига тут потокобезопасность
+    ///хранит все вращающиеся генераторы
     private static final ConcurrentLinkedDeque<OreGenerator> rotation = new ConcurrentLinkedDeque<>();
 
     public OreGenerator(Location location, IArena arena, GeneratorType type, ITeam bwt) {
+        ///почему так?
         if (type == GeneratorType.EMERALD || type == GeneratorType.DIAMOND) {
             this.location = new Location(location.getWorld(), location.getBlockX() + 0.5, location.getBlockY() + 1.3, location.getBlockZ() + 0.5);
         } else {
@@ -62,6 +71,7 @@ public class OreGenerator implements IGenerator {
         loadDefaults();
         BedWars.debug("Initializing new generator at: " + location + " - " + type + " - " + (bwt == null ? "NOTEAM" : bwt.getName()));
 
+        ///почему не сфера? сделать сферу
         Cuboid c = new Cuboid(location, getArena().getConfig().getInt(ConfigPath.ARENA_GENERATOR_PROTECTION), true);
         c.setMaxY(c.getMaxY() + 5);
         c.setMinY(c.getMinY() - 2);
@@ -69,6 +79,7 @@ public class OreGenerator implements IGenerator {
     }
 
     @Override
+    ///обновление по игровому ивенту, не из-за магаза
     public void upgrade() {
         switch (type) {
             case DIAMOND:
@@ -88,6 +99,7 @@ public class OreGenerator implements IGenerator {
                     spawnLimit = getGeneratorsCfg().getInt(getGeneratorsCfg().getYml().get(arena.getGroup() + "." + ConfigPath.GENERATOR_DIAMOND_TIER_II_SPAWN_LIMIT) == null ?
                             "Default." + ConfigPath.GENERATOR_DIAMOND_TIER_III_SPAWN_LIMIT : arena.getGroup() + "." + ConfigPath.GENERATOR_DIAMOND_TIER_III_SPAWN_LIMIT);
                 }
+                ///зачем руду перезаписывать?
                 ore = new ItemStack(Material.DIAMOND);
                 for (IGenHolo e : armorStands.values()) {
                     e.setTierName(Language.getLang(e.getIso()).m(Messages.GENERATOR_HOLOGRAM_TIER).replace("{tier}", Language.getLang(e.getIso())
@@ -122,6 +134,7 @@ public class OreGenerator implements IGenerator {
     }
 
     @Override
+    ///название говна, учитывая что это попытка спавна, а не спавн. Это прост секундный тик работы генератора
     public void spawn() {
         if (arena.getStatus() != GameState.playing){
             return;
@@ -142,6 +155,7 @@ public class OreGenerator implements IGenerator {
                         if (oreCount >= spawnLimit) return;
                     }
                 }
+                ///зачем? типо подсчет может занять больше секунды? вряд ли
                 lastSpawn = delay;
             }
             if (bwt == null) {
@@ -152,6 +166,7 @@ public class OreGenerator implements IGenerator {
                 dropItem(location);
                 return;
             }
+            ///т.е. если игроки стоят вдвоем, они получают вдвое больше ресов??
             if (plugin.getConfig().getBoolean(ConfigPath.GENERAL_CONFIGURATION_ENABLE_GEN_SPLIT)) {
                 Object[] players = location.getWorld().getNearbyEntities(location, 1, 1, 1).stream().filter(entity -> entity.getType() == EntityType.PLAYER)
                         .filter(entity -> arena.isPlayer((Player) entity)).toArray();
@@ -161,8 +176,10 @@ public class OreGenerator implements IGenerator {
                 }
                 for (Object o : players) {
                     Player player = (Player) o;
+                    ///почему тут clone, а не new
                     ItemStack item = ore.clone();
                     item.setAmount(amount);
+                    ///разобраться с параметрами проигрывания звуков
                     player.playSound(player.getLocation(), Sound.valueOf(BedWars.getForCurrentVersion("ITEM_PICKUP", "ENTITY_ITEM_PICKUP", "ENTITY_ITEM_PICKUP")), 0.6f, 1.3f);
                     Collection<ItemStack> excess = player.getInventory().addItem(item).values();
                     for (ItemStack value : excess) {
@@ -177,6 +194,7 @@ public class OreGenerator implements IGenerator {
         }
         lastSpawn--;
         for (IGenHolo e : armorStands.values()) {
+            ///вся схема с сообщениями какое-то говно, надо переделать
             e.setTimerName(Language.getLang(e.getIso()).m(Messages.GENERATOR_HOLOGRAM_TIMER).replace("{seconds}", String.valueOf(lastSpawn)));
         }
     }
@@ -185,6 +203,7 @@ public class OreGenerator implements IGenerator {
         for (int temp = amount; temp > 0; temp--) {
             ItemStack itemStack = new ItemStack(ore);
             if (!stack) {
+                ///видимо вещички стакаются по этим совпадающим дисплейным именам
                 ItemMeta itemMeta = itemStack.getItemMeta();
                 itemMeta.setDisplayName("custom" + dropID++);
                 itemStack.setItemMeta(itemMeta);
@@ -203,6 +222,7 @@ public class OreGenerator implements IGenerator {
     }
 
     @Override
+    ///где это вообще может понадобиться?
     public void setOre(ItemStack ore) {
         BedWars.debug("Changing ore for generator at " + location.toString() + " from " + this.ore + " to " + ore);
         this.ore = ore;
@@ -241,6 +261,7 @@ public class OreGenerator implements IGenerator {
         }
 
         @Override
+        ///удаляет из мышления клиентов станды с надписями, если их язык не такой же, как язык этой голограммы
         public void updateForAll() {
             for (Player p2 : timer.getWorld().getPlayers()) {
                 if (Language.getPlayerLanguage(p2).getIso().equalsIgnoreCase(iso)) continue;
@@ -251,6 +272,7 @@ public class OreGenerator implements IGenerator {
         }
 
         @Override
+        ///удаляет из мышления клиента станды с надписями, если переданный язык не такой же, как язык этой голограммы
         public void updateForPlayer(Player p, String lang) {
             if (lang.equalsIgnoreCase(iso)) return;
             nms.hideEntity(tier, p);
@@ -300,6 +322,7 @@ public class OreGenerator implements IGenerator {
     }
 
     @Override
+    ///понять как тут это высчитывается
     public void rotate() {
         if (up) {
             if (rotate >= 540) {
@@ -379,6 +402,7 @@ public class OreGenerator implements IGenerator {
         //loadDefaults(false);
         //if (getType() == GeneratorType.EMERALD || getType() == GeneratorType.DIAMOND) {
         rotation.add(this);
+        ///как это с вращением то связано
         for (Language lan : Language.getLanguages()) {
             IGenHolo h = armorStands.get(lan.getIso());
             if (h == null) {
@@ -400,6 +424,8 @@ public class OreGenerator implements IGenerator {
     }
 
     private void loadDefaults() {
+        ///а для кастомных что?
+        ///надо отрефакторить, дохуя дубликации
         switch (type) {
             case GOLD:
                 delay = getGeneratorsCfg().getInt(getGeneratorsCfg().getYml().get(arena.getGroup() + "." + ConfigPath.GENERATOR_GOLD_DELAY) == null ?

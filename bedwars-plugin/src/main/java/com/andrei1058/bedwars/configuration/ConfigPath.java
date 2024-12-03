@@ -4,6 +4,7 @@ package com.andrei1058.bedwars.configuration;
 /// из АПИ
 
 @SuppressWarnings("WeakerAccess")
+///сделать так, чтобы пути к конфигам были не все в одном месте. Лучше конфиги вообще сделать классами
 public class ConfigPath {
 
     public static final String GAME_END_PATH = "game-end";

@@ -138,6 +138,7 @@ public class v1_19_R3 extends VersionSupport {
     }
 
     @Override
+    ///посылает игроку пакет, благодаря которому клиент перестает обрабатывать сущность, как будто ее нет
     public void hideEntity(@NotNull Entity e, Player p) {
         PacketPlayOutEntityDestroy packet = new PacketPlayOutEntityDestroy(e.getEntityId());
         ((CraftPlayer) p).getHandle().b.a(packet);

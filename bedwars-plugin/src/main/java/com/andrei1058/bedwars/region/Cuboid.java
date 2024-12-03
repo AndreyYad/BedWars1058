@@ -4,6 +4,8 @@ import org.bukkit.Location;
 
 /// из АПИ
 
+///все понятно
+///поч не наследование от org.bukkit.util.BoundingBox
 public class Cuboid implements Region {
 
     private int minX, maxX;

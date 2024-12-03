@@ -7,6 +7,7 @@ import org.bukkit.event.HandlerList;
 
 /// из АПИ
 
+/// мануальный ивент, вызывается ток при обновлении по времени, не магазинном. Пока нигде не юзается
 public class GeneratorUpgradeEvent extends Event {
     private static final HandlerList HANDLERS = new HandlerList();
 
