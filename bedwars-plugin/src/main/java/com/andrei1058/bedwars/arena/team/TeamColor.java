@@ -241,47 +241,6 @@ public enum TeamColor {
     }
 
     /**
-     * Get the english for byte as color name.
-     *
-     * @param b color byte. Used for 1.12 and older.
-     * @return the english color name for given material. EMPTY if item is not supported.
-     */
-    public static String enName(byte b) {
-        String name = "";
-        switch (b) {
-            case 6:
-                name = "Pink";
-                break;
-            case 14:
-                name = "Red";
-                break;
-            case 9:
-                name = "Aqua";
-                break;
-            case 5:
-                name = "Green";
-                break;
-            case 4:
-                name = "Yellow";
-                break;
-            case 11:
-                name = "Blue";
-                break;
-            case 0:
-                name = "White";
-                break;
-            case 8:
-                name = "Dark_Gray";
-                break;
-            case 7:
-                name = "Gray";
-                break;
-
-        }
-        return name;
-    }
-
-    /**
      * This may be used for leather armor.
      *
      * @param teamColor team color.
