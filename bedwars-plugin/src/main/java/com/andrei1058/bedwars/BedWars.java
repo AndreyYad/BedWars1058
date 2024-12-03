@@ -621,20 +621,9 @@ public class BedWars extends JavaPlugin {
         }
     }
 
-    public static String getForCurrentVersion(String v18, String v12, String v13) {
-        switch (getServerVersion()) {
-            case "v1_8_R3":
-                return v18;
-            case "v1_12_R1":
-                return v12;
-        }
-        return v13;
-    }
-
     public static ServerType getServerType() {
         return serverType;
     }
-
     public static Party getParty() {
         return party;
     }
