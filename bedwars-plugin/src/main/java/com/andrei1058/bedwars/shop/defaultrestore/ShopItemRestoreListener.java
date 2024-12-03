@@ -23,6 +23,7 @@ import org.bukkit.inventory.ItemStack;
 
 /// из versionsupport_common
 
+///лож, нет тут ничего про луки. Заведует выдачей, поднятием и удалением дефолтных мечей
 // Used to restore default swords and bows if they are removed from the inventory and you remain with a less powerful weapon of the same kind. 1.12-.
 public class ShopItemRestoreListener {
 
@@ -35,6 +36,7 @@ public class ShopItemRestoreListener {
 
     public static class EntityPickup implements Listener {
         @EventHandler
+        /// а что с получаемыми из магаза? они вроде такой ивент не вызывают
         public void onDrop(EntityPickupItemEvent e) {
             if (managePickup(e.getItem(), e.getEntity())) e.setCancelled(true);
         }
@@ -46,6 +48,7 @@ public class ShopItemRestoreListener {
      * @return true to cancel the event
      */
     public static boolean managePickup(Item item, LivingEntity player) {
+        /// дохуя проверок дефолтных, которые бы таки куда-нибудь вынести
         if (!(player instanceof Player)) return false;
         if (Arena.getArenaByPlayer((Player) player) == null) return false;
         if (Arena.getArenaByPlayer((Player) player).getStatus() != GameState.playing) return false;
@@ -54,8 +57,10 @@ public class ShopItemRestoreListener {
         if (BedWars.nms.isSword(item.getItemStack())) {
             for (ItemStack is : ((Player) player).getInventory()) {
                 if (is == null) continue;
+                ///такое бывает вообще?
                 if (is.getType() == Material.AIR) continue;
                 if (!BedWars.nms.isCustomBedWarsItem(is)) continue;
+                ///удаляет из инвентаря имеющийся дефолтный меч если поднимается с земли новый дефолтный
                 if (BedWars.nms.getCustomData(is).equalsIgnoreCase("DEFAULT_ITEM")) {
                     ((Player) player).getInventory().remove(is);
                     ((Player) player).updateInventory();
@@ -81,6 +86,7 @@ public class ShopItemRestoreListener {
         IArena a = Arena.getArenaByPlayer((Player) player);
         if (a.getStatus() != GameState.playing) return false;
         if (!a.isPlayer((Player) player)) return false;
+        /// проверка что это дефолтный бедварсный меч
         if (BedWars.nms.isCustomBedWarsItem(item.getItemStack())
                 && BedWars.nms.getCustomData(item.getItemStack()).equalsIgnoreCase("DEFAULT_ITEM")
                 && BedWars.nms.isSword(item.getItemStack())) {
@@ -88,6 +94,7 @@ public class ShopItemRestoreListener {
             for (ItemStack is : ((Player) player).getInventory()) {
                 if (is == null) continue;
                 if (BedWars.nms.isSword(is)) {
+                    /// если остался меч с большим или равным уроном что и выкинутый дефолтный
                     if (BedWars.nms.getDamage(is) >= BedWars.nms.getDamage(item.getItemStack())) {
                         hasSword = true;
                         break;
@@ -95,9 +102,11 @@ public class ShopItemRestoreListener {
                 }
             }
 
+            ///если такого не осталось - выдаем значение что отменит ивент
             return !hasSword;
         } else {
             boolean sword = false;
+            ///проверяет что остался хоть какой-то меч
             for (ItemStack is : ((Player) player).getInventory()) {
                 if (is == null) continue;
                 if (BedWars.nms.isSword(is)) {
@@ -105,6 +114,7 @@ public class ShopItemRestoreListener {
                     break;
                 }
             }
+            ///иначе выдает дефолтный игроку
             if (!sword) a.getTeam((Player) player).defaultSword((Player) player, true);
         }
         return false;
@@ -126,6 +136,7 @@ public class ShopItemRestoreListener {
             if (!a.isPlayer((Player) e.getPlayer())) return;
 
             boolean sword = false;
+            ///ну вообще тут проверяется наличие любого вообще меча, и похер на силу с дефолтностью
             for (ItemStack is : e.getPlayer().getInventory()) {
                 if (is == null) continue;
                 if (is.getType() == Material.AIR) continue;

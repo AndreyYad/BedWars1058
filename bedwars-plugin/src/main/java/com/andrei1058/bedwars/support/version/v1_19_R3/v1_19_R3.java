@@ -173,6 +173,7 @@ public class v1_19_R3 extends VersionSupport {
     }
 
     @Override
+    /// жесть в апи бакета/пеппера нет вообще классов для разных типов предметов...
     public boolean isArmor(org.bukkit.inventory.ItemStack itemStack) {
         var i = getItem(itemStack);
         if (null == i) return false;
@@ -209,6 +210,7 @@ public class v1_19_R3 extends VersionSupport {
     }
 
     @Override
+    ///это снаряды
     public boolean isProjectile(org.bukkit.inventory.ItemStack itemStack) {
         var entity = getEntity(itemStack);
         if (null == entity) return false;
@@ -259,6 +261,7 @@ public class v1_19_R3 extends VersionSupport {
     }
 
     @Override
+    ///хранится в тегах для гибкости в новых версиях
     public double getDamage(org.bukkit.inventory.ItemStack i) {
         var tag = getTag(i);
         if (null == tag) {
@@ -400,11 +403,14 @@ public class v1_19_R3 extends VersionSupport {
     }
 
     @Override
+    /// смотрит что в NBT тегах есть тег BedWars1058, т.е. это игровая вещь
+    /// как я понял теги эти это как ноды в джейсоне, но тег BedWars1058 видимо просто стринга
     public boolean isCustomBedWarsItem(org.bukkit.inventory.ItemStack i) {
         return getCreateTag(i).e(VersionSupport.PLUGIN_TAG_GENERIC_KEY);
     }
 
     @Override
+    /// получает значение тега BedWars1058
     public String getCustomData(org.bukkit.inventory.ItemStack i) {
         return getCreateTag(i).l(VersionSupport.PLUGIN_TAG_GENERIC_KEY);
     }
@@ -428,6 +434,7 @@ public class v1_19_R3 extends VersionSupport {
     }
 
     @Override
+    ///видимо лежало тут чисто из-за версионирования
     public org.bukkit.inventory.ItemStack createItemStack(String material, int amount, short data) {
         org.bukkit.inventory.ItemStack i;
         try {
