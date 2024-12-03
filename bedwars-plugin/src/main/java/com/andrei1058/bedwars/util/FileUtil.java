@@ -34,7 +34,7 @@ public class FileUtil {
 		}
 
 		properties.setProperty("level-name", worldName);
-		properties.setProperty("generator-settings", vs.getVersion() > 5 ? "minecraft:air;minecraft:air;minecraft:air" : "1;0;1");
+		properties.setProperty("generator-settings", "minecraft:air;minecraft:air;minecraft:air");
 		properties.setProperty("allow-nether", "false");
 		properties.setProperty("level-type", "flat");
 		properties.setProperty("generate-structures", "false");

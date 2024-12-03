@@ -27,24 +27,6 @@ import org.bukkit.inventory.meta.ItemMeta;
 
 public class ItemDropPickListener {
 
-    // 1.11 or older
-    public static class PlayerDrop implements Listener {
-        @EventHandler
-        public void onDrop(PlayerDropItemEvent e){
-            if (manageDrop(e.getPlayer(), e.getItemDrop())) e.setCancelled(true);
-        }
-    }
-
-    // 1.11 or older
-    public static class PlayerPickup implements Listener {
-        @SuppressWarnings("deprecation")
-        @EventHandler
-        public void onDrop(PlayerPickupItemEvent e){
-            if (managePickup(e.getItem(), e.getPlayer())) e.setCancelled(true);
-        }
-    }
-
-    // 1.13 or newer
     public static class EntityDrop implements Listener {
         @EventHandler
         public void onDrop(EntityDropItemEvent e){
@@ -52,7 +34,6 @@ public class ItemDropPickListener {
         }
     }
 
-    // 1.12 or newer
     public static class EntityPickup implements Listener {
         @EventHandler
         public void onPickup(EntityPickupItemEvent e){
@@ -60,7 +41,6 @@ public class ItemDropPickListener {
         }
     }
 
-    // 1.9 or newer
     public static class ArrowCollect implements Listener {
         @EventHandler
         public void onArrowPick(PlayerPickupArrowEvent e){
