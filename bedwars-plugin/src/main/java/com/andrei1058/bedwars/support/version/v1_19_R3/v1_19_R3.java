@@ -224,10 +224,6 @@ public class v1_19_R3 extends VersionSupport {
     }
 
     @Override
-    public void registerEntities() {
-    }
-
-    @Override
     public void spawnShop(@NotNull Location loc, String name1, List<Player> players, IArena arena) {
         Location l = loc.clone();
 
@@ -439,76 +435,6 @@ public class v1_19_R3 extends VersionSupport {
     }
 
     @Override
-    public org.bukkit.Material materialFireball() {
-        return org.bukkit.Material.FIRE_CHARGE;
-    }
-
-    @Override
-    public org.bukkit.Material materialPlayerHead() {
-        return org.bukkit.Material.PLAYER_HEAD;
-    }
-
-    @Override
-    public org.bukkit.Material materialSnowball() {
-        return org.bukkit.Material.SNOWBALL;
-    }
-
-    @Override
-    public org.bukkit.Material materialGoldenHelmet() {
-        return org.bukkit.Material.GOLDEN_HELMET;
-    }
-
-    @Override
-    public org.bukkit.Material materialGoldenChestPlate() {
-        return org.bukkit.Material.GOLDEN_CHESTPLATE;
-    }
-
-    @Override
-    public org.bukkit.Material materialGoldenLeggings() {
-        return org.bukkit.Material.GOLDEN_LEGGINGS;
-    }
-
-    @Override
-    public org.bukkit.Material materialNetheriteHelmet() {
-        return Material.NETHERITE_HELMET;
-    }
-
-    @Override
-    public org.bukkit.Material materialNetheriteChestPlate() {
-        return Material.NETHERITE_CHESTPLATE;
-    }
-
-    @Override
-    public org.bukkit.Material materialNetheriteLeggings() {
-        return Material.NETHERITE_LEGGINGS;
-    }
-
-    @Override
-    public org.bukkit.Material materialElytra() {
-        return Material.ELYTRA;
-    }
-
-    @Override
-    public org.bukkit.Material materialCake() {
-        return org.bukkit.Material.CAKE;
-    }
-
-    @Override
-    public org.bukkit.Material materialCraftingTable() {
-        return org.bukkit.Material.CRAFTING_TABLE;
-    }
-
-    @Override
-    public org.bukkit.Material materialEnchantingTable() {
-        return org.bukkit.Material.ENCHANTING_TABLE;
-    }
-
-    @Override
-    public org.bukkit.Material woolMaterial() {
-        return org.bukkit.Material.WHITE_WOOL;
-    }
-
-    @Override
     public String getShopUpgradeIdentifier(org.bukkit.inventory.ItemStack itemStack) {
         var tag = getCreateTag(itemStack);
         return tag.e(VersionSupport.PLUGIN_TAG_TIER_KEY) ? tag.l(VersionSupport.PLUGIN_TAG_TIER_KEY) : "null";
@@ -523,7 +449,7 @@ public class v1_19_R3 extends VersionSupport {
 
     @Override
     public org.bukkit.inventory.ItemStack getPlayerHead(Player player, org.bukkit.inventory.ItemStack copyTagFrom) {
-        org.bukkit.inventory.ItemStack head = new org.bukkit.inventory.ItemStack(materialPlayerHead());
+        org.bukkit.inventory.ItemStack head = new org.bukkit.inventory.ItemStack(org.bukkit.Material.PLAYER_HEAD);
 
         if (copyTagFrom != null) {
             var tag = getTag(copyTagFrom);
