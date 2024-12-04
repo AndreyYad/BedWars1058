@@ -25,6 +25,7 @@ import com.andrei1058.bedwars.support.paper.TeleportManager;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
+import org.bukkit.Material;
 import org.bukkit.entity.*;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
@@ -693,7 +694,7 @@ public class DamageDeathMove implements Listener {
 
     @EventHandler
     public void onEat(PlayerItemConsumeEvent e) {
-        if (e.getItem().getType() == nms.materialCake()) {
+        if (e.getItem().getType() == Material.CAKE) {
             if (Arena.getArenaByIdentifier(e.getPlayer().getWorld().getName()) != null) {
                 e.setCancelled(true);
             }

@@ -75,9 +75,9 @@ public class Interact implements Listener {
         Block b = e.getClickedBlock();
         if (b == null) return;
         if ((BedWars.getServerType() == ServerType.MULTIARENA && b.getWorld().getName().equals(BedWars.getLobbyWorld()) && !BreakPlace.isBuildSession(e.getPlayer())) || Arena.getArenaByPlayer(e.getPlayer()) != null) {
-            if (b.getType() == nms.materialCraftingTable() && config.getBoolean(ConfigPath.GENERAL_CONFIGURATION_DISABLE_CRAFTING)) {
+            if (b.getType() == Material.CRAFTING_TABLE && config.getBoolean(ConfigPath.GENERAL_CONFIGURATION_DISABLE_CRAFTING)) {
                 e.setCancelled(true);
-            } else if (b.getType() == nms.materialEnchantingTable() && config.getBoolean(ConfigPath.GENERAL_CONFIGURATION_DISABLE_ENCHANTING)) {
+            } else if (b.getType() == Material.ENCHANTING_TABLE && config.getBoolean(ConfigPath.GENERAL_CONFIGURATION_DISABLE_ENCHANTING)) {
                 e.setCancelled(true);
             } else if (b.getType() == Material.FURNACE && config.getBoolean(ConfigPath.GENERAL_CONFIGURATION_DISABLE_FURNACE)) {
                 e.setCancelled(true);
@@ -179,7 +179,7 @@ public class Interact implements Listener {
             IArena a = Arena.getArenaByPlayer(p);
             if (a != null) {
                 if (a.isPlayer(p)) {
-                    if (inHand.getType() == nms.materialFireball()) {
+                    if (inHand.getType() == Material.FIRE_CHARGE) {
 
                         e.setCancelled(true);
 

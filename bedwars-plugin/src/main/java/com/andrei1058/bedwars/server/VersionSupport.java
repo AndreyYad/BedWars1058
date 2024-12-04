@@ -124,11 +124,6 @@ public abstract class VersionSupport {
     }
 
     /**
-     * Register custom entities
-     */
-    public abstract void registerEntities();
-
-    /**
      * Spawn shop NPC
      */
     public abstract void spawnShop(Location loc, String name1, List<Player> players, IArena arena);
@@ -262,71 +257,6 @@ public abstract class VersionSupport {
     }
 
     /**
-     * Get fireball material
-     */
-    public abstract Material materialFireball();
-
-    /**
-     * Player head material
-     */
-    public abstract Material materialPlayerHead();
-
-    /**
-     * Get snowball material
-     */
-    public abstract Material materialSnowball();
-
-    /**
-     * Get gold  helmet material
-     */
-    public abstract Material materialGoldenHelmet();
-
-    /**
-     * Get gold chest plate
-     */
-    public abstract Material materialGoldenChestPlate();
-
-    /**
-     * Get gold leggings
-     */
-    public abstract Material materialGoldenLeggings();
-
-    /**
-     * Get netherite  helmet material
-     */
-    public abstract Material materialNetheriteHelmet();
-
-    /**
-     * Get netherite chest plate
-     */
-    public abstract Material materialNetheriteChestPlate();
-
-    /**
-     * Get netherite leggings
-     */
-    public abstract Material materialNetheriteLeggings();
-
-    /**
-     * Get elytra - supports: 1.12.2+
-     */
-    public abstract Material materialElytra();
-
-    /**
-     * Cake material
-     */
-    public abstract Material materialCake();
-
-    /**
-     * Crafting table material
-     */
-    public abstract Material materialCraftingTable();
-
-    /**
-     * Enchanting table material
-     */
-    public abstract Material materialEnchantingTable();
-
-    /**
      * Check if bed
      */
     public boolean isBed(Material material) {
@@ -353,11 +283,6 @@ public abstract class VersionSupport {
      * Change the block behind the join sign.
      */
     public abstract void setJoinSignBackground(BlockState b, Material material);
-
-    /**
-     * Wool material
-     */
-    public abstract Material woolMaterial();
 
     /**
      * Get an ItemStack identifier
