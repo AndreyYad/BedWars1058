@@ -508,12 +508,8 @@ public class BedWars extends JavaPlugin {
             int release = versionString.length > 2 ? Integer.parseInt(versionString[2]) : 0;
 
             String adapterPath;
-            if (major == 2 && minor == 2 && release == 1) {
-                adapterPath = "com.andrei1058.bedwars.arena.mapreset.slime.SlimeAdapter";
-            } else if (major == 2 && minor == 8 && release == 0) {
-                adapterPath = "com.andrei1058.bedwars.arena.mapreset.slime.AdvancedSlimeAdapter";
-            } else if (major > 2 || major == 2 && minor >= 10) {
-                adapterPath = "com.andrei1058.slime.bedwars.arena.mapreset.slime.SlimePaperAdapter";
+            if (major > 2 || major == 2 && minor >= 10) {
+                adapterPath = "com.andrei1058.bedwars.maprestore.slime.SlimePaperAdapter";
             } else {
                 return false;
             }
