@@ -3,6 +3,7 @@ package com.andrei1058.bedwars.arena.tasks;
 import com.andrei1058.bedwars.BedWars;
 import com.andrei1058.bedwars.arena.IArena;
 import com.andrei1058.bedwars.arena.team.TeamColor;
+import com.andrei1058.bedwars.bukkitwrap.PluginManagerWrap;
 import com.andrei1058.bedwars.events.gameplay.EggBridgeBuildEvent;
 import com.andrei1058.bedwars.arena.Arena;
 import com.andrei1058.bedwars.arena.Misc;

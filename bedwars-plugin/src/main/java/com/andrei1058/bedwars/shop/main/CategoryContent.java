@@ -5,6 +5,7 @@ import com.andrei1058.bedwars.arena.IArena;
 import com.andrei1058.bedwars.arena.shop.IBuyItem;
 import com.andrei1058.bedwars.arena.shop.ICategoryContent;
 import com.andrei1058.bedwars.arena.shop.IContentTier;
+import com.andrei1058.bedwars.bukkitwrap.PluginManagerWrap;
 import com.andrei1058.bedwars.configuration.ConfigPath;
 import com.andrei1058.bedwars.events.shop.ShopBuyEvent;
 import com.andrei1058.bedwars.language.Language;

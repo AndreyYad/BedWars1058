@@ -2,6 +2,7 @@ package com.andrei1058.bedwars.arena;
 
 import com.andrei1058.bedwars.BedWars;
 import com.andrei1058.bedwars.arena.team.TeamColor;
+import com.andrei1058.bedwars.bukkitwrap.PluginManagerWrap;
 import com.andrei1058.bedwars.configuration.ConfigPath;
 import com.andrei1058.bedwars.events.server.SetupSessionCloseEvent;
 import com.andrei1058.bedwars.events.server.SetupSessionStartEvent;

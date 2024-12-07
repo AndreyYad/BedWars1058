@@ -3,6 +3,7 @@ package com.andrei1058.bedwars.shop.listeners;
 import com.andrei1058.bedwars.BedWars;
 import com.andrei1058.bedwars.arena.IArena;
 import com.andrei1058.bedwars.arena.team.ITeam;
+import com.andrei1058.bedwars.bukkitwrap.PluginManagerWrap;
 import com.andrei1058.bedwars.configuration.ConfigPath;
 import com.andrei1058.bedwars.events.player.PlayerBedBugSpawnEvent;
 import com.andrei1058.bedwars.events.player.PlayerDreamDefenderSpawnEvent;

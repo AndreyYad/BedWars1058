@@ -2,6 +2,7 @@
 package com.andrei1058.bedwars.language;
 
 import com.andrei1058.bedwars.BedWars;
+import com.andrei1058.bedwars.bukkitwrap.PluginManagerWrap;
 import com.andrei1058.bedwars.configuration.ConfigManager;
 import com.andrei1058.bedwars.configuration.ConfigPath;
 import com.andrei1058.bedwars.events.player.PlayerLangChangeEvent;

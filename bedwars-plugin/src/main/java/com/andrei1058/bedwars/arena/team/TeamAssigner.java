@@ -4,6 +4,7 @@ import com.andrei1058.bedwars.BedWars;
 import com.andrei1058.bedwars.arena.IArena;
 import com.andrei1058.bedwars.arena.team.ITeam;
 import com.andrei1058.bedwars.arena.team.ITeamAssigner;
+import com.andrei1058.bedwars.bukkitwrap.PluginManagerWrap;
 import com.andrei1058.bedwars.events.gameplay.TeamAssignEvent;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
