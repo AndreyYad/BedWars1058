@@ -27,6 +27,14 @@ import org.bukkit.inventory.meta.ItemMeta;
 
 public class ItemDropPickListener {
 
+    // 1.11 or older
+    public static class PlayerDrop implements Listener {
+        @EventHandler
+        public void onDrop(PlayerDropItemEvent e) {
+            if (manageDrop(e.getPlayer(), e.getItemDrop())) e.setCancelled(true);
+        }
+    }
+
     public static class EntityDrop implements Listener {
         @EventHandler
         public void onDrop(EntityDropItemEvent e){
