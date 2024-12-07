@@ -3,6 +3,7 @@ package com.andrei1058.bedwars.listeners;
 import com.andrei1058.bedwars.BedWars;
 import com.andrei1058.bedwars.arena.GameState;
 import com.andrei1058.bedwars.arena.IArena;
+import com.andrei1058.bedwars.bukkitwrap.PluginManagerWrap;
 import com.andrei1058.bedwars.events.player.PlayerGeneratorCollectEvent;
 import com.andrei1058.bedwars.server.ServerType;
 import com.andrei1058.bedwars.arena.Arena;
@@ -74,7 +75,7 @@ public class PlayerDropPick_1_11Minus implements Listener {
 
                     if (!AFKSystem.isPlayerAFK(e.getPlayer())){
                         PlayerGeneratorCollectEvent event = new PlayerGeneratorCollectEvent(e.getPlayer(), e.getItem(), a);
-                        Bukkit.getPluginManager().callEvent(event);
+                        PluginManagerWrap.callEvent(event);
                         if (event.isCancelled()){
                             e.setCancelled(true);
                         } else {

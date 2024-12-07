@@ -154,7 +154,7 @@ public class SetupSession implements ISetupSession {
         }
         getPlayer().removePotionEffect(PotionEffectType.SPEED);
         if (BedWars.getServerType() == ServerType.MULTIARENA) Arena.sendLobbyCommandItems(getPlayer());
-        Bukkit.getPluginManager().callEvent(new SetupSessionCloseEvent(this));
+        PluginManagerWrap.callEvent(new SetupSessionCloseEvent(this));
     }
 
     /**
@@ -221,7 +221,7 @@ public class SetupSession implements ISetupSession {
                 .filter(e -> e.getType() != EntityType.ITEM_FRAME).forEach(Entity::remove), 30L);
         w.setAutoSave(false);
         w.setGameRuleValue("doMobSpawning", "false");
-        Bukkit.getPluginManager().callEvent(new SetupSessionStartEvent(this));
+        PluginManagerWrap.callEvent(new SetupSessionStartEvent(this));
         setStarted(true);
 
         Bukkit.getScheduler().runTaskLater(plugin, () -> {

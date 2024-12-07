@@ -1,6 +1,7 @@
 package com.andrei1058.bedwars.shop;
 
 import com.andrei1058.bedwars.BedWars;
+import com.andrei1058.bedwars.bukkitwrap.PluginManagerWrap;
 import com.andrei1058.bedwars.configuration.ConfigManager;
 import com.andrei1058.bedwars.configuration.ConfigPath;
 import com.andrei1058.bedwars.language.Messages;
@@ -8,13 +9,11 @@ import com.andrei1058.bedwars.shop.listeners.*;
 import com.andrei1058.bedwars.shop.main.QuickBuyButton;
 import com.andrei1058.bedwars.shop.main.ShopCategory;
 import com.andrei1058.bedwars.shop.main.ShopIndex;
-import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
-import org.bukkit.plugin.PluginManager;
 
 @SuppressWarnings("WeakerAccess")
 public class ShopManager extends ConfigManager {
@@ -512,12 +511,11 @@ public class ShopManager extends ConfigManager {
      * Register shop related listeners
      */
     private void registerListeners() {
-        PluginManager pm = Bukkit.getPluginManager();
-        pm.registerEvents(new InventoryListener(), BedWars.plugin);
-        pm.registerEvents(new ShopCacheListener(), BedWars.plugin);
-        pm.registerEvents(new QuickBuyListener(), BedWars.plugin);
-        pm.registerEvents(new ShopOpenListener(), BedWars.plugin);
-        pm.registerEvents(new PlayerDropListener(), BedWars.plugin);
-        pm.registerEvents(new SpecialsListener(), BedWars.plugin);
+        PluginManagerWrap.registerEvents(new InventoryListener(), BedWars.plugin);
+        PluginManagerWrap.registerEvents(new ShopCacheListener(), BedWars.plugin);
+        PluginManagerWrap.registerEvents(new QuickBuyListener(), BedWars.plugin);
+        PluginManagerWrap.registerEvents(new ShopOpenListener(), BedWars.plugin);
+        PluginManagerWrap.registerEvents(new PlayerDropListener(), BedWars.plugin);
+        PluginManagerWrap.registerEvents(new SpecialsListener(), BedWars.plugin);
     }
 }

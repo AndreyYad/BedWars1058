@@ -48,7 +48,7 @@ public class SpecialsListener implements Listener {
                     nms.spawnSilverfish(l.add(0, 1, 0), playerTeam, BedWars.shop.getYml().getDouble(ConfigPath.SHOP_SPECIAL_SILVERFISH_SPEED),
                             BedWars.shop.getYml().getDouble(ConfigPath.SHOP_SPECIAL_SILVERFISH_HEALTH), BedWars.shop.getInt(ConfigPath.SHOP_SPECIAL_SILVERFISH_DESPAWN),
                             BedWars.shop.getYml().getDouble(ConfigPath.SHOP_SPECIAL_SILVERFISH_DAMAGE));
-                    Bukkit.getPluginManager().callEvent(event);
+                    PluginManagerWrap.callEvent(event);
                     if (!nms.isProjectile(i)) {
                         nms.minusAmount(p, i, 1);
                         p.updateInventory();
@@ -65,7 +65,7 @@ public class SpecialsListener implements Listener {
                     PlayerDreamDefenderSpawnEvent event = new PlayerDreamDefenderSpawnEvent(p, playerTeam, a);
                     nms.spawnIronGolem(l.add(0, 1, 0), playerTeam, BedWars.shop.getYml().getDouble(ConfigPath.SHOP_SPECIAL_IRON_GOLEM_SPEED),
                             BedWars.shop.getYml().getDouble(ConfigPath.SHOP_SPECIAL_IRON_GOLEM_HEALTH), BedWars.shop.getInt(ConfigPath.SHOP_SPECIAL_IRON_GOLEM_DESPAWN));
-                    Bukkit.getPluginManager().callEvent(event);
+                    PluginManagerWrap.callEvent(event);
                     if (!nms.isProjectile(i)) {
                         nms.minusAmount(p, i, 1);
                         p.updateInventory();

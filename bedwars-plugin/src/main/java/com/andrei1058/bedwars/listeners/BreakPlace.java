@@ -7,6 +7,7 @@ import com.andrei1058.bedwars.arena.NextEvent;
 import com.andrei1058.bedwars.arena.generator.IGenerator;
 import com.andrei1058.bedwars.arena.team.ITeam;
 import com.andrei1058.bedwars.arena.team.TeamColor;
+import com.andrei1058.bedwars.bukkitwrap.PluginManagerWrap;
 import com.andrei1058.bedwars.configuration.ConfigPath;
 import com.andrei1058.bedwars.events.player.PlayerBedBreakEvent;
 import com.andrei1058.bedwars.language.Language;
@@ -82,6 +83,7 @@ public class BreakPlace implements Listener {
 
     @EventHandler(ignoreCancelled = true)
     public void onBurn(@NotNull BlockBurnEvent event) {
+        /// поверить не зря ли тут везде эти getArenaByIdentifier
         IArena arena = Arena.getArenaByIdentifier(event.getBlock().getWorld().getName());
         if (arena == null) return;
         if (!arena.isAllowMapBreak()) {
@@ -289,7 +291,7 @@ public class BreakPlace implements Listener {
                                             e.setCancelled(false);
                                             t.setBedDestroyed(true);
                                             PlayerBedBreakEvent breakEvent;
-                                            Bukkit.getPluginManager().callEvent(breakEvent = new PlayerBedBreakEvent(e.getPlayer(), a.getTeam(p), t, a,
+                                            PluginManagerWrap.callEvent(breakEvent = new PlayerBedBreakEvent(e.getPlayer(), a.getTeam(p), t, a,
                                                     player -> {
                                                         if (t.isMember(player)) {
                                                             return getMsg(player, Messages.INTERACT_BED_DESTROY_CHAT_ANNOUNCEMENT_TO_VICTIM);
@@ -357,7 +359,6 @@ public class BreakPlace implements Listener {
      */
     @EventHandler
     public void onSignChange(SignChangeEvent e) {
-        if (e == null) return;
         Player p = e.getPlayer();
         if (Objects.requireNonNull(e.getLine(0)).equalsIgnoreCase("[" + mainCmd + "]")) {
             File dir = new File(plugin.getDataFolder(), "/Arenas");

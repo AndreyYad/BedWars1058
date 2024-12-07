@@ -74,7 +74,7 @@ public class EggBridgeTask implements Runnable {
                     b2.setType(Material.WHITE_WOOL);
                     nms.setBlockTeamColor(b2, getTeamColor());
                     getArena().addPlacedBlock(b2);
-                    Bukkit.getPluginManager().callEvent(new EggBridgeBuildEvent(getTeamColor(), getArena(), b2));
+                    PluginManagerWrap.callEvent(new EggBridgeBuildEvent(getTeamColor(), getArena(), b2));
                     loc.getWorld().playEffect(b2.getLocation(), nms.eggBridge(), 3);
                     Sounds.playSound("egg-bridge-block", getPlayer());
                 }
@@ -86,7 +86,7 @@ public class EggBridgeTask implements Runnable {
                     b3.setType(Material.WHITE_WOOL);
                     nms.setBlockTeamColor(b3, getTeamColor());
                     getArena().addPlacedBlock(b3);
-                    Bukkit.getPluginManager().callEvent(new EggBridgeBuildEvent(getTeamColor(), getArena(), b3));
+                    PluginManagerWrap.callEvent(new EggBridgeBuildEvent(getTeamColor(), getArena(), b3));
                     loc.getWorld().playEffect(b3.getLocation(), nms.eggBridge(), 3);
                     Sounds.playSound("egg-bridge-block", getPlayer());
                 }
@@ -98,7 +98,7 @@ public class EggBridgeTask implements Runnable {
                     b4.setType(Material.WHITE_WOOL);
                     nms.setBlockTeamColor(b4, getTeamColor());
                     getArena().addPlacedBlock(b4);
-                    Bukkit.getPluginManager().callEvent(new EggBridgeBuildEvent(getTeamColor(), getArena(), b4));
+                    PluginManagerWrap.callEvent(new EggBridgeBuildEvent(getTeamColor(), getArena(), b4));
                     loc.getWorld().playEffect(b4.getLocation(), nms.eggBridge(), 3);
                     Sounds.playSound("egg-bridge-block", getPlayer());
                 }

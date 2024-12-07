@@ -1,12 +1,11 @@
 package com.andrei1058.bedwars.support.version.common;
 
+import com.andrei1058.bedwars.bukkitwrap.PluginManagerWrap;
 import com.andrei1058.bedwars.server.VersionSupport;
 import com.andrei1058.bedwars.listeners.Interact_1_13Plus;
 import com.andrei1058.bedwars.listeners.ItemDropPickListener;
-import com.andrei1058.bedwars.listeners.PlayerDropPick_1_11Minus;
 import com.andrei1058.bedwars.listeners.SwapItem;
 import com.andrei1058.bedwars.shop.defaultrestore.ShopItemRestoreListener;
-import org.bukkit.Bukkit;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.Plugin;
 
@@ -26,7 +25,7 @@ public class VersionCommon {
 
     private void registerListeners(Plugin plugin, Listener... listener) {
         for (Listener l : listener) {
-            plugin.getServer().getPluginManager().registerEvents(l, plugin);
+            PluginManagerWrap.registerEvents(l, plugin);
         }
     }
 }

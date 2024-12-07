@@ -29,7 +29,6 @@ public class ChatFormatting implements Listener {
 
     @EventHandler(ignoreCancelled = true)
     public void onChat(AsyncPlayerChatEvent e) {
-        if (e == null) return;
         Player p = e.getPlayer();
 
         // in shared mode we don't want messages from outside the arena to be seen in game

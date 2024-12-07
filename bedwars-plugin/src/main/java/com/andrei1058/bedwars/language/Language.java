@@ -400,7 +400,7 @@ public class Language extends ConfigManager {
                 Player player = Bukkit.getPlayer(uuid);
                 if (player != null && player.isOnline()) {
                     PlayerLangChangeEvent e = new PlayerLangChangeEvent(player, langByPlayer.get(uuid).iso, getDefaultLanguage().iso);
-                    Bukkit.getPluginManager().callEvent(e);
+                    PluginManagerWrap.callEvent(e);
                     if (e.isCancelled()) return false;
                 }
             }
@@ -416,7 +416,7 @@ public class Language extends ConfigManager {
         Player player = Bukkit.getPlayer(uuid);
         if (player != null && player.isOnline()) {
             PlayerLangChangeEvent e = new PlayerLangChangeEvent(player, oldLang.getIso(), newLang.getIso());
-            Bukkit.getPluginManager().callEvent(e);
+            PluginManagerWrap.callEvent(e);
             if (e.isCancelled()) return false;
         }
 

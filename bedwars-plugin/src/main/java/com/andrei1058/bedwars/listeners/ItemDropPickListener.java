@@ -2,6 +2,7 @@ package com.andrei1058.bedwars.listeners;
 
 import com.andrei1058.bedwars.arena.GameState;
 import com.andrei1058.bedwars.arena.IArena;
+import com.andrei1058.bedwars.bukkitwrap.PluginManagerWrap;
 import com.andrei1058.bedwars.events.player.PlayerGeneratorCollectEvent;
 import com.andrei1058.bedwars.server.ServerType;
 import com.andrei1058.bedwars.arena.Arena;
@@ -90,7 +91,7 @@ public class ItemDropPickListener {
                     //Call ore pick up event
                     if (!AFKSystem.isPlayerAFK(((Player) player).getPlayer())){
                         PlayerGeneratorCollectEvent event = new PlayerGeneratorCollectEvent((Player) player, item, a);
-                        Bukkit.getPluginManager().callEvent(event);
+                        PluginManagerWrap.callEvent(event);
                         if (event.isCancelled()) {
                             return true;
                         } else {

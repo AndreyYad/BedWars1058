@@ -1,12 +1,12 @@
 package com.andrei1058.bedwars.halloween;
 
 import com.andrei1058.bedwars.BedWars;
+import com.andrei1058.bedwars.bukkitwrap.PluginManagerWrap;
 import com.andrei1058.bedwars.configuration.ConfigPath;
 import com.andrei1058.bedwars.halloween.shop.PumpkinContent;
 import com.andrei1058.bedwars.metrics.MetricsManager;
 import com.andrei1058.bedwars.shop.ShopManager;
 import com.andrei1058.bedwars.shop.main.ShopCategory;
-import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 
 import java.time.LocalDate;
@@ -20,7 +20,7 @@ public class HalloweenSpecial {
     private HalloweenSpecial() {
         BedWars.plugin.getLogger().info(ChatColor.AQUA + "Loaded Halloween Special <3");
         // pumpkin hats
-        Bukkit.getPluginManager().registerEvents(new HalloweenListener(), BedWars.plugin);
+        PluginManagerWrap.registerEvents(new HalloweenListener(), BedWars.plugin);
 
         // pumpkin in shop
         ShopCategory blockCategory = ShopManager.getShop().getCategoryList().stream().filter(category -> category.getName().equals("blocks-category")).findFirst().orElse(null);

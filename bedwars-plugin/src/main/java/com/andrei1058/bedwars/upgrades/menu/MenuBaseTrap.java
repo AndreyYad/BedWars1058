@@ -2,6 +2,7 @@ package com.andrei1058.bedwars.upgrades.menu;
 
 import com.andrei1058.bedwars.BedWars;
 import com.andrei1058.bedwars.arena.team.ITeam;
+import com.andrei1058.bedwars.bukkitwrap.PluginManagerWrap;
 import com.andrei1058.bedwars.configuration.ConfigPath;
 import com.andrei1058.bedwars.events.upgrades.UpgradeBuyEvent;
 import com.andrei1058.bedwars.language.Language;
@@ -252,7 +253,7 @@ public class MenuBaseTrap implements MenuContent, EnemyBaseEnterTrap, TeamUpgrad
         }
 
         final UpgradeBuyEvent event;
-        Bukkit.getPluginManager().callEvent(event = new UpgradeBuyEvent(this, player, team));
+        PluginManagerWrap.callEvent(event = new UpgradeBuyEvent(this, player, team));
         if(event.isCancelled()) return;
 
         if (currency == Material.AIR) {

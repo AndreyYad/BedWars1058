@@ -1,6 +1,7 @@
 package com.andrei1058.bedwars.arena.feature;
 
 import com.andrei1058.bedwars.BedWars;
+import com.andrei1058.bedwars.bukkitwrap.PluginManagerWrap;
 import com.andrei1058.bedwars.arena.IArena;
 import com.andrei1058.bedwars.configuration.ConfigPath;
 import com.andrei1058.bedwars.events.player.PlayerKillEvent;
@@ -27,7 +28,7 @@ public class SpoilPlayerTNTFeature {
     private final LinkedList<Player> playersWithTnt = new LinkedList<>();
 
     private SpoilPlayerTNTFeature() {
-        Bukkit.getPluginManager().registerEvents(new TNTListener(), BedWars.plugin);
+        PluginManagerWrap.registerEvents(new TNTListener(), BedWars.plugin);
         Bukkit.getScheduler().runTaskTimer(BedWars.plugin, new ParticleTask(), 20, 1L);
     }
 

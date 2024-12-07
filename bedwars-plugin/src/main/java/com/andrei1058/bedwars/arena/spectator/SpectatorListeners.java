@@ -1,6 +1,7 @@
 package com.andrei1058.bedwars.arena.spectator;
 
 import com.andrei1058.bedwars.arena.IArena;
+import com.andrei1058.bedwars.bukkitwrap.PluginManagerWrap;
 import com.andrei1058.bedwars.events.player.PlayerKillEvent;
 import com.andrei1058.bedwars.events.player.PlayerLeaveArenaEvent;
 import com.andrei1058.bedwars.events.spectator.SpectatorFirstPersonEnterEvent;
@@ -92,7 +93,7 @@ public class SpectatorListeners implements Listener {
                     if (target.isDead()) return;
                     if (!target.isOnline()) return;
                     SpectatorTeleportToPlayerEvent event = new SpectatorTeleportToPlayerEvent(p, target, a);
-                    Bukkit.getPluginManager().callEvent(event);
+                    PluginManagerWrap.callEvent(event);
                     if (!event.isCancelled()) {
                         p.teleport(target);
                     }
@@ -148,10 +149,10 @@ public class SpectatorListeners implements Listener {
         if (a.isPlayer(target)) {
             if (p.getSpectatorTarget() != null) {
                 SpectatorFirstPersonLeaveEvent e2 = new SpectatorFirstPersonLeaveEvent(p, a, player -> getMsg(player, Messages.ARENA_SPECTATOR_FIRST_PERSON_LEAVE_TITLE), player -> getMsg(player, Messages.ARENA_SPECTATOR_FIRST_PERSON_LEAVE_SUBTITLE));
-                Bukkit.getPluginManager().callEvent(e2);
+                PluginManagerWrap.callEvent(e2);
             }
             SpectatorFirstPersonEnterEvent event = new SpectatorFirstPersonEnterEvent(p, target, a, player -> getMsg(player, Messages.ARENA_SPECTATOR_FIRST_PERSON_ENTER_TITLE), player -> getMsg(player, Messages.ARENA_SPECTATOR_FIRST_PERSON_ENTER_SUBTITLE));
-            Bukkit.getPluginManager().callEvent(event);
+            PluginManagerWrap.callEvent(event);
             if (event.isCancelled()) return;
             p.getInventory().setHeldItemSlot(5);
             p.setGameMode(GameMode.SPECTATOR);
@@ -171,7 +172,7 @@ public class SpectatorListeners implements Listener {
             p.setAllowFlight(true);
             p.setFlying(true);
             SpectatorFirstPersonLeaveEvent event = new SpectatorFirstPersonLeaveEvent(p, a, player -> getMsg(player, Messages.ARENA_SPECTATOR_FIRST_PERSON_LEAVE_TITLE), player -> getMsg(player, Messages.ARENA_SPECTATOR_FIRST_PERSON_LEAVE_SUBTITLE));
-            Bukkit.getPluginManager().callEvent(event);
+            PluginManagerWrap.callEvent(event);
             nms.sendTitle(p, event.getTitle().apply(p), event.getSubTitle().apply(p), event.getFadeIn(), event.getStay(), event.getFadeOut());
         }
     }
@@ -189,7 +190,7 @@ public class SpectatorListeners implements Listener {
                 p.setAllowFlight(true);
                 p.setFlying(true);
                 SpectatorFirstPersonLeaveEvent event = new SpectatorFirstPersonLeaveEvent(p, Arena.getArenaByPlayer(p), player -> getMsg(player, Messages.ARENA_SPECTATOR_FIRST_PERSON_LEAVE_TITLE), player -> getMsg(player, Messages.ARENA_SPECTATOR_FIRST_PERSON_LEAVE_SUBTITLE));
-                Bukkit.getPluginManager().callEvent(event);
+                PluginManagerWrap.callEvent(event);
                 nms.sendTitle(p, event.getTitle().apply(p), event.getSubTitle().apply(p), event.getFadeIn(), event.getStay(), event.getFadeOut());
             }
         }
@@ -205,7 +206,7 @@ public class SpectatorListeners implements Listener {
                 p.setAllowFlight(true);
                 p.setFlying(true);
                 SpectatorFirstPersonLeaveEvent event = new SpectatorFirstPersonLeaveEvent(p, e.getArena(), player -> getMsg(player, Messages.ARENA_SPECTATOR_FIRST_PERSON_LEAVE_TITLE), player -> getMsg(player, Messages.ARENA_SPECTATOR_FIRST_PERSON_LEAVE_SUBTITLE));
-                Bukkit.getPluginManager().callEvent(event);
+                PluginManagerWrap.callEvent(event);
                 nms.sendTitle(p, event.getTitle().apply(p), event.getSubTitle().apply(p), event.getFadeIn(), event.getStay(), event.getFadeOut());
             }
         }

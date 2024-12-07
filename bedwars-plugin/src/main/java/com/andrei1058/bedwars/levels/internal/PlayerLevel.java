@@ -155,7 +155,7 @@ public class PlayerLevel {
         this.currentXp += xp;
         upgradeLevel();
         updateProgressBar();
-        Bukkit.getPluginManager().callEvent(new PlayerXpGainEvent(Bukkit.getPlayer(uuid), xp, source));
+        PluginManagerWrap.callEvent(new PlayerXpGainEvent(Bukkit.getPlayer(uuid), xp, source));
         modified = true;
     }
 
@@ -201,7 +201,7 @@ public class PlayerLevel {
             this.levelName = ChatColor.translateAlternateColorCodes('&', LevelsConfig.getLevelName(level)).replace("{number}", String.valueOf(level));
             requiredXp = formatNumber(nextLevelCost);
             formattedCurrentXp = formatNumber(currentXp);
-            Bukkit.getPluginManager().callEvent(new PlayerLevelUpEvent(Bukkit.getPlayer(getUuid()), level, nextLevelCost));
+            PluginManagerWrap.callEvent(new PlayerLevelUpEvent(Bukkit.getPlayer(getUuid()), level, nextLevelCost));
             modified = true;
         }
     }

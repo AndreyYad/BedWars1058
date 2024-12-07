@@ -118,7 +118,7 @@ public class OreGenerator implements IGenerator {
                 }
                 break;
         }
-        Bukkit.getPluginManager().callEvent(new GeneratorUpgradeEvent(this));
+        PluginManagerWrap.callEvent(new GeneratorUpgradeEvent(this));
     }
 
     @Override

@@ -3,6 +3,8 @@ package com.andrei1058.bedwars.arena.upgrades;
 import com.andrei1058.bedwars.arena.GameState;
 import com.andrei1058.bedwars.arena.IArena;
 import com.andrei1058.bedwars.arena.team.ITeam;
+import com.andrei1058.bedwars.bukkitwrap.PluginManagerWrap;
+import com.andrei1058.bedwars.bukkitwrap.validation.EventValidation;
 import com.andrei1058.bedwars.events.player.PlayerBaseEnterEvent;
 import com.andrei1058.bedwars.events.player.PlayerBaseLeaveEvent;
 import com.andrei1058.bedwars.events.player.PlayerLeaveArenaEvent;
@@ -27,6 +29,7 @@ public class BaseListener implements Listener {
 
     @EventHandler(priority = EventPriority.HIGH)
     public void onPlayerMove(PlayerMoveEvent e) {
+        /// getArenaByIdentifier вместо getArenaByPlayer. Мб если она не в GameState.playing getArenaByPlayer не работает... хм
         IArena a = Arena.getArenaByIdentifier(e.getPlayer().getWorld().getName());
         if (a == null) return;
         if (a.getStatus() != GameState.playing) return;
@@ -68,15 +71,15 @@ public class BaseListener implements Listener {
                 notOnBase = false;
                 if (isOnABase.containsKey(p)) {
                     if (isOnABase.get(p) != bwt) {
-                        Bukkit.getPluginManager().callEvent(new PlayerBaseLeaveEvent(p, isOnABase.get(p)));
+                        PluginManagerWrap.callEvent(new PlayerBaseLeaveEvent(p, isOnABase.get(p)));
                         if (!Arena.magicMilk.containsKey(p.getUniqueId())) {
-                            Bukkit.getPluginManager().callEvent(new PlayerBaseEnterEvent(p, bwt));
+                            PluginManagerWrap.callEvent(new PlayerBaseEnterEvent(p, bwt));
                         }
                         isOnABase.replace(p, bwt);
                     }
                 } else {
                     if (!Arena.magicMilk.containsKey(p.getUniqueId())) {
-                        Bukkit.getPluginManager().callEvent(new PlayerBaseEnterEvent(p, bwt));
+                        PluginManagerWrap.callEvent(new PlayerBaseEnterEvent(p, bwt));
                         isOnABase.put(p, bwt);
                     }
                 }
@@ -85,7 +88,7 @@ public class BaseListener implements Listener {
         /* BaseLeaveEvent */
         if (notOnBase) {
             if (isOnABase.containsKey(p)) {
-                Bukkit.getPluginManager().callEvent(new PlayerBaseLeaveEvent(p, isOnABase.get(p)));
+                PluginManagerWrap.callEvent(new PlayerBaseLeaveEvent(p, isOnABase.get(p)));
                 isOnABase.remove(p);
             }
         }
@@ -93,7 +96,6 @@ public class BaseListener implements Listener {
 
     @EventHandler
     public void onBaseEnter(PlayerBaseEnterEvent e) {
-        if (e == null) return;
         ITeam team = e.getTeam();
         if (team.isMember(e.getPlayer())) {
             // Give base effects
@@ -132,7 +134,6 @@ public class BaseListener implements Listener {
 
     @EventHandler
     public void onBaseLeave(PlayerBaseLeaveEvent e) {
-        if (e == null) return;
         BedWarsTeam t = (BedWarsTeam) e.getTeam();
         if (t.isMember(e.getPlayer())) {
             // Remove effects for members

@@ -15,13 +15,11 @@ public class BlockStatusListener implements Listener {
 
     @EventHandler
     public void onArenaEnable(ArenaEnableEvent e) {
-        if (e == null) return;
         updateBlock((Arena) e.getArena());
     }
 
     @EventHandler
     public void onStatusChange(GameStateChangeEvent e) {
-        if (e == null) return;
         updateBlock((Arena) e.getArena());
     }
 

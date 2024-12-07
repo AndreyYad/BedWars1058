@@ -128,7 +128,7 @@ public class MenuUpgrade implements MenuContent, TeamUpgrade {
             }
 
             final UpgradeBuyEvent event;
-            Bukkit.getPluginManager().callEvent(event = new UpgradeBuyEvent(this, player, team));
+            PluginManagerWrap.callEvent(event = new UpgradeBuyEvent(this, player, team));
             if(event.isCancelled()) return;
             
             if (ut.getCurrency() == Material.AIR) {

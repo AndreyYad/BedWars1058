@@ -51,7 +51,6 @@ public class Interact implements Listener {
     @EventHandler
     /* Handle custom items with commands on them */
     public void onItemCommand(PlayerInteractEvent e) {
-        if (e == null) return;
         Player p = e.getPlayer();
         if (e.getAction() == Action.RIGHT_CLICK_BLOCK || e.getAction() == Action.RIGHT_CLICK_AIR) {
             ItemStack i = BedWars.nms.getItemInHand(p);
@@ -69,7 +68,6 @@ public class Interact implements Listener {
     @EventHandler
     //Check if player is opening an inventory
     public void onInventoryInteract(PlayerInteractEvent e) {
-        if (e == null) return;
         if (e.isCancelled()) return;
         if (e.getAction() != Action.RIGHT_CLICK_BLOCK) return;
         Block b = e.getClickedBlock();
@@ -91,7 +89,6 @@ public class Interact implements Listener {
 
     @EventHandler
     public void onInteract(PlayerInteractEvent e) {
-        if (e == null) return;
         Player p = e.getPlayer();
         Arena.afkCheck.remove(p.getUniqueId());
         if (AFKSystem.isPlayerAFK(e.getPlayer())) {
@@ -205,7 +202,6 @@ public class Interact implements Listener {
 
     @EventHandler
     public void disableItemFrameRotation(PlayerInteractEntityEvent e) {
-        if (e == null) return;
         if (e.getRightClicked().getType() == EntityType.ITEM_FRAME) {
             if (((ItemFrame) e.getRightClicked()).getItem().getType().equals(Material.AIR)) {
                 //prevent from putting upgradable items in it
@@ -236,7 +232,6 @@ public class Interact implements Listener {
 
     @EventHandler
     public void onEntityInteract(PlayerInteractEntityEvent e) {
-        if (e == null) return;
         IArena a = Arena.getArenaByPlayer(e.getPlayer());
         if (a == null) return;
         Location l = e.getRightClicked().getLocation();
@@ -252,7 +247,6 @@ public class Interact implements Listener {
 
     @EventHandler
     public void onBedEnter(PlayerBedEnterEvent e) {
-        if (e == null) return;
         if (Arena.getArenaByPlayer(e.getPlayer()) != null) {
             e.setCancelled(true);
         }
@@ -260,7 +254,6 @@ public class Interact implements Listener {
 
     @EventHandler
     public void onArmorManipulate(PlayerArmorStandManipulateEvent e) {
-        if (e == null) return;
         if (e.isCancelled()) return;
         //prevent from breaking generators
         if (Arena.getArenaByPlayer(e.getPlayer()) != null) {
@@ -275,7 +268,6 @@ public class Interact implements Listener {
 
     @EventHandler
     public void onCrafting(PrepareItemCraftEvent e) {
-        if (e == null) return;
         if (Arena.getArenaByPlayer((Player) e.getView().getPlayer()) != null) {
             if (config.getBoolean(ConfigPath.GENERAL_CONFIGURATION_DISABLE_CRAFTING)) {
                 e.getInventory().setResult(new ItemStack(Material.AIR));

@@ -4,6 +4,7 @@ import com.andrei1058.bedwars.BedWars;
 import com.andrei1058.bedwars.arena.GameState;
 import com.andrei1058.bedwars.arena.IArena;
 import com.andrei1058.bedwars.arena.team.ITeam;
+import com.andrei1058.bedwars.bukkitwrap.PluginManagerWrap;
 import com.andrei1058.bedwars.configuration.ConfigPath;
 import com.andrei1058.bedwars.events.sidebar.PlayerSidebarInitEvent;
 import com.andrei1058.bedwars.language.Language;
@@ -214,7 +215,7 @@ public class SidebarService implements ISidebarService {
             newlyAdded = true;
 
             PlayerSidebarInitEvent event = new PlayerSidebarInitEvent(player, sidebar);
-            Bukkit.getPluginManager().callEvent(event);
+            PluginManagerWrap.callEvent(event);
             if (event.isCancelled()) {
                 return;
             }

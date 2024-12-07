@@ -7,6 +7,7 @@ import com.andrei1058.bedwars.arena.IArena;
 import com.andrei1058.bedwars.arena.generator.IGenerator;
 import com.andrei1058.bedwars.arena.shop.ShopHolo;
 import com.andrei1058.bedwars.arena.team.ITeam;
+import com.andrei1058.bedwars.bukkitwrap.PluginManagerWrap;
 import com.andrei1058.bedwars.configuration.ConfigPath;
 import com.andrei1058.bedwars.entity.Despawnable;
 import com.andrei1058.bedwars.events.player.PlayerInvisibilityPotionEvent;
@@ -248,7 +249,7 @@ public class DamageDeathMove implements Listener {
                             p.removePotionEffect(PotionEffectType.INVISIBILITY);
                             ITeam team = a.getTeam(p);
                             p.sendMessage(getMsg(p, Messages.INTERACT_INVISIBILITY_REMOVED_DAMGE_TAKEN));
-                            Bukkit.getPluginManager().callEvent(new PlayerInvisibilityPotionEvent(PlayerInvisibilityPotionEvent.Type.REMOVED, team, p, a));
+                            PluginManagerWrap.callEvent(new PlayerInvisibilityPotionEvent(PlayerInvisibilityPotionEvent.Type.REMOVED, team, p, a));
                         });
                     }
                     //
@@ -424,7 +425,7 @@ public class DamageDeathMove implements Listener {
             PlayerKillEvent playerKillEvent = new PlayerKillEvent(a, victim, victimsTeam, killer, killersTeam,
                     player -> Language.getMsg(player, finalMessage), cause
             );
-            Bukkit.getPluginManager().callEvent(playerKillEvent);
+            PluginManagerWrap.callEvent(playerKillEvent);
 
             if (killer != null && playerKillEvent.playSound()) {
                 Sounds.playSound(ConfigPath.SOUNDS_KILL, killer);
@@ -527,7 +528,7 @@ public class DamageDeathMove implements Listener {
                 t.getMembers().remove(e.getPlayer());
                 e.getPlayer().sendMessage(getMsg(e.getPlayer(), Messages.PLAYER_DIE_ELIMINATED_CHAT));
                 if (t.getMembers().isEmpty()) {
-                    Bukkit.getPluginManager().callEvent(new TeamEliminatedEvent(a, t));
+                    PluginManagerWrap.callEvent(new TeamEliminatedEvent(a, t));
                     for (Player p : a.getWorld().getPlayers()) {
                         p.sendMessage(getMsg(p, Messages.TEAM_ELIMINATED_CHAT).replace("{TeamColor}", t.getColor().chat().toString()).replace("{TeamName}", t.getDisplayName(Language.getPlayerLanguage(p))));
                     }

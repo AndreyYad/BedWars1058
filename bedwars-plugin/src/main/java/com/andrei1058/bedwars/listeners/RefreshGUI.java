@@ -15,7 +15,6 @@ public class RefreshGUI implements Listener {
 
     @EventHandler
     public void onGameStateChange(GameStateChangeEvent e){
-        if (e == null) return;
         int size = e.getArena().getPlayers().size();
         for (Player p : Bukkit.getOnlinePlayers()){
             ArenaGUI.refreshInv(p, e.getArena(), size);
@@ -24,7 +23,6 @@ public class RefreshGUI implements Listener {
 
     @EventHandler
     public void onPlayerJoinArena(PlayerJoinArenaEvent e){
-        if (e == null) return;
         int size = e.getArena().getPlayers().size();
         if (!e.isSpectator()){
             size++;
@@ -36,7 +34,6 @@ public class RefreshGUI implements Listener {
 
     @EventHandler
     public void onPlayerLeaveArena(PlayerLeaveArenaEvent e){
-        if (e == null) return;
         int size = e.getArena().getPlayers().size();
         if (!e.isSpectator()){
             size--;
@@ -48,7 +45,6 @@ public class RefreshGUI implements Listener {
 
     @EventHandler
     public void onArenaEnable(ArenaEnableEvent e){
-        if (e == null) return;
         for (Player p : Bukkit.getOnlinePlayers()){
             ArenaGUI.refreshInv(p, e.getArena(), 0);
         }

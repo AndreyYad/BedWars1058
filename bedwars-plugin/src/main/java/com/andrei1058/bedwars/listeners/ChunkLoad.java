@@ -13,7 +13,6 @@ public class ChunkLoad implements Listener {
 
     @EventHandler
     public void onChunkLoadEvent(ChunkLoadEvent e){
-        if (e == null) return;
         if (e.getChunk() == null) return;
         if (e.getChunk().getEntities() == null) return;
         Bukkit.getScheduler().runTaskAsynchronously(BedWars.plugin, ()-> {

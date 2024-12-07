@@ -44,7 +44,7 @@ public class TeamAssigner implements ITeamAssigner {
                         if (teams.get(0).size() > i) {
                             Player toAdd = teams.get(0).remove(0);
                             TeamAssignEvent e = new TeamAssignEvent(toAdd, team, arena);
-                            Bukkit.getPluginManager().callEvent(e);
+                            PluginManagerWrap.callEvent(e);
                             if (!e.isCancelled()) {
                                 toAdd.closeInventory();
                                 team.addPlayers(toAdd);
@@ -63,7 +63,7 @@ public class TeamAssigner implements ITeamAssigner {
             for (ITeam team : arena.getTeams()) {
                 if (team.getMembers().size() < arena.getMaxInTeam()) {
                     TeamAssignEvent e = new TeamAssignEvent(remaining, team, arena);
-                    Bukkit.getPluginManager().callEvent(e);
+                    PluginManagerWrap.callEvent(e);
                     if (!e.isCancelled()) {
                         remaining.closeInventory();
                         team.addPlayers(remaining);

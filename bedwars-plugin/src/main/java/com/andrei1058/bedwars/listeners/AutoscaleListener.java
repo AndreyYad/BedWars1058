@@ -1,6 +1,7 @@
 package com.andrei1058.bedwars.listeners;
 
 import com.andrei1058.bedwars.arena.GameState;
+import com.andrei1058.bedwars.bukkitwrap.validation.EventValidation;
 import com.andrei1058.bedwars.events.gameplay.GameStateChangeEvent;
 import com.andrei1058.bedwars.arena.Arena;
 import org.bukkit.event.EventHandler;
