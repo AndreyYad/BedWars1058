@@ -423,7 +423,7 @@ public class v1_19_R3 extends VersionSupport {
     }
 
     @Override
-    public org.bukkit.inventory.ItemStack createItemStack(String material, int amount, short data) {
+    public org.bukkit.inventory.ItemStack createItemStack(String material, int amount) {
         org.bukkit.inventory.ItemStack i;
         try {
             i = new org.bukkit.inventory.ItemStack(org.bukkit.Material.valueOf(material), amount);

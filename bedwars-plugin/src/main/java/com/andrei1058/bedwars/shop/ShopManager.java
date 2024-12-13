@@ -366,17 +366,17 @@ public class ShopManager extends ConfigManager {
     private void loadShop() {
         //Quick Buy Button
         ItemStack button = BedWars.nms.createItemStack(getYml().getString(ConfigPath.SHOP_SETTINGS_QUICK_BUY_BUTTON_MATERIAL),
-                getYml().getInt(ConfigPath.SHOP_SETTINGS_QUICK_BUY_BUTTON_AMOUNT), (short) getYml().getInt(ConfigPath.SHOP_SETTINGS_QUICK_BUY_BUTTON_DATA));
+                getYml().getInt(ConfigPath.SHOP_SETTINGS_QUICK_BUY_BUTTON_AMOUNT));
         if (getYml().getBoolean(ConfigPath.SHOP_SETTINGS_QUICK_BUY_BUTTON_ENCHANTED)) button = enchantItem(button);
         QuickBuyButton qbb = new QuickBuyButton(0, button, Messages.SHOP_QUICK_BUY_NAME, Messages.SHOP_QUICK_BUY_LORE);
 
         //Separator
         ItemStack separatorStandard = BedWars.nms.createItemStack(getYml().getString(ConfigPath.SHOP_SETTINGS_SEPARATOR_REGULAR_MATERIAL),
-                getYml().getInt(ConfigPath.SHOP_SETTINGS_SEPARATOR_REGULAR_AMOUNT), (short) getYml().getInt(ConfigPath.SHOP_SETTINGS_SEPARATOR_REGULAR_DATA));
+                getYml().getInt(ConfigPath.SHOP_SETTINGS_SEPARATOR_REGULAR_AMOUNT));
         if (getYml().getBoolean(ConfigPath.SHOP_SETTINGS_SEPARATOR_REGULAR_ENCHANTED))
             separatorStandard = enchantItem(separatorStandard);
         ItemStack separatorSelected = BedWars.nms.createItemStack(getYml().getString(ConfigPath.SHOP_SETTINGS_SEPARATOR_SELECTED_MATERIAL),
-                getYml().getInt(ConfigPath.SHOP_SETTINGS_SEPARATOR_SELECTED_AMOUNT), (short) getYml().getInt(ConfigPath.SHOP_SETTINGS_SEPARATOR_SELECTED_DATA));
+                getYml().getInt(ConfigPath.SHOP_SETTINGS_SEPARATOR_SELECTED_AMOUNT));
         if (getYml().getBoolean(ConfigPath.SHOP_SETTINGS_SEPARATOR_SELECTED_ENCHANTED))
             separatorSelected = enchantItem(separatorSelected);
 

@@ -82,7 +82,7 @@ public class ItemDropPickListener {
             return true;
         }
         if (item.getItemStack().getType() == Material.ARROW) {
-            item.setItemStack(BedWars.nms.createItemStack(item.getItemStack().getType().toString(), item.getItemStack().getAmount(), (short) 0));
+            item.setItemStack(BedWars.nms.createItemStack(item.getItemStack().getType().toString(), item.getItemStack().getAmount()));
             return false;
         }
 
