@@ -434,8 +434,8 @@ public class v1_19_R3 extends VersionSupport {
     }
 
     @Override
-    ///видимо лежало тут чисто из-за версионирования
-    public org.bukkit.inventory.ItemStack createItemStack(String material, int amount, short data) {
+    ///видимо лежало тут чисто из-за того, что в старых версиях юзали магическо-цифровую дэйту
+    public org.bukkit.inventory.ItemStack createItemStack(String material, int amount) {
         org.bukkit.inventory.ItemStack i;
         try {
             i = new org.bukkit.inventory.ItemStack(org.bukkit.Material.valueOf(material), amount);

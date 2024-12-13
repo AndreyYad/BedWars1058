@@ -76,7 +76,7 @@ public class ArenaGUI {
             }
 
             i = BedWars.nms.createItemStack(yml.getString(ConfigPath.GENERAL_CONFIGURATION_ARENA_SELECTOR_STATUS_MATERIAL.replace("%path%", status)),
-                    1, (short) yml.getInt(ConfigPath.GENERAL_CONFIGURATION_ARENA_SELECTOR_STATUS_DATA.replace("%path%", status)));
+                    1);
             if (yml.getBoolean(ConfigPath.GENERAL_CONFIGURATION_ARENA_SELECTOR_STATUS_ENCHANTED.replace("%path%", status))) {
                 ItemMeta im = i.getItemMeta();
                 im.addEnchant(Enchantment.LURE, 1, true);
@@ -117,7 +117,7 @@ public class ArenaGUI {
         String skippedSlotMaterial = BedWars.config.getString(ConfigPath.GENERAL_CONFIGURATION_ARENA_SELECTOR_STATUS_MATERIAL.replace("%path%", "skipped-slot"));
         if (!skippedSlotMaterial.equalsIgnoreCase("none") && !skippedSlotMaterial.equalsIgnoreCase("air")) {
             ItemStack i = BedWars.nms.createItemStack(skippedSlotMaterial,
-                    1, (byte) BedWars.config.getInt(ConfigPath.GENERAL_CONFIGURATION_ARENA_SELECTOR_STATUS_DATA.replace("%path%", "skipped-slot")));
+                    1);
             i = BedWars.nms.addCustomData(i, "RUNCOMMAND_bw join random");
             ItemMeta im = i.getItemMeta();
             assert im != null;
