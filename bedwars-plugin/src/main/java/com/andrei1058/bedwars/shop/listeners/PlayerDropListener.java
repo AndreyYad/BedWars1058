@@ -11,10 +11,11 @@ import org.bukkit.event.inventory.InventoryCloseEvent;
 import org.bukkit.event.player.PlayerDropItemEvent;
 import org.bukkit.inventory.ItemStack;
 
+/// не дает игроку порушить структуру магазина в открывшемся "сундуке"
 public class PlayerDropListener implements Listener {
 
     @EventHandler
-    //Prevent from dropping permanent items
+    /// если есть магазный идентификатор - не дает выкинуть
     public void onDrop(PlayerDropItemEvent e) {
         IArena a = Arena.getArenaByPlayer(e.getPlayer());
         if (a == null) return;
@@ -26,7 +27,7 @@ public class PlayerDropListener implements Listener {
     }
 
     @EventHandler
-    //Prevent from moving items in chests
+    /// должен мешать перемещать блоки в магазине, но походу ничего не делает...
     public void onClose(InventoryCloseEvent e) {
         if (!(e instanceof Player)) return;
         IArena a = Arena.getArenaByPlayer((Player) e.getPlayer());

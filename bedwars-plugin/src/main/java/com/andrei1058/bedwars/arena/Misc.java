@@ -1,8 +1,6 @@
 package com.andrei1058.bedwars.arena;
 
 import com.andrei1058.bedwars.BedWars;
-import com.andrei1058.bedwars.arena.GameState;
-import com.andrei1058.bedwars.arena.IArena;
 import com.andrei1058.bedwars.arena.generator.IGenerator;
 import com.andrei1058.bedwars.arena.team.ITeam;
 import com.andrei1058.bedwars.configuration.ConfigPath;
@@ -44,6 +42,7 @@ import static com.andrei1058.bedwars.BedWars.*;
 import static com.andrei1058.bedwars.language.Language.getList;
 import static com.andrei1058.bedwars.language.Language.getMsg;
 
+/// класс со всякой всячиной. Хз почему не Utils
 public class Misc {
 
     public static void moveToLobbyOrKick(Player p, @Nullable IArena arena, boolean notAbandon) {
@@ -244,6 +243,7 @@ public class Misc {
     }
 
     @SuppressWarnings("BooleanMethodIsAlwaysInverted")
+    ///а зачем тогда в nms есть такой же метод?
     public static boolean isProjectile(Material i) {
         return Material.EGG == i || nms.materialFireball() == i || nms.materialSnowball() == i || Material.ARROW == i;
     }

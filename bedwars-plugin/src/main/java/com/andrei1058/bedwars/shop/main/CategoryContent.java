@@ -28,6 +28,7 @@ import java.util.List;
 import static com.andrei1058.bedwars.BedWars.nms;
 import static com.andrei1058.bedwars.language.Language.getMsg;
 
+/// ячейка категории в магазине
 @SuppressWarnings("WeakerAccess")
 public class CategoryContent implements ICategoryContent {
 

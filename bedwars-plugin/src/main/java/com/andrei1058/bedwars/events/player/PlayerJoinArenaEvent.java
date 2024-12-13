@@ -8,6 +8,7 @@ import org.bukkit.event.HandlerList;
 
 /// из АПИ
 
+/// мануальный ивент о том, что игрок зашел на арену
 public class PlayerJoinArenaEvent extends Event {
 
     private static final HandlerList HANDLERS = new HandlerList();

@@ -10,6 +10,7 @@ import org.bukkit.event.HandlerList;
 /// из АПИ
 
 @SuppressWarnings("unused")
+///ивент про спавн голема
 public class PlayerDreamDefenderSpawnEvent extends Event {
 
     private static final HandlerList HANDLERS = new HandlerList();
@@ -18,6 +19,8 @@ public class PlayerDreamDefenderSpawnEvent extends Event {
     private final IArena arena;
     private final ITeam playerTeam;
 
+
+    ///чел случайно скопировал видимо. Вызывается при спавне голема (но не снарядом...)
     /**
      * Called when a bed gets destroyed.
      */

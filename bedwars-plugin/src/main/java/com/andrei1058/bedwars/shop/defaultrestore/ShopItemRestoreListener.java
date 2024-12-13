@@ -23,7 +23,8 @@ import org.bukkit.inventory.ItemStack;
 
 /// из versionsupport_common
 
-///лож, нет тут ничего про луки. Заведует выдачей, поднятием и удалением дефолтных мечей
+/// Заведует выдачей, поднятием и удалением дефолтных мечей.
+/// Про луки эт лож, нет их тут.
 // Used to restore default swords and bows if they are removed from the inventory and you remain with a less powerful weapon of the same kind. 1.12-.
 public class ShopItemRestoreListener {
 
@@ -36,7 +37,7 @@ public class ShopItemRestoreListener {
 
     public static class EntityPickup implements Listener {
         @EventHandler
-        /// а что с получаемыми из магаза? они вроде такой ивент не вызывают
+        ///? а что с получаемыми из магаза? они вроде такой ивент не вызывают
         public void onDrop(EntityPickupItemEvent e) {
             if (managePickup(e.getItem(), e.getEntity())) e.setCancelled(true);
         }
@@ -48,7 +49,7 @@ public class ShopItemRestoreListener {
      * @return true to cancel the event
      */
     public static boolean managePickup(Item item, LivingEntity player) {
-        /// дохуя проверок дефолтных, которые бы таки куда-нибудь вынести
+        ///! дохуя проверок дефолтных, которые бы таки куда-нибудь вынести
         if (!(player instanceof Player)) return false;
         if (Arena.getArenaByPlayer((Player) player) == null) return false;
         if (Arena.getArenaByPlayer((Player) player).getStatus() != GameState.playing) return false;
@@ -57,10 +58,10 @@ public class ShopItemRestoreListener {
         if (BedWars.nms.isSword(item.getItemStack())) {
             for (ItemStack is : ((Player) player).getInventory()) {
                 if (is == null) continue;
-                ///такое бывает вообще?
+                ///? такое бывает вообще?
                 if (is.getType() == Material.AIR) continue;
                 if (!BedWars.nms.isCustomBedWarsItem(is)) continue;
-                ///удаляет из инвентаря имеющийся дефолтный меч если поднимается с земли новый дефолтный
+                ///удаляет из инвентаря имеющийся дефолтный меч, если поднимается с земли новый дефолтный
                 if (BedWars.nms.getCustomData(is).equalsIgnoreCase("DEFAULT_ITEM")) {
                     ((Player) player).getInventory().remove(is);
                     ((Player) player).updateInventory();
@@ -102,7 +103,7 @@ public class ShopItemRestoreListener {
                 }
             }
 
-            ///если такого не осталось - выдаем значение что отменит ивент
+            /// если такого не осталось - выдаем значение что отменит ивент
             return !hasSword;
         } else {
             boolean sword = false;
@@ -114,7 +115,7 @@ public class ShopItemRestoreListener {
                     break;
                 }
             }
-            ///иначе выдает дефолтный игроку
+            /// иначе выдает дефолтный игроку
             if (!sword) a.getTeam((Player) player).defaultSword((Player) player, true);
         }
         return false;
@@ -136,7 +137,7 @@ public class ShopItemRestoreListener {
             if (!a.isPlayer((Player) e.getPlayer())) return;
 
             boolean sword = false;
-            ///ну вообще тут проверяется наличие любого вообще меча, и похер на силу с дефолтностью
+            /// ну вообще тут проверяется наличие любого вообще меча, и похер на силу с дефолтностью
             for (ItemStack is : e.getPlayer().getInventory()) {
                 if (is == null) continue;
                 if (is.getType() == Material.AIR) continue;

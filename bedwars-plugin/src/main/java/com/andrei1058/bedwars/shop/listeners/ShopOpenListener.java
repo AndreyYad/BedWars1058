@@ -11,6 +11,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerInteractAtEntityEvent;
 
+/// открывает магаз если по его местоположению нажали
 public class ShopOpenListener implements Listener {
 
     @EventHandler

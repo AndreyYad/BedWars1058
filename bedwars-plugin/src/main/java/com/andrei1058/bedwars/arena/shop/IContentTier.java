@@ -7,6 +7,7 @@ import java.util.List;
 
 /// из АПИ
 
+/// это ячейка в магазине, потенциально с тировой продажей
 public interface IContentTier {
 
     /**

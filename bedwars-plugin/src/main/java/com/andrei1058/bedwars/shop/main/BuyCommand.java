@@ -14,6 +14,8 @@ import org.bukkit.inventory.ItemStack;
 import java.util.ArrayList;
 import java.util.List;
 
+/// в конфиге можно задать выполнение команды при покупке вещи. Вот эта штука за это и отвечает
+///! вырезать эт нафиг, такое лучше кодом делать, а не конфигом
 public class BuyCommand implements IBuyItem {
 
     private final List<String> asPlayer = new ArrayList<>();

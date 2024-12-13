@@ -8,6 +8,7 @@ import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerQuitEvent;
 
+/// пересоздает шоп кеш для заходящих игроков и уничтожает для выходящих
 public class ShopCacheListener implements Listener {
 
 

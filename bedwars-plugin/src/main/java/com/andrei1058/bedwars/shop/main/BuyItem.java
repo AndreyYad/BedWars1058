@@ -21,6 +21,7 @@ import org.bukkit.potion.PotionEffectType;
 import static com.andrei1058.bedwars.BedWars.nms;
 import static com.andrei1058.bedwars.BedWars.plugin;
 
+/// абстракция связанная с продаваемой вещью и процессом продажи
 @SuppressWarnings("WeakerAccess")
 public class BuyItem implements IBuyItem {
 

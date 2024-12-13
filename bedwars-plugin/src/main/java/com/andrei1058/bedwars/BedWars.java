@@ -429,7 +429,7 @@ public class BedWars extends JavaPlugin {
         /* Load sounds configuration */
         Sounds.init();
 
-        /* Initialize shop */
+        /// инициализирует магазин
         shop = new ShopManager();
 
         //Leave this code at the end of the enable method

@@ -21,6 +21,7 @@ import org.bukkit.inventory.ItemStack;
 
 import static com.andrei1058.bedwars.BedWars.nms;
 
+/// обрабатывает спавн голема и чешуйницы с помощью блоков
 public class SpecialsListener implements Listener {
 
     @EventHandler(priority = EventPriority.LOWEST)
@@ -39,11 +40,13 @@ public class SpecialsListener implements Listener {
         Location l = b.getLocation();
 
         if (BedWars.shop.getYml().getBoolean(ConfigPath.SHOP_SPECIAL_SILVERFISH_ENABLE)) {
+            /// это тип чтобы спавнить не снарядами, вдруг так зададут
             if (!Misc.isProjectile(Material.valueOf(BedWars.shop.getYml().getString(ConfigPath.SHOP_SPECIAL_SILVERFISH_MATERIAL)))) {
                 if (i.getType() == Material.valueOf(BedWars.shop.getYml().getString(ConfigPath.SHOP_SPECIAL_SILVERFISH_MATERIAL))
                         && nms.itemStackDataCompare(i, (short) BedWars.shop.getYml().getInt(ConfigPath.SHOP_SPECIAL_SILVERFISH_DATA))) {
                     e.setCancelled(true);
                     ITeam playerTeam = a.getTeam(p);
+                    /// зачем вообще может понадобиться этот ивент при расширении...
                     PlayerBedBugSpawnEvent event = new PlayerBedBugSpawnEvent(p, playerTeam, a);
                     nms.spawnSilverfish(l.add(0, 1, 0), playerTeam, BedWars.shop.getYml().getDouble(ConfigPath.SHOP_SPECIAL_SILVERFISH_SPEED),
                             BedWars.shop.getYml().getDouble(ConfigPath.SHOP_SPECIAL_SILVERFISH_HEALTH), BedWars.shop.getInt(ConfigPath.SHOP_SPECIAL_SILVERFISH_DESPAWN),
@@ -57,11 +60,13 @@ public class SpecialsListener implements Listener {
             }
         }
         if (BedWars.shop.getYml().getBoolean(ConfigPath.SHOP_SPECIAL_IRON_GOLEM_ENABLE)) {
+            /// а у голема наоборот можно задать спавн снарядами...
             if (!Misc.isProjectile(Material.valueOf(BedWars.shop.getYml().getString(ConfigPath.SHOP_SPECIAL_IRON_GOLEM_MATERIAL)))) {
                 if (i.getType() == Material.valueOf(BedWars.shop.getYml().getString(ConfigPath.SHOP_SPECIAL_IRON_GOLEM_MATERIAL))
                         && nms.itemStackDataCompare(i, (short) BedWars.shop.getYml().getInt(ConfigPath.SHOP_SPECIAL_IRON_GOLEM_DATA))) {
                     e.setCancelled(true);
                     ITeam playerTeam = a.getTeam(p);
+                    /// зачем вообще может понадобиться этот ивент при расширении...
                     PlayerDreamDefenderSpawnEvent event = new PlayerDreamDefenderSpawnEvent(p, playerTeam, a);
                     nms.spawnIronGolem(l.add(0, 1, 0), playerTeam, BedWars.shop.getYml().getDouble(ConfigPath.SHOP_SPECIAL_IRON_GOLEM_SPEED),
                             BedWars.shop.getYml().getDouble(ConfigPath.SHOP_SPECIAL_IRON_GOLEM_HEALTH), BedWars.shop.getInt(ConfigPath.SHOP_SPECIAL_IRON_GOLEM_DESPAWN));

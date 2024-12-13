@@ -28,6 +28,9 @@ public class ShopManager extends ConfigManager {
         registerListeners();
     }
 
+    /// задают дефолтные значения в конфиг
+    ///! вспомнить в чем смысл делать так, а не через ямл в проекте
+    ///! сделать так, чтобы норм было через ямл в проекте
     private void saveDefaults() {
         getYml().options().header("Shop with quick buy and tiers");
 
@@ -366,6 +369,7 @@ public class ShopManager extends ConfigManager {
 
     private void loadShop() {
         //Quick Buy Button
+        ///! вынести бы эти ячейки-кнопки в отдельный класс, что ли
         ItemStack button = BedWars.nms.createItemStack(getYml().getString(ConfigPath.SHOP_SETTINGS_QUICK_BUY_BUTTON_MATERIAL),
                 getYml().getInt(ConfigPath.SHOP_SETTINGS_QUICK_BUY_BUTTON_AMOUNT));
         if (getYml().getBoolean(ConfigPath.SHOP_SETTINGS_QUICK_BUY_BUTTON_ENCHANTED)) button = enchantItem(button);

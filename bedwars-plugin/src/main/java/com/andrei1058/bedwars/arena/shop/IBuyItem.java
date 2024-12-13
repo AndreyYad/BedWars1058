@@ -7,6 +7,7 @@ import org.bukkit.inventory.ItemStack;
 
 /// из АПИ
 
+/// абстракция связанная с продаваемой вещью и процессом продажи
 public interface IBuyItem {
 
     /**

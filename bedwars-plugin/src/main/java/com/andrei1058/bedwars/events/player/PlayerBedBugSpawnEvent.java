@@ -10,6 +10,7 @@ import org.bukkit.event.HandlerList;
 /// из АПИ
 
 @SuppressWarnings("unused")
+///Bed Bug это типа клоп, но ивент про спавн чешуйниц
 public class PlayerBedBugSpawnEvent extends Event {
 
     private static final HandlerList HANDLERS = new HandlerList();
@@ -18,6 +19,7 @@ public class PlayerBedBugSpawnEvent extends Event {
     private final IArena arena;
     private final ITeam playerTeam;
 
+    ///чел случайно скопировал видимо. Вызывается при спавне чешуйницы (но не снарядом...)
     /**
      * Called when a bed gets destroyed.
      */

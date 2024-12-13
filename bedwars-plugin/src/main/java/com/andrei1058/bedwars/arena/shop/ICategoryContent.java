@@ -7,6 +7,7 @@ import java.util.List;
 
 /// из АПИ
 
+/// ячейка категории в магазине
 public interface ICategoryContent {
 
     /**

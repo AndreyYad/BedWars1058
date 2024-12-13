@@ -8,6 +8,7 @@ import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerQuitEvent;
 
+/// пересоздает квикбай кеш для заходящих игроков и уничтожает для выходящих
 public class QuickBuyListener implements Listener {
 
     @EventHandler(priority = EventPriority.LOWEST)

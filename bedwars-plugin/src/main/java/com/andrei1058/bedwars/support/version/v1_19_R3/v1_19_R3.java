@@ -48,7 +48,6 @@ import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.inventory.meta.SkullMeta;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.potion.PotionEffectType;
-import org.bukkit.scoreboard.Team;
 import org.bukkit.util.Vector;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -517,6 +516,7 @@ public class v1_19_R3 extends VersionSupport {
     }
 
     @Override
+    ///ну собственно понятно, возвращает идентификатор тира магазного. Правда хз какой он у не тирных товаров
     public String getShopUpgradeIdentifier(org.bukkit.inventory.ItemStack itemStack) {
         var tag = getCreateTag(itemStack);
         return tag.e(VersionSupport.PLUGIN_TAG_TIER_KEY) ? tag.l(VersionSupport.PLUGIN_TAG_TIER_KEY) : "null";

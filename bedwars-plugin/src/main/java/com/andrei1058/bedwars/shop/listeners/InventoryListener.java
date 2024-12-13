@@ -34,6 +34,7 @@ public class InventoryListener implements Listener {
         if (a == null) return;
         if (a.isSpectator(p)) return;
 
+        ///
         ShopCache shopCache = ShopCache.getShopCache(p.getUniqueId());
         PlayerQuickBuyCache cache = PlayerQuickBuyCache.getQuickBuyCache(p.getUniqueId());
 
