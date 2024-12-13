@@ -247,7 +247,7 @@ public abstract class VersionSupport {
      */
     public abstract ItemStack colourItem(ItemStack itemStack, ITeam bedWarsTeam);
 
-    public abstract ItemStack createItemStack(String material, int amount, short data);
+    public abstract ItemStack createItemStack(String material, int amount);
 
     /**
      * Check if is a player head
