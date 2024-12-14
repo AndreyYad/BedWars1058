@@ -1,12 +1,21 @@
 package com.andrei1058.bedwars._fwextension.menus.templates.elements;
-
-import com.andrei1058.bedwars._fwextension.materials.ExtMaterial;
 import com.andrei1058.bedwars._fwextension.menus.templates.MenuTemplate;
-import lombok.NonNull;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.ToString;
 
+import static com.andrei1058.bedwars._fwextension.utils.Utils.checkNull;
 
+@Getter
+@ToString
+@EqualsAndHashCode(callSuper = true)
+@SuppressWarnings("unused")
 public abstract class SubMenuElementTemplate extends ElementTemplate {
 
-    public abstract MenuTemplate getAssociatedMenu();
-    public abstract void setAssociatedMenu(@NonNull MenuTemplate menu);
+    protected MenuTemplate associatedMenu;
+
+    public void postInit() {
+        checkNull("associatedMenu", associatedMenu);
+        super.postInit();
+    }
 }

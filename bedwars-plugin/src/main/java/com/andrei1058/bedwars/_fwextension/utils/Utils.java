@@ -1,7 +1,5 @@
 package com.andrei1058.bedwars._fwextension.utils;
 
-import java.util.List;
-
 public class Utils {
 
     ///? мб ints?
@@ -11,5 +9,11 @@ public class Utils {
             timesArray[time-1] = time;
         }
         return timesArray;
+    }
+
+    public static void checkNull(String valueName, Object value) {
+        if (value == null) {
+            throw new RuntimeException("Значение %s не может быть null.".formatted(valueName));
+        }
     }
 }

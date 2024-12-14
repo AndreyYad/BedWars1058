@@ -1,28 +1,26 @@
 package com.andrei1058.bedwars._fwextension.sheets;
 
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NonNull;
+import lombok.ToString;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import static com.andrei1058.bedwars._fwextension.utils.Utils.times;
-import static java.lang.String.format;
 
 @Getter
+@ToString
+@EqualsAndHashCode
 @SuppressWarnings("unused")
-public abstract class Sheet<C> extends Cell<C> {
+public class Sheet<Content> {
 
     protected final int height;
     protected final int width;
-    private final Column<Row<Cell<C>>> rows;
-    private final Row<Column<Cell<C>>> columns;
-    private final List<Cell<C>> cells;
-
-    @Override
-    public boolean isSheet() {
-        return true;
-    }
+    private final Column<Row<Cell<Content>>> rows;
+    private final Row<Column<Cell<Content>>> columns;
+    private final List<Cell<Content>> cells;
 
     protected Sheet(int height, int width) {
         this.height = height;
@@ -38,14 +36,20 @@ public abstract class Sheet<C> extends Cell<C> {
         cells = new ArrayList<>(height * width);
     }
 
+    public void postInit() {
+        if (cells.size() != height * width) {
+            throw new RuntimeException("У этого листа не хватает ячеек.");
+        }
+    }
+
     ///! мб сделать проверку что добавили все нужные ячейки
-    protected Sheet<C> addCell(@NonNull Cell<C> cell) {
+    protected Sheet<Content> cell(@NonNull Cell<Content> cell) {
         int row = 0;
         while (rows.get(row).size() == width) {
             row++;
         }
         if (row >= height) {
-            throw new RuntimeException(format("В этом листе только %s строк по %s столбцов. Остальные ячейки лишние.", height, width));
+            throw new RuntimeException("В этом листе только %s строк по %s столбцов. Остальные ячейки лишние.".formatted(height, width));
         }
         int column = rows.get(row).size();
         cell.handleAddingInSheet(this, row, column);
@@ -55,38 +59,38 @@ public abstract class Sheet<C> extends Cell<C> {
         return this;
     }
 
-    protected Sheet<C> addCell() {
-        return addCell(new Cell<>());
+    protected Sheet<Content> cell() {
+        return cell(new Cell<>());
     }
 
-    public Row<Cell<C>> row(int row) {
+    public Row<Cell<Content>> row(int row) {
         checkRow(row);
         return rows.get(row);
     } 
     
-    public Column<Cell<C>> column(int column) {
+    public Column<Cell<Content>> column(int column) {
         checkColumn(column);
         return columns.get(column);
     }
 
-    public Cell<C> get(int row, int column) {
+    public Cell<Content> get(int row, int column) {
         checkRow(row);
         checkColumn(column);
         return rows.get(row).get(column);
     }
     
-    public List<Cell<C>> getAllCells() {
+    public List<Cell<Content>> getAllCells() {
         return cells;
     }
     
     private void checkRow(int row) {
         if (row >= height) {
-            throw new RuntimeException(format("Высота листа равна %s. Нельзя получить строку номер %s", height, row));
+            throw new RuntimeException("Высота этого листа равна %s. Нельзя получить строку номер %s.".formatted(height, row));
         }
     }
     private void checkColumn(int column) {
         if (column >= width) {
-            throw new RuntimeException(format("Ширина листа равна %s. Нельзя получить колонку номер %s", height, column));
+            throw new RuntimeException("Ширина этого листа равна %s. Нельзя получить колонку номер %s.".formatted(height, column));
         }
     }
 }

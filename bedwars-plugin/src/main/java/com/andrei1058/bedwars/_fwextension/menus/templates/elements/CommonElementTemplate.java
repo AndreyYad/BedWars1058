@@ -17,6 +17,11 @@
 //@SuppressWarnings("unused")
 //public class CommonElementTemplate extends ElementTemplate {
 //
+//    {
+//        type = ExtMaterial.STONE;
+//        amount = 10;
+//    }
+//
 //    public CommonElementTemplate() {
 //        setType(ExtMaterial.EMPTY);
 //    }

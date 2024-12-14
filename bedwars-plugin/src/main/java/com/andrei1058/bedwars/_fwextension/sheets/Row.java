@@ -3,7 +3,7 @@ package com.andrei1058.bedwars._fwextension.sheets;
 import java.util.ArrayList;
 
 @SuppressWarnings("unused")
-public class Row<C> extends ArrayList<C> {
+public class Row<Cell> extends ArrayList<Cell> {
 
     public Row() {
         super();
@@ -12,7 +12,7 @@ public class Row<C> extends ArrayList<C> {
         super(width);
     }
 
-    public C column(int column) {
+    public Cell column(int column) {
         return super.get(column);
     }
 }

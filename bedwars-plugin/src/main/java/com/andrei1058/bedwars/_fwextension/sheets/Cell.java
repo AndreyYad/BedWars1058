@@ -6,38 +6,34 @@ import lombok.*;
 @ToString
 @EqualsAndHashCode
 @SuppressWarnings("unused")
-public class Cell<C> {
+public class Cell<Content> {
 
-    private C content;
+    private Content content;
     private boolean placedInSheet = false;
-    protected Sheet<C> sheet;
+    protected Sheet<Content> sheet;
     protected int row;
     protected int column;
 
-    public boolean isSheet() {
-        return false;
-    }
-
     public Cell() {
     }
-    public Cell(@NonNull C content) {
+    public Cell(@NonNull Content content) {
         this.content = content;
     }
 
 
-    public C content() {
+    public Content content() {
         return getContent();
     }
-    public void setContent(@NonNull C content) {
+    public void setContent(@NonNull Content content) {
         this.content = content;
     }
-    public void set(C content) {
+    public void set(Content content) {
         setContent(content);
     }
 
-    protected void handleAddingInSheet(@NonNull Sheet<C> sheet, int row, int column) {
+    protected void handleAddingInSheet(@NonNull Sheet<Content> sheet, int row, int column) {
         if (this.placedInSheet) {
-            throw new RuntimeException("Ячейку можно разместить только на одном листе");
+            throw new RuntimeException("Ячейку можно разместить только на одном листе.");
         }
         this.sheet = sheet;
         this.row = row;

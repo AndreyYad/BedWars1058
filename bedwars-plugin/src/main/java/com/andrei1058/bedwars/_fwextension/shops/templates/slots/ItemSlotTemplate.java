@@ -1,10 +1,12 @@
 package com.andrei1058.bedwars._fwextension.shops.templates.slots;
 
 import com.andrei1058.bedwars._fwextension.common.templates.ItemStackTemplate;
-import com.andrei1058.bedwars._fwextension.menus.templates.elements.ElementTemplate;
+import com.andrei1058.bedwars._fwextension.shops.templates.slots.SlotTemplate;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.ToString;
+
+import java.util.List;
 
 import static com.andrei1058.bedwars._fwextension.utils.Utils.checkNull;
 
@@ -12,12 +14,12 @@ import static com.andrei1058.bedwars._fwextension.utils.Utils.checkNull;
 @ToString
 @EqualsAndHashCode(callSuper = true)
 @SuppressWarnings("unused")
-public abstract class SlotTemplate<Price> extends ElementTemplate {
+public abstract class ItemSlotTemplate<Price> extends SlotTemplate<Price> {
 
-    protected Price price;
+    protected ItemStackTemplate itemToSale;
 
     public void postInit() {
-        checkNull("price", price);
+        checkNull("itemToSale", itemToSale);
         super.postInit();
     }
 }
