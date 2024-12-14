@@ -1,4 +1,4 @@
-package com.andrei1058.bedwars.bukkitwrap.methods;
+package com.andrei1058.bedwars._fwextension.bukkit.modification;
 
 import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;

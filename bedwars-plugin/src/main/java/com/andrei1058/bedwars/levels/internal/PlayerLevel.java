@@ -1,7 +1,7 @@
 package com.andrei1058.bedwars.levels.internal;
 
 import com.andrei1058.bedwars.BedWars;
-import com.andrei1058.bedwars.bukkitwrap.PluginManagerWrap;
+import com.andrei1058.bedwars._fwextension.helpering.statichelpers.PluginManagerHelper;
 import com.andrei1058.bedwars.events.player.PlayerLevelUpEvent;
 import com.andrei1058.bedwars.events.player.PlayerXpGainEvent;
 import com.andrei1058.bedwars.configuration.LevelsConfig;
@@ -156,7 +156,7 @@ public class PlayerLevel {
         this.currentXp += xp;
         upgradeLevel();
         updateProgressBar();
-        PluginManagerWrap.callEvent(new PlayerXpGainEvent(Bukkit.getPlayer(uuid), xp, source));
+        PluginManagerHelper.callEvent(new PlayerXpGainEvent(Bukkit.getPlayer(uuid), xp, source));
         modified = true;
     }
 
@@ -202,7 +202,7 @@ public class PlayerLevel {
             this.levelName = ChatColor.translateAlternateColorCodes('&', LevelsConfig.getLevelName(level)).replace("{number}", String.valueOf(level));
             requiredXp = formatNumber(nextLevelCost);
             formattedCurrentXp = formatNumber(currentXp);
-            PluginManagerWrap.callEvent(new PlayerLevelUpEvent(Bukkit.getPlayer(getUuid()), level, nextLevelCost));
+            PluginManagerHelper.callEvent(new PlayerLevelUpEvent(Bukkit.getPlayer(getUuid()), level, nextLevelCost));
             modified = true;
         }
     }

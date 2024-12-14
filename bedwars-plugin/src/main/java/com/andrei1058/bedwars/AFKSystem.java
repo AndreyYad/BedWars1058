@@ -1,6 +1,6 @@
 package com.andrei1058.bedwars;
 
-import com.andrei1058.bedwars.bukkitwrap.PluginManagerWrap;
+import com.andrei1058.bedwars._fwextension.helpering.statichelpers.PluginManagerHelper;
 import com.andrei1058.bedwars.events.player.PlayerAfkEvent;
 import com.andrei1058.bedwars.arena.Arena;
 import org.bukkit.entity.Player;
@@ -19,12 +19,12 @@ public class AFKSystem {
         if (value) {
             if (!afkPlayers.containsKey(player.getUniqueId())) {
                 afkPlayers.put(player.getUniqueId(), Arena.afkCheck.get(player.getUniqueId()));
-                PluginManagerWrap.callEvent(new PlayerAfkEvent(player, PlayerAfkEvent.AFKType.START));
+                PluginManagerHelper.callEvent(new PlayerAfkEvent(player, PlayerAfkEvent.AFKType.START));
             }
         } else {
             if (afkPlayers.containsKey(player.getUniqueId())) {
                 afkPlayers.remove(player.getUniqueId());
-                PluginManagerWrap.callEvent(new PlayerAfkEvent(player, PlayerAfkEvent.AFKType.END));
+                PluginManagerHelper.callEvent(new PlayerAfkEvent(player, PlayerAfkEvent.AFKType.END));
             }
             Arena.afkCheck.remove(player.getUniqueId());
         }

@@ -5,7 +5,7 @@ import com.andrei1058.bedwars.arena.IArena;
 import com.andrei1058.bedwars.arena.shop.IBuyItem;
 import com.andrei1058.bedwars.arena.shop.ICategoryContent;
 import com.andrei1058.bedwars.arena.shop.IContentTier;
-import com.andrei1058.bedwars.bukkitwrap.PluginManagerWrap;
+import com.andrei1058.bedwars._fwextension.helpering.statichelpers.PluginManagerHelper;
 import com.andrei1058.bedwars.configuration.ConfigPath;
 import com.andrei1058.bedwars.events.shop.ShopBuyEvent;
 import com.andrei1058.bedwars.language.Language;
@@ -156,7 +156,7 @@ public class CategoryContent implements ICategoryContent {
 
         ShopBuyEvent event;
         //call shop buy event
-        PluginManagerWrap.callEvent(event = new ShopBuyEvent(player, Arena.getArenaByPlayer(player), this));
+        PluginManagerHelper.callEvent(event = new ShopBuyEvent(player, Arena.getArenaByPlayer(player), this));
 
         if (event.isCancelled()){
             return;

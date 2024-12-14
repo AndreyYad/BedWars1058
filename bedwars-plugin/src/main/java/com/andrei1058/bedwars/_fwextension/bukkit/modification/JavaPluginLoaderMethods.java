@@ -1,8 +1,8 @@
-package com.andrei1058.bedwars.bukkitwrap.methods;
+package com.andrei1058.bedwars._fwextension.bukkit.modification;
 
-import com.andrei1058.bedwars.bukkitwrap.validation.EventValidation;
+import com.andrei1058.bedwars._fwextension.validation.EventValidation;
 import org.bukkit.event.EventHandler;
-import com.andrei1058.bedwars.bukkitwrap.validation.RegisteredListenerWithValidation;
+import com.andrei1058.bedwars._fwextension.validation.RegisteredListenerWithValidation;
 import com.google.common.base.Preconditions;
 import org.bukkit.Bukkit;
 import org.bukkit.Server;

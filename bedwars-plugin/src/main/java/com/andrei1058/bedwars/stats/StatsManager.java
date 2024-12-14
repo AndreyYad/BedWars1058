@@ -1,7 +1,7 @@
 package com.andrei1058.bedwars.stats;
 
 import com.andrei1058.bedwars.BedWars;
-import com.andrei1058.bedwars.bukkitwrap.PluginManagerWrap;
+import com.andrei1058.bedwars._fwextension.helpering.statichelpers.PluginManagerHelper;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -43,6 +43,6 @@ public class StatsManager {
      * Register listeners related to stats cache.
      */
     private void registerListeners() {
-        PluginManagerWrap.registerEvents(new StatsListener(), BedWars.plugin);
+        PluginManagerHelper.registerEvents(new StatsListener(), BedWars.plugin);
     }
 }

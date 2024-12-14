@@ -1,11 +1,9 @@
 package com.andrei1058.bedwars.arena.team;
 
 import com.andrei1058.bedwars.arena.IArena;
-import com.andrei1058.bedwars.arena.team.ITeam;
-import com.andrei1058.bedwars.bukkitwrap.PluginManagerWrap;
+import com.andrei1058.bedwars._fwextension.helpering.statichelpers.PluginManagerHelper;
 import com.andrei1058.bedwars.events.gameplay.TeamAssignEvent;
 import com.andrei1058.bedwars.arena.Arena;
-import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
 import java.util.ArrayList;
@@ -39,7 +37,7 @@ public class LegacyTeamAssigner {
                         skip.add(p);
                         p.closeInventory();
                         TeamAssignEvent e = new TeamAssignEvent(p, t, arena);
-                        PluginManagerWrap.callEvent(e);
+                        PluginManagerHelper.callEvent(e);
                         if (!e.isCancelled()) {
                             t.addPlayers(p);
                         }
@@ -52,7 +50,7 @@ public class LegacyTeamAssigner {
                                     continue;
                                 }
                                 TeamAssignEvent ee = new TeamAssignEvent(p, t, arena);
-                                PluginManagerWrap.callEvent(ee);
+                                PluginManagerHelper.callEvent(ee);
                                 if (!e.isCancelled()) {
                                     t.addPlayers(mem);
                                 }
@@ -75,7 +73,7 @@ public class LegacyTeamAssigner {
                 }
             }
             TeamAssignEvent e = new TeamAssignEvent(p, addhere, arena);
-            PluginManagerWrap.callEvent(e);
+            PluginManagerHelper.callEvent(e);
             if (!e.isCancelled()) {
                 addhere.addPlayers(p);
             }

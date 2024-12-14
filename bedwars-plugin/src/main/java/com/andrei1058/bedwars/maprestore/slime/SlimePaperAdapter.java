@@ -2,7 +2,7 @@
 package com.andrei1058.bedwars.maprestore.slime;
 
 import com.andrei1058.bedwars.BedWars;
-import com.andrei1058.bedwars.bukkitwrap.PluginManagerWrap;
+import com.andrei1058.bedwars._fwextension.helpering.statichelpers.PluginManagerHelper;
 import com.andrei1058.bedwars.arena.GameState;
 import com.andrei1058.bedwars.arena.IArena;
 import com.andrei1058.bedwars.configuration.ConfigPath;
@@ -48,7 +48,7 @@ public class SlimePaperAdapter extends RestoreAdapter {
 
     public SlimePaperAdapter(Plugin plugin) {
         super(plugin);
-        slime = (SlimePlugin) PluginManagerWrap.getPlugin("SlimeWorldManager");
+        slime = (SlimePlugin) PluginManagerHelper.getPlugin("SlimeWorldManager");
     }
 
     @Override
@@ -102,8 +102,8 @@ public class SlimePaperAdapter extends RestoreAdapter {
                         getOwner().getLogger().severe("Something wrong... removing arena " + a.getArenaName() + " from queue.");
                         return;
                     }
-                    PluginManagerWrap.callEvent(new WorldInitEvent(w));
-                    Bukkit.getScheduler().runTask(getOwner(), () -> PluginManagerWrap.callEvent(new WorldLoadEvent(w)));
+                    PluginManagerHelper.callEvent(new WorldInitEvent(w));
+                    Bukkit.getScheduler().runTask(getOwner(), () -> PluginManagerHelper.callEvent(new WorldLoadEvent(w)));
                 });
             } catch (UnknownWorldException | IOException | CorruptedWorldException | NewerFormatException |
                      WorldLockedException ex) {
@@ -205,8 +205,8 @@ public class SlimePaperAdapter extends RestoreAdapter {
                     if (w == null) {
                         return;
                     }
-                    PluginManagerWrap.callEvent(new WorldInitEvent(w));
-                    Bukkit.getScheduler().runTask(getOwner(), () -> PluginManagerWrap.callEvent(new WorldLoadEvent(w)));
+                    PluginManagerHelper.callEvent(new WorldInitEvent(w));
+                    Bukkit.getScheduler().runTask(getOwner(), () -> PluginManagerHelper.callEvent(new WorldLoadEvent(w)));
                     s.teleportPlayer();
                 });
             } catch (UnknownWorldException | IOException | CorruptedWorldException | NewerFormatException |

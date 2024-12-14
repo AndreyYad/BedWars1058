@@ -3,13 +3,12 @@ package com.andrei1058.bedwars.shop.listeners;
 import com.andrei1058.bedwars.BedWars;
 import com.andrei1058.bedwars.arena.IArena;
 import com.andrei1058.bedwars.arena.team.ITeam;
-import com.andrei1058.bedwars.bukkitwrap.PluginManagerWrap;
+import com.andrei1058.bedwars._fwextension.helpering.statichelpers.PluginManagerHelper;
 import com.andrei1058.bedwars.configuration.ConfigPath;
 import com.andrei1058.bedwars.events.player.PlayerBedBugSpawnEvent;
 import com.andrei1058.bedwars.events.player.PlayerDreamDefenderSpawnEvent;
 import com.andrei1058.bedwars.arena.Arena;
 import com.andrei1058.bedwars.arena.Misc;
-import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
@@ -49,7 +48,7 @@ public class SpecialsListener implements Listener {
                     nms.spawnSilverfish(l.add(0, 1, 0), playerTeam, BedWars.shop.getYml().getDouble(ConfigPath.SHOP_SPECIAL_SILVERFISH_SPEED),
                             BedWars.shop.getYml().getDouble(ConfigPath.SHOP_SPECIAL_SILVERFISH_HEALTH), BedWars.shop.getInt(ConfigPath.SHOP_SPECIAL_SILVERFISH_DESPAWN),
                             BedWars.shop.getYml().getDouble(ConfigPath.SHOP_SPECIAL_SILVERFISH_DAMAGE));
-                    PluginManagerWrap.callEvent(event);
+                    PluginManagerHelper.callEvent(event);
                     if (!nms.isProjectile(i)) {
                         nms.minusAmount(p, i, 1);
                         p.updateInventory();
@@ -66,7 +65,7 @@ public class SpecialsListener implements Listener {
                     PlayerDreamDefenderSpawnEvent event = new PlayerDreamDefenderSpawnEvent(p, playerTeam, a);
                     nms.spawnIronGolem(l.add(0, 1, 0), playerTeam, BedWars.shop.getYml().getDouble(ConfigPath.SHOP_SPECIAL_IRON_GOLEM_SPEED),
                             BedWars.shop.getYml().getDouble(ConfigPath.SHOP_SPECIAL_IRON_GOLEM_HEALTH), BedWars.shop.getInt(ConfigPath.SHOP_SPECIAL_IRON_GOLEM_DESPAWN));
-                    PluginManagerWrap.callEvent(event);
+                    PluginManagerHelper.callEvent(event);
                     if (!nms.isProjectile(i)) {
                         nms.minusAmount(p, i, 1);
                         p.updateInventory();

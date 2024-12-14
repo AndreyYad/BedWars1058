@@ -1,7 +1,7 @@
 package com.andrei1058.bedwars.shop.main;
 
 import com.andrei1058.bedwars.BedWars;
-import com.andrei1058.bedwars.bukkitwrap.PluginManagerWrap;
+import com.andrei1058.bedwars._fwextension.helpering.statichelpers.PluginManagerHelper;
 import com.andrei1058.bedwars.events.shop.ShopOpenEvent;
 import com.andrei1058.bedwars.language.Language;
 import com.andrei1058.bedwars.arena.Arena;
@@ -61,7 +61,7 @@ public class ShopIndex {
 
         if (callEvent) {
             ShopOpenEvent event = new ShopOpenEvent(player, Arena.getArenaByPlayer(player));
-            PluginManagerWrap.callEvent(event);
+            PluginManagerHelper.callEvent(event);
             if (event.isCancelled()) return;
         }
 

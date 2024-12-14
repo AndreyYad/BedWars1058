@@ -1,7 +1,7 @@
 package com.andrei1058.bedwars.shop;
 
 import com.andrei1058.bedwars.BedWars;
-import com.andrei1058.bedwars.bukkitwrap.PluginManagerWrap;
+import com.andrei1058.bedwars._fwextension.helpering.statichelpers.PluginManagerHelper;
 import com.andrei1058.bedwars.configuration.ConfigManager;
 import com.andrei1058.bedwars.configuration.ConfigPath;
 import com.andrei1058.bedwars.language.Messages;
@@ -511,11 +511,11 @@ public class ShopManager extends ConfigManager {
      * Register shop related listeners
      */
     private void registerListeners() {
-        PluginManagerWrap.registerEvents(new InventoryListener(), BedWars.plugin);
-        PluginManagerWrap.registerEvents(new ShopCacheListener(), BedWars.plugin);
-        PluginManagerWrap.registerEvents(new QuickBuyListener(), BedWars.plugin);
-        PluginManagerWrap.registerEvents(new ShopOpenListener(), BedWars.plugin);
-        PluginManagerWrap.registerEvents(new PlayerDropListener(), BedWars.plugin);
-        PluginManagerWrap.registerEvents(new SpecialsListener(), BedWars.plugin);
+        PluginManagerHelper.registerEvents(new InventoryListener(), BedWars.plugin);
+        PluginManagerHelper.registerEvents(new ShopCacheListener(), BedWars.plugin);
+        PluginManagerHelper.registerEvents(new QuickBuyListener(), BedWars.plugin);
+        PluginManagerHelper.registerEvents(new ShopOpenListener(), BedWars.plugin);
+        PluginManagerHelper.registerEvents(new PlayerDropListener(), BedWars.plugin);
+        PluginManagerHelper.registerEvents(new SpecialsListener(), BedWars.plugin);
     }
 }

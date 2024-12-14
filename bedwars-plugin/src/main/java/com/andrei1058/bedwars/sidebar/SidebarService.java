@@ -4,14 +4,12 @@ import com.andrei1058.bedwars.BedWars;
 import com.andrei1058.bedwars.arena.GameState;
 import com.andrei1058.bedwars.arena.IArena;
 import com.andrei1058.bedwars.arena.team.ITeam;
-import com.andrei1058.bedwars.bukkitwrap.PluginManagerWrap;
+import com.andrei1058.bedwars._fwextension.helpering.statichelpers.PluginManagerHelper;
 import com.andrei1058.bedwars.configuration.ConfigPath;
 import com.andrei1058.bedwars.events.sidebar.PlayerSidebarInitEvent;
 import com.andrei1058.bedwars.language.Language;
 import com.andrei1058.bedwars.language.Messages;
 import com.andrei1058.bedwars.server.ServerType;
-import com.andrei1058.bedwars.sidebar.ISidebar;
-import com.andrei1058.bedwars.sidebar.ISidebarService;
 import com.andrei1058.bedwars.metrics.MetricsManager;
 import com.andrei1058.bedwars.sidebar.thread.*;
 import com.andrei1058.spigot.sidebar.SidebarManager;
@@ -215,7 +213,7 @@ public class SidebarService implements ISidebarService {
             newlyAdded = true;
 
             PlayerSidebarInitEvent event = new PlayerSidebarInitEvent(player, sidebar);
-            PluginManagerWrap.callEvent(event);
+            PluginManagerHelper.callEvent(event);
             if (event.isCancelled()) {
                 return;
             }

@@ -2,7 +2,7 @@ package com.andrei1058.bedwars.arena;
 
 import com.andrei1058.bedwars.BedWars;
 import com.andrei1058.bedwars.arena.team.TeamColor;
-import com.andrei1058.bedwars.bukkitwrap.PluginManagerWrap;
+import com.andrei1058.bedwars._fwextension.helpering.statichelpers.PluginManagerHelper;
 import com.andrei1058.bedwars.configuration.ConfigPath;
 import com.andrei1058.bedwars.events.server.SetupSessionCloseEvent;
 import com.andrei1058.bedwars.events.server.SetupSessionStartEvent;
@@ -155,7 +155,7 @@ public class SetupSession implements ISetupSession {
         }
         getPlayer().removePotionEffect(PotionEffectType.SPEED);
         if (BedWars.getServerType() == ServerType.MULTIARENA) Arena.sendLobbyCommandItems(getPlayer());
-        PluginManagerWrap.callEvent(new SetupSessionCloseEvent(this));
+        PluginManagerHelper.callEvent(new SetupSessionCloseEvent(this));
     }
 
     /**
@@ -222,7 +222,7 @@ public class SetupSession implements ISetupSession {
                 .filter(e -> e.getType() != EntityType.ITEM_FRAME).forEach(Entity::remove), 30L);
         w.setAutoSave(false);
         w.setGameRuleValue("doMobSpawning", "false");
-        PluginManagerWrap.callEvent(new SetupSessionStartEvent(this));
+        PluginManagerHelper.callEvent(new SetupSessionStartEvent(this));
         setStarted(true);
 
         Bukkit.getScheduler().runTaskLater(plugin, () -> {

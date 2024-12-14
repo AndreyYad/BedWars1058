@@ -2,7 +2,6 @@ package com.andrei1058.bedwars.lobbysocket;
 
 import com.andrei1058.bedwars.BedWars;
 import com.andrei1058.bedwars.arena.IArena;
-import com.andrei1058.bedwars.bukkitwrap.validation.EventValidation;
 import com.andrei1058.bedwars.events.gameplay.GameStateChangeEvent;
 import com.andrei1058.bedwars.events.player.PlayerJoinArenaEvent;
 import com.andrei1058.bedwars.events.player.PlayerLeaveArenaEvent;

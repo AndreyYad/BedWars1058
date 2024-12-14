@@ -3,10 +3,7 @@ package com.andrei1058.bedwars.arena.team;
 import com.andrei1058.bedwars.BedWars;
 import com.andrei1058.bedwars.arena.generator.GeneratorType;
 import com.andrei1058.bedwars.arena.generator.IGenerator;
-import com.andrei1058.bedwars.arena.team.ITeam;
-import com.andrei1058.bedwars.arena.team.TeamColor;
-import com.andrei1058.bedwars.arena.team.TeamEnchant;
-import com.andrei1058.bedwars.bukkitwrap.PluginManagerWrap;
+import com.andrei1058.bedwars._fwextension.helpering.statichelpers.PluginManagerHelper;
 import com.andrei1058.bedwars.configuration.ConfigPath;
 import com.andrei1058.bedwars.events.player.PlayerFirstSpawnEvent;
 import com.andrei1058.bedwars.events.player.PlayerReSpawnEvent;
@@ -130,7 +127,7 @@ public class BedWarsTeam implements ITeam {
         p.setCanPickupItems(true);
         nms.setCollide(p, getArena(), true);
         sendDefaultInventory(p, true);
-        PluginManagerWrap.callEvent(new PlayerFirstSpawnEvent(p, getArena(), this));
+        PluginManagerHelper.callEvent(new PlayerFirstSpawnEvent(p, getArena(), this));
     }
 
     /**
@@ -401,7 +398,7 @@ public class BedWarsTeam implements ITeam {
                 p.updateInventory();
             }
         }
-        PluginManagerWrap.callEvent(new PlayerReSpawnEvent(p, getArena(), this));
+        PluginManagerHelper.callEvent(new PlayerReSpawnEvent(p, getArena(), this));
         nms.sendPlayerSpawnPackets(p, getArena());
 
         Bukkit.getScheduler().runTaskLater(plugin, () -> {

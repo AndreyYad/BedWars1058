@@ -1,6 +1,6 @@
 package com.andrei1058.bedwars.support.version.common;
 
-import com.andrei1058.bedwars.bukkitwrap.PluginManagerWrap;
+import com.andrei1058.bedwars._fwextension.helpering.statichelpers.PluginManagerHelper;
 import com.andrei1058.bedwars.server.VersionSupport;
 import com.andrei1058.bedwars.listeners.Interact_1_13Plus;
 import com.andrei1058.bedwars.listeners.ItemDropPickListener;
@@ -27,7 +27,7 @@ public class VersionCommon {
 
     private void registerListeners(Plugin plugin, Listener... listener) {
         for (Listener l : listener) {
-            PluginManagerWrap.registerEvents(l, plugin);
+            PluginManagerHelper.registerEvents(l, plugin);
         }
     }
 }

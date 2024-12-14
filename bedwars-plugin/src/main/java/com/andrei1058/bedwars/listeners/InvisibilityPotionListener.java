@@ -2,7 +2,7 @@ package com.andrei1058.bedwars.listeners;
 
 import com.andrei1058.bedwars.arena.IArena;
 import com.andrei1058.bedwars.arena.team.ITeam;
-import com.andrei1058.bedwars.bukkitwrap.PluginManagerWrap;
+import com.andrei1058.bedwars._fwextension.helpering.statichelpers.PluginManagerHelper;
 import com.andrei1058.bedwars.events.player.PlayerInvisibilityPotionEvent;
 import com.andrei1058.bedwars.arena.Arena;
 import com.andrei1058.bedwars.sidebar.SidebarService;
@@ -56,7 +56,7 @@ public class InvisibilityPotionListener implements Listener {
                             // because potions do not hide armors
                             a.getShowTime().replace(e.getPlayer(), pe.getDuration() / 20);
                             // call custom event
-                            PluginManagerWrap.callEvent(new PlayerInvisibilityPotionEvent(PlayerInvisibilityPotionEvent.Type.ADDED, t, e.getPlayer(), t.getArena()));
+                            PluginManagerHelper.callEvent(new PlayerInvisibilityPotionEvent(PlayerInvisibilityPotionEvent.Type.ADDED, t, e.getPlayer(), t.getArena()));
                         } else {
                             // if not already invisible
                             ITeam t = a.getTeam(e.getPlayer());
@@ -74,7 +74,7 @@ public class InvisibilityPotionListener implements Listener {
                                 }
                             }
                             // call custom event
-                            PluginManagerWrap.callEvent(new PlayerInvisibilityPotionEvent(PlayerInvisibilityPotionEvent.Type.ADDED, t, e.getPlayer(), t.getArena()));
+                            PluginManagerHelper.callEvent(new PlayerInvisibilityPotionEvent(PlayerInvisibilityPotionEvent.Type.ADDED, t, e.getPlayer(), t.getArena()));
                         }
                         break;
                     }

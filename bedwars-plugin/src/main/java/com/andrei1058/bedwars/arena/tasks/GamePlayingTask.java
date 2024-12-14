@@ -6,7 +6,7 @@ import com.andrei1058.bedwars.arena.GameState;
 import com.andrei1058.bedwars.arena.IArena;
 import com.andrei1058.bedwars.arena.generator.IGenerator;
 import com.andrei1058.bedwars.arena.team.ITeam;
-import com.andrei1058.bedwars.bukkitwrap.PluginManagerWrap;
+import com.andrei1058.bedwars._fwextension.helpering.statichelpers.PluginManagerHelper;
 import com.andrei1058.bedwars.configuration.ConfigPath;
 import com.andrei1058.bedwars.events.player.PlayerInvisibilityPotionEvent;
 import com.andrei1058.bedwars.language.Language;
@@ -223,7 +223,7 @@ public class GamePlayingTask implements Runnable, PlayingTask {
                     }
                     e.getKey().removePotionEffect(PotionEffectType.INVISIBILITY);
                     getArena().getShowTime().remove(e.getKey());
-                    PluginManagerWrap.callEvent(new PlayerInvisibilityPotionEvent(PlayerInvisibilityPotionEvent.Type.REMOVED, getArena().getTeam(e.getKey()), e.getKey(), getArena()));
+                    PluginManagerHelper.callEvent(new PlayerInvisibilityPotionEvent(PlayerInvisibilityPotionEvent.Type.REMOVED, getArena().getTeam(e.getKey()), e.getKey(), getArena()));
                 } else {
                     getArena().getShowTime().replace(e.getKey(), e.getValue() - 1);
                 }

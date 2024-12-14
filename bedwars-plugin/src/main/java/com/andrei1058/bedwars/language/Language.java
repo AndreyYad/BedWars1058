@@ -2,7 +2,7 @@
 package com.andrei1058.bedwars.language;
 
 import com.andrei1058.bedwars.BedWars;
-import com.andrei1058.bedwars.bukkitwrap.PluginManagerWrap;
+import com.andrei1058.bedwars._fwextension.helpering.statichelpers.PluginManagerHelper;
 import com.andrei1058.bedwars.configuration.ConfigManager;
 import com.andrei1058.bedwars.configuration.ConfigPath;
 import com.andrei1058.bedwars.events.player.PlayerLangChangeEvent;
@@ -401,7 +401,7 @@ public class Language extends ConfigManager {
                 Player player = Bukkit.getPlayer(uuid);
                 if (player != null && player.isOnline()) {
                     PlayerLangChangeEvent e = new PlayerLangChangeEvent(player, langByPlayer.get(uuid).iso, getDefaultLanguage().iso);
-                    PluginManagerWrap.callEvent(e);
+                    PluginManagerHelper.callEvent(e);
                     if (e.isCancelled()) return false;
                 }
             }
@@ -417,7 +417,7 @@ public class Language extends ConfigManager {
         Player player = Bukkit.getPlayer(uuid);
         if (player != null && player.isOnline()) {
             PlayerLangChangeEvent e = new PlayerLangChangeEvent(player, oldLang.getIso(), newLang.getIso());
-            PluginManagerWrap.callEvent(e);
+            PluginManagerHelper.callEvent(e);
             if (e.isCancelled()) return false;
         }
 

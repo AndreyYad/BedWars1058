@@ -2,9 +2,6 @@ package com.andrei1058.bedwars.arena;
 
 import com.andrei1058.bedwars.AFKSystem;
 import com.andrei1058.bedwars.BedWars;
-import com.andrei1058.bedwars.arena.GameState;
-import com.andrei1058.bedwars.arena.IArena;
-import com.andrei1058.bedwars.arena.NextEvent;
 import com.andrei1058.bedwars.arena.generator.GeneratorType;
 import com.andrei1058.bedwars.arena.generator.IGenerator;
 import com.andrei1058.bedwars.arena.shop.ShopHolo;
@@ -12,7 +9,7 @@ import com.andrei1058.bedwars.arena.stats.*;
 import com.andrei1058.bedwars.arena.team.ITeam;
 import com.andrei1058.bedwars.arena.team.ITeamAssigner;
 import com.andrei1058.bedwars.arena.team.TeamColor;
-import com.andrei1058.bedwars.bukkitwrap.PluginManagerWrap;
+import com.andrei1058.bedwars._fwextension.helpering.statichelpers.PluginManagerHelper;
 import com.andrei1058.bedwars.configuration.ConfigPath;
 import com.andrei1058.bedwars.entity.Despawnable;
 import com.andrei1058.bedwars.events.gameplay.GameEndEvent;
@@ -335,7 +332,7 @@ public class Arena implements IArena {
         /* Register arena signs */
         registerSigns();
         //Call event
-        PluginManagerWrap.callEvent(new ArenaEnableEvent(this));
+        PluginManagerHelper.callEvent(new ArenaEnableEvent(this));
 
         // Re Spawn Session Location
         respawnLocation = cm.getArenaLoc(ConfigPath.ARENA_SPEC_LOC);
@@ -461,7 +458,7 @@ public class Arena implements IArena {
             }
 
             PlayerJoinArenaEvent ev = new PlayerJoinArenaEvent(this, p, false);
-            PluginManagerWrap.callEvent(ev);
+            PluginManagerHelper.callEvent(ev);
             if (ev.isCancelled()) return false;
 
             //Remove from ReJoin
@@ -600,7 +597,7 @@ public class Arena implements IArena {
 
             if (!playerBefore) {
                 PlayerJoinArenaEvent ev = new PlayerJoinArenaEvent(this, p, true);
-                PluginManagerWrap.callEvent(ev);
+                PluginManagerHelper.callEvent(ev);
                 if (ev.isCancelled()) return false;
             }
 
@@ -764,7 +761,7 @@ public class Arena implements IArena {
                 lastDamager = null;
             }
         }
-        PluginManagerWrap.callEvent(new PlayerLeaveArenaEvent(p, this, lastDamager));
+        PluginManagerHelper.callEvent(new PlayerLeaveArenaEvent(p, this, lastDamager));
         //players.remove must be under call event in order to check if the player is a spectator or not
         players.remove(p);
         removeArenaByPlayer(p, this);
@@ -834,7 +831,7 @@ public class Arena implements IArena {
                     PlayerKillEvent event = new PlayerKillEvent(this, p, team, lastDamager, killerTeam,
                             player -> Language.getMsg(player, message), cause
                     );
-                    PluginManagerWrap.callEvent(event);
+                    PluginManagerHelper.callEvent(event);
 
                     if (null != event.getMessage()) {
                         for (Player inGame : getPlayers()) {
@@ -1007,7 +1004,7 @@ public class Arena implements IArena {
             leaving.add(p);
         }
 
-        PluginManagerWrap.callEvent(new PlayerLeaveArenaEvent(p, this, null));
+        PluginManagerHelper.callEvent(new PlayerLeaveArenaEvent(p, this, null));
         spectators.remove(p);
         removeArenaByPlayer(p, this);
         p.getInventory().clear();
@@ -1113,7 +1110,7 @@ public class Arena implements IArena {
         }
 
         PlayerReJoinEvent ev = new PlayerReJoinEvent(p, this, BedWars.config.getInt(ConfigPath.GENERAL_CONFIGURATION_RE_SPAWN_COUNTDOWN));
-        PluginManagerWrap.callEvent(ev);
+        PluginManagerHelper.callEvent(ev);
         if (ev.isCancelled()) return false;
 
         for (Player on : Bukkit.getOnlinePlayers()) {
@@ -1176,7 +1173,7 @@ public class Arena implements IArena {
             inWorld.kickPlayer("You're not supposed to be here.");
         }
         BedWars.getRestoreAdapter().onDisable(this);
-        PluginManagerWrap.callEvent(new ArenaDisableEvent(getArenaName(), getWorldName()));
+        PluginManagerHelper.callEvent(new ArenaDisableEvent(getArenaName(), getWorldName()));
         destroyData();
     }
 
@@ -1194,7 +1191,7 @@ public class Arena implements IArena {
             perMinuteTask.cancel();
         }
         plugin.getLogger().log(Level.FINE, "Restarting arena: " + getArenaName());
-        PluginManagerWrap.callEvent(new ArenaRestartEvent(getArenaName(), getWorldName()));
+        PluginManagerHelper.callEvent(new ArenaRestartEvent(getArenaName(), getWorldName()));
         for (Player inWorld : getWorld().getPlayers()) {
             inWorld.kickPlayer("You're not supposed to be here.");
         }
@@ -1480,7 +1477,7 @@ public class Arena implements IArena {
             startTime = Instant.now();
         }
         this.status = status;
-        PluginManagerWrap.callEvent(new GameStateChangeEvent(this, status, status));
+        PluginManagerHelper.callEvent(new GameStateChangeEvent(this, status, status));
         refreshSigns();
         if (status == GameState.playing) {
             for (Player p : players) {
@@ -1962,7 +1959,7 @@ public class Arena implements IArena {
                         losers.add(p.getUniqueId());
                     }
                 }
-                PluginManagerWrap.callEvent(new GameEndEvent(this, winners, losers, winner, aliveWinners));
+                PluginManagerHelper.callEvent(new GameEndEvent(this, winners, losers, winner, aliveWinners));
 
             }
             if (players.isEmpty() && status != GameState.restarting) {
@@ -1987,7 +1984,7 @@ public class Arena implements IArena {
             Sounds.playSound(this.nextEvent.getSoundPath(), getPlayers());
             Sounds.playSound(this.nextEvent.getSoundPath(), getSpectators());
         }
-        PluginManagerWrap.callEvent(new NextEventChangeEvent(this, nextEvent, this.nextEvent));
+        PluginManagerHelper.callEvent(new NextEventChangeEvent(this, nextEvent, this.nextEvent));
         this.nextEvent = nextEvent;
     }
 

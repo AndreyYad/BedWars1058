@@ -1,4 +1,4 @@
-package com.andrei1058.bedwars.bukkitwrap.validation;
+package com.andrei1058.bedwars._fwextension.validation;
 
 import com.andrei1058.bedwars.arena.Arena;
 import com.andrei1058.bedwars.arena.IArena;

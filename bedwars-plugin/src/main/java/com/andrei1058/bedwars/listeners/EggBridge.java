@@ -2,12 +2,11 @@ package com.andrei1058.bedwars.listeners;
 
 import com.andrei1058.bedwars.BedWars;
 import com.andrei1058.bedwars.arena.IArena;
-import com.andrei1058.bedwars.bukkitwrap.PluginManagerWrap;
+import com.andrei1058.bedwars._fwextension.helpering.statichelpers.PluginManagerHelper;
 import com.andrei1058.bedwars.events.gameplay.EggBridgeThrowEvent;
 import com.andrei1058.bedwars.server.ServerType;
 import com.andrei1058.bedwars.arena.Arena;
 import com.andrei1058.bedwars.arena.tasks.EggBridgeTask;
-import org.bukkit.Bukkit;
 import org.bukkit.entity.Egg;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -41,7 +40,7 @@ public class EggBridge implements Listener {
                 if (arena != null) {
                     if (arena.isPlayer(shooter)) {
                         EggBridgeThrowEvent throwEvent = new EggBridgeThrowEvent(shooter, arena);
-                        PluginManagerWrap.callEvent(throwEvent);
+                        PluginManagerHelper.callEvent(throwEvent);
                         if (event.isCancelled()) {
                             event.setCancelled(true);
                             return;

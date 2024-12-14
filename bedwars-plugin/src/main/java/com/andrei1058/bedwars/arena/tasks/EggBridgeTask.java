@@ -3,7 +3,7 @@ package com.andrei1058.bedwars.arena.tasks;
 import com.andrei1058.bedwars.BedWars;
 import com.andrei1058.bedwars.arena.IArena;
 import com.andrei1058.bedwars.arena.team.TeamColor;
-import com.andrei1058.bedwars.bukkitwrap.PluginManagerWrap;
+import com.andrei1058.bedwars._fwextension.helpering.statichelpers.PluginManagerHelper;
 import com.andrei1058.bedwars.events.gameplay.EggBridgeBuildEvent;
 import com.andrei1058.bedwars.arena.Arena;
 import com.andrei1058.bedwars.arena.Misc;
@@ -75,7 +75,7 @@ public class EggBridgeTask implements Runnable {
                     b2.setType(Material.WHITE_WOOL);
                     nms.setBlockTeamColor(b2, getTeamColor());
                     getArena().addPlacedBlock(b2);
-                    PluginManagerWrap.callEvent(new EggBridgeBuildEvent(getTeamColor(), getArena(), b2));
+                    PluginManagerHelper.callEvent(new EggBridgeBuildEvent(getTeamColor(), getArena(), b2));
                     loc.getWorld().playEffect(b2.getLocation(), nms.eggBridge(), 3);
                     Sounds.playSound("egg-bridge-block", getPlayer());
                 }
@@ -87,7 +87,7 @@ public class EggBridgeTask implements Runnable {
                     b3.setType(Material.WHITE_WOOL);
                     nms.setBlockTeamColor(b3, getTeamColor());
                     getArena().addPlacedBlock(b3);
-                    PluginManagerWrap.callEvent(new EggBridgeBuildEvent(getTeamColor(), getArena(), b3));
+                    PluginManagerHelper.callEvent(new EggBridgeBuildEvent(getTeamColor(), getArena(), b3));
                     loc.getWorld().playEffect(b3.getLocation(), nms.eggBridge(), 3);
                     Sounds.playSound("egg-bridge-block", getPlayer());
                 }
@@ -99,7 +99,7 @@ public class EggBridgeTask implements Runnable {
                     b4.setType(Material.WHITE_WOOL);
                     nms.setBlockTeamColor(b4, getTeamColor());
                     getArena().addPlacedBlock(b4);
-                    PluginManagerWrap.callEvent(new EggBridgeBuildEvent(getTeamColor(), getArena(), b4));
+                    PluginManagerHelper.callEvent(new EggBridgeBuildEvent(getTeamColor(), getArena(), b4));
                     loc.getWorld().playEffect(b4.getLocation(), nms.eggBridge(), 3);
                     Sounds.playSound("egg-bridge-block", getPlayer());
                 }

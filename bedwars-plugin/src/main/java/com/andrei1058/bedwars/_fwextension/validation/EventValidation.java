@@ -1,4 +1,4 @@
-package com.andrei1058.bedwars.bukkitwrap.validation;
+package com.andrei1058.bedwars._fwextension.validation;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

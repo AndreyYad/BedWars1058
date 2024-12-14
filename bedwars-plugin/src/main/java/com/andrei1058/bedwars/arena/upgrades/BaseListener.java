@@ -3,14 +3,12 @@ package com.andrei1058.bedwars.arena.upgrades;
 import com.andrei1058.bedwars.arena.GameState;
 import com.andrei1058.bedwars.arena.IArena;
 import com.andrei1058.bedwars.arena.team.ITeam;
-import com.andrei1058.bedwars.bukkitwrap.PluginManagerWrap;
-import com.andrei1058.bedwars.bukkitwrap.validation.EventValidation;
+import com.andrei1058.bedwars._fwextension.helpering.statichelpers.PluginManagerHelper;
 import com.andrei1058.bedwars.events.player.PlayerBaseEnterEvent;
 import com.andrei1058.bedwars.events.player.PlayerBaseLeaveEvent;
 import com.andrei1058.bedwars.events.player.PlayerLeaveArenaEvent;
 import com.andrei1058.bedwars.arena.Arena;
 import com.andrei1058.bedwars.arena.team.BedWarsTeam;
-import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
@@ -71,15 +69,15 @@ public class BaseListener implements Listener {
                 notOnBase = false;
                 if (isOnABase.containsKey(p)) {
                     if (isOnABase.get(p) != bwt) {
-                        PluginManagerWrap.callEvent(new PlayerBaseLeaveEvent(p, isOnABase.get(p)));
+                        PluginManagerHelper.callEvent(new PlayerBaseLeaveEvent(p, isOnABase.get(p)));
                         if (!Arena.magicMilk.containsKey(p.getUniqueId())) {
-                            PluginManagerWrap.callEvent(new PlayerBaseEnterEvent(p, bwt));
+                            PluginManagerHelper.callEvent(new PlayerBaseEnterEvent(p, bwt));
                         }
                         isOnABase.replace(p, bwt);
                     }
                 } else {
                     if (!Arena.magicMilk.containsKey(p.getUniqueId())) {
-                        PluginManagerWrap.callEvent(new PlayerBaseEnterEvent(p, bwt));
+                        PluginManagerHelper.callEvent(new PlayerBaseEnterEvent(p, bwt));
                         isOnABase.put(p, bwt);
                     }
                 }
@@ -88,7 +86,7 @@ public class BaseListener implements Listener {
         /* BaseLeaveEvent */
         if (notOnBase) {
             if (isOnABase.containsKey(p)) {
-                PluginManagerWrap.callEvent(new PlayerBaseLeaveEvent(p, isOnABase.get(p)));
+                PluginManagerHelper.callEvent(new PlayerBaseLeaveEvent(p, isOnABase.get(p)));
                 isOnABase.remove(p);
             }
         }

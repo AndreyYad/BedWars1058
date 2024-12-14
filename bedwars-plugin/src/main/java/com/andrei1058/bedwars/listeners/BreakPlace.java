@@ -7,7 +7,7 @@ import com.andrei1058.bedwars.arena.NextEvent;
 import com.andrei1058.bedwars.arena.generator.IGenerator;
 import com.andrei1058.bedwars.arena.team.ITeam;
 import com.andrei1058.bedwars.arena.team.TeamColor;
-import com.andrei1058.bedwars.bukkitwrap.PluginManagerWrap;
+import com.andrei1058.bedwars._fwextension.helpering.statichelpers.PluginManagerHelper;
 import com.andrei1058.bedwars.configuration.ConfigPath;
 import com.andrei1058.bedwars.events.player.PlayerBedBreakEvent;
 import com.andrei1058.bedwars.language.Language;
@@ -291,7 +291,7 @@ public class BreakPlace implements Listener {
                                             e.setCancelled(false);
                                             t.setBedDestroyed(true);
                                             PlayerBedBreakEvent breakEvent;
-                                            PluginManagerWrap.callEvent(breakEvent = new PlayerBedBreakEvent(e.getPlayer(), a.getTeam(p), t, a,
+                                            PluginManagerHelper.callEvent(breakEvent = new PlayerBedBreakEvent(e.getPlayer(), a.getTeam(p), t, a,
                                                     player -> {
                                                         if (t.isMember(player)) {
                                                             return getMsg(player, Messages.INTERACT_BED_DESTROY_CHAT_ANNOUNCEMENT_TO_VICTIM);

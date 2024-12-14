@@ -1,19 +1,16 @@
 package com.andrei1058.bedwars.arena;
 
 import com.andrei1058.bedwars.BedWars;
-import com.andrei1058.bedwars.arena.GameState;
-import com.andrei1058.bedwars.arena.IArena;
 import com.andrei1058.bedwars.arena.generator.GeneratorType;
 import com.andrei1058.bedwars.arena.generator.IGenHolo;
 import com.andrei1058.bedwars.arena.generator.IGenerator;
 import com.andrei1058.bedwars.arena.team.ITeam;
-import com.andrei1058.bedwars.bukkitwrap.PluginManagerWrap;
+import com.andrei1058.bedwars._fwextension.helpering.statichelpers.PluginManagerHelper;
 import com.andrei1058.bedwars.configuration.ConfigPath;
 import com.andrei1058.bedwars.events.gameplay.GeneratorUpgradeEvent;
 import com.andrei1058.bedwars.language.Language;
 import com.andrei1058.bedwars.language.Messages;
 import com.andrei1058.bedwars.region.Cuboid;
-import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.Sound;
@@ -119,7 +116,7 @@ public class OreGenerator implements IGenerator {
                 }
                 break;
         }
-        PluginManagerWrap.callEvent(new GeneratorUpgradeEvent(this));
+        PluginManagerHelper.callEvent(new GeneratorUpgradeEvent(this));
     }
 
     @Override

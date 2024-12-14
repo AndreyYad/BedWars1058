@@ -1,7 +1,7 @@
 package com.andrei1058.bedwars.halloween;
 
 import com.andrei1058.bedwars.BedWars;
-import com.andrei1058.bedwars.bukkitwrap.PluginManagerWrap;
+import com.andrei1058.bedwars._fwextension.helpering.statichelpers.PluginManagerHelper;
 import com.andrei1058.bedwars.configuration.ConfigPath;
 import com.andrei1058.bedwars.halloween.shop.PumpkinContent;
 import com.andrei1058.bedwars.metrics.MetricsManager;
@@ -20,7 +20,7 @@ public class HalloweenSpecial {
     private HalloweenSpecial() {
         BedWars.plugin.getLogger().info(ChatColor.AQUA + "Loaded Halloween Special <3");
         // pumpkin hats
-        PluginManagerWrap.registerEvents(new HalloweenListener(), BedWars.plugin);
+        PluginManagerHelper.registerEvents(new HalloweenListener(), BedWars.plugin);
 
         // pumpkin in shop
         ShopCategory blockCategory = ShopManager.getShop().getCategoryList().stream().filter(category -> category.getName().equals("blocks-category")).findFirst().orElse(null);

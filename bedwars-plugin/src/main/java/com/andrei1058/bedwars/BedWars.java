@@ -1,7 +1,7 @@
 package com.andrei1058.bedwars;
 
 import com.andrei1058.bedwars.arena.IArena;
-import com.andrei1058.bedwars.bukkitwrap.PluginManagerWrap;
+import com.andrei1058.bedwars._fwextension.helpering.statichelpers.PluginManagerHelper;
 import com.andrei1058.bedwars.configuration.ConfigManager;
 import com.andrei1058.bedwars.configuration.ConfigPath;
 import com.andrei1058.bedwars.language.Language;
@@ -286,13 +286,13 @@ public class BedWars extends JavaPlugin {
         Bukkit.getScheduler().runTaskLater(this, () -> {
             if (config.getYml().getBoolean(ConfigPath.GENERAL_CONFIGURATION_ALLOW_PARTIES)) {
 
-                if (PluginManagerWrap.isPluginEnabled("Parties")) {
+                if (PluginManagerHelper.isPluginEnabled("Parties")) {
                     out.info("Hook into Parties (by AlessioDP) support!");
                     party = new PartiesAdapter();
-                } else if (PluginManagerWrap.isPluginEnabled("PartyAndFriends")) {
+                } else if (PluginManagerHelper.isPluginEnabled("PartyAndFriends")) {
                     out.info("Hook into Party and Friends for Spigot (by Simonsator) support!");
                     party = new PAF();
-                } else if (PluginManagerWrap.isPluginEnabled("Spigot-Party-API-PAF")) {
+                } else if (PluginManagerHelper.isPluginEnabled("Spigot-Party-API-PAF")) {
                     out.info("Hook into Spigot Party API for Party and Friends Extended (by Simonsator) support!");
                     party = new PAFBungeecordRedisApi();
                 }
@@ -340,7 +340,7 @@ public class BedWars extends JavaPlugin {
 
         /* Citizens support */
         Bukkit.getScheduler().runTaskLater(plugin, () -> {
-            if (PluginManagerWrap.getPlugin("Citizens") != null) {
+            if (PluginManagerHelper.getPlugin("Citizens") != null) {
                 JoinNPC.setCitizensSupport(true);
                 out.info("Hook into Citizens support. /bw npc");
                 registerEvents(new CitizensListener());
@@ -359,7 +359,7 @@ public class BedWars extends JavaPlugin {
         Language.setupCustomStatsMessages();
 
         /* PlaceholderAPI Support */
-        if (PluginManagerWrap.getPlugin("PlaceholderAPI") != null) {
+        if (PluginManagerHelper.getPlugin("PlaceholderAPI") != null) {
             out.info("Hooked into PlaceholderAPI support!");
             new PAPISupport().register();
             SupportPAPI.setSupportPAPI(new SupportPAPI.withPAPI());
@@ -370,7 +370,7 @@ public class BedWars extends JavaPlugin {
          *  to make sure any economy/chat plugins have been loaded and registered.
          */
         Bukkit.getScheduler().runTask(this, () -> {
-            if (PluginManagerWrap.getPlugin("Vault") != null) {
+            if (PluginManagerHelper.getPlugin("Vault") != null) {
                 try {
                     //noinspection rawtypes
                     RegisteredServiceProvider rsp = this.getServer().getServicesManager().getRegistration(net.milkbowl.vault.chat.Chat.class);
@@ -441,7 +441,7 @@ public class BedWars extends JavaPlugin {
         // bStats metrics
         MetricsManager.initService(this);
 
-        if (PluginManagerWrap.getPlugin("VipFeatures") != null) {
+        if (PluginManagerHelper.getPlugin("VipFeatures") != null) {
             try {
                 IVipFeatures vf = Bukkit.getServicesManager().getRegistration(IVipFeatures.class).getProvider();
                 vf.registerMiniGame(new VipFeatures(this));
@@ -487,7 +487,7 @@ public class BedWars extends JavaPlugin {
      * @return true when custom adapter was registered.
      */
     private boolean handleWorldAdapter() {
-        Plugin swmPlugin = PluginManagerWrap.getPlugin("SlimeWorldManager");
+        Plugin swmPlugin = PluginManagerHelper.getPlugin("SlimeWorldManager");
 
         if (null == swmPlugin) {
             return false;
@@ -590,7 +590,7 @@ public class BedWars extends JavaPlugin {
     }
 
     public static void registerEvents(Listener... listeners) {
-        Arrays.stream(listeners).forEach(l -> PluginManagerWrap.registerEvents(l, plugin));
+        Arrays.stream(listeners).forEach(l -> PluginManagerHelper.registerEvents(l, plugin));
     }
 
     public static void setDebug(boolean value) {
@@ -640,7 +640,7 @@ public class BedWars extends JavaPlugin {
     public static void setLevelAdapter(Level levelsManager) {
         if (levelsManager instanceof InternalLevel) {
             if (LevelListeners.instance == null) {
-                PluginManagerWrap.registerEvents(new LevelListeners(), BedWars.plugin);
+                PluginManagerHelper.registerEvents(new LevelListeners(), BedWars.plugin);
             }
         } else {
             if (LevelListeners.instance != null) {

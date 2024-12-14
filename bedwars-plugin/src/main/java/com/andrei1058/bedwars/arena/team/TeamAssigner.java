@@ -2,11 +2,8 @@ package com.andrei1058.bedwars.arena.team;
 
 import com.andrei1058.bedwars.BedWars;
 import com.andrei1058.bedwars.arena.IArena;
-import com.andrei1058.bedwars.arena.team.ITeam;
-import com.andrei1058.bedwars.arena.team.ITeamAssigner;
-import com.andrei1058.bedwars.bukkitwrap.PluginManagerWrap;
+import com.andrei1058.bedwars._fwextension.helpering.statichelpers.PluginManagerHelper;
 import com.andrei1058.bedwars.events.gameplay.TeamAssignEvent;
-import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
 import java.util.ArrayList;
@@ -45,7 +42,7 @@ public class TeamAssigner implements ITeamAssigner {
                         if (teams.get(0).size() > i) {
                             Player toAdd = teams.get(0).remove(0);
                             TeamAssignEvent e = new TeamAssignEvent(toAdd, team, arena);
-                            PluginManagerWrap.callEvent(e);
+                            PluginManagerHelper.callEvent(e);
                             if (!e.isCancelled()) {
                                 toAdd.closeInventory();
                                 team.addPlayers(toAdd);
@@ -64,7 +61,7 @@ public class TeamAssigner implements ITeamAssigner {
             for (ITeam team : arena.getTeams()) {
                 if (team.getMembers().size() < arena.getMaxInTeam()) {
                     TeamAssignEvent e = new TeamAssignEvent(remaining, team, arena);
-                    PluginManagerWrap.callEvent(e);
+                    PluginManagerHelper.callEvent(e);
                     if (!e.isCancelled()) {
                         remaining.closeInventory();
                         team.addPlayers(remaining);

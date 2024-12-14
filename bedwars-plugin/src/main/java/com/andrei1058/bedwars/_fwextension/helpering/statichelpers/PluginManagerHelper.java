@@ -1,6 +1,6 @@
-package com.andrei1058.bedwars.bukkitwrap;
+package com.andrei1058.bedwars._fwextension.helpering.statichelpers;
 
-import com.andrei1058.bedwars.bukkitwrap.methods.SimplePluginManagerMethods;
+import com.andrei1058.bedwars._fwextension.bukkit.modification.SimplePluginManagerMethods;
 import org.bukkit.Bukkit;
 import org.bukkit.event.*;
 import org.bukkit.permissions.Permissible;
@@ -13,7 +13,7 @@ import java.io.File;
 import java.util.*;
 
 @SuppressWarnings("unused")
-public class PluginManagerWrap {
+public class PluginManagerHelper {
     private final static PluginManager pluginManager = Bukkit.getPluginManager();
 
 
