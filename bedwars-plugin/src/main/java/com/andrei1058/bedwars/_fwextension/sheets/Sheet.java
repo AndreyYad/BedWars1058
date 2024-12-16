@@ -18,18 +18,18 @@ public class Sheet<Content> {
 
     protected final int height;
     protected final int width;
-    private final Column<Row<Cell<Content>>> rows;
-    private final Row<Column<Cell<Content>>> columns;
+    private final List<Row<Cell<Content>>> rows;
+    private final List<Column<Cell<Content>>> columns;
     private final List<Cell<Content>> cells;
 
     protected Sheet(int height, int width) {
         this.height = height;
         this.width = width;
-        rows = new Column<>(height);
+        rows = new ArrayList<>(height);
         for (int time : times(height)) {
             rows.add(new Row<>(width));
         }
-        columns = new Row<>(width);
+        columns = new ArrayList<>(width);
         for (int time : times(width)) {
             columns.add(new Column<>(height));
         }
@@ -63,17 +63,17 @@ public class Sheet<Content> {
         return cell(new Cell<>());
     }
 
-    public Row<Cell<Content>> row(int row) {
+    public Row<Cell<Content>> getRow(int row) {
         checkRow(row);
         return rows.get(row);
     } 
     
-    public Column<Cell<Content>> column(int column) {
+    public Column<Cell<Content>> getColumn(int column) {
         checkColumn(column);
         return columns.get(column);
     }
 
-    public Cell<Content> get(int row, int column) {
+    public Cell<Content> getCell(int row, int column) {
         checkRow(row);
         checkColumn(column);
         return rows.get(row).get(column);

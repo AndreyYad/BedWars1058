@@ -12,7 +12,7 @@ public class Column<Cell> extends ArrayList<Cell> {
         super(height);
     }
 
-    public Cell row(int row) {
+    public Cell getCell(int row) {
         return super.get(row);
     }
 }

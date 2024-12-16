@@ -7,9 +7,41 @@ import org.bukkit.Material;
 public enum ExtMaterial {
 
     EMPTY(Material.AIR),
-    /// от балды написал пока что
-    STONE(Material.STONE),
-    MY_ITEM(Material.BEDROCK, 10);
+    NETHER_STAR(),
+    GRAY_STAINED_GLASS_PANE(),
+    SNOWBALL(),
+    CHEST(),
+    ORANGE_TERRACOTTA(),
+    WHITE_WOOL(),
+    LIME_STAINED_GLASS(),
+    END_STONE(),
+    LADDER(),
+    IRON_INGOT(),
+    OBSIDIAN(),
+    GOLDEN_SWORD(),
+    STONE_SWORD(),
+    IRON_SWORD(),
+    DIAMOND_SWORD(),
+    STICK(),
+    FISHING_ROD(),
+    CHAINMAIL_BOOTS(),
+    IRON_BOOTS(),
+    DIAMOND_BOOTS(),
+    SHEARS(),
+    STONE_PICKAXE(),
+    WOODEN_PICKAXE(),
+    IRON_PICKAXE(),
+    GOLDEN_PICKAXE(),
+    DIAMOND_PICKAXE(),
+    BOW(),
+    ARROW(),
+    BREWING_STAND(),
+    POTION(),
+    TNT(),
+    WATER_BUCKET(),
+    EGG(),
+    MILK_BUCKET(),
+    SPONGE();
 
     private final Material origin;
     private final int customModelData;
@@ -19,8 +51,15 @@ public enum ExtMaterial {
         this.customModelData = customModelData;
     }
     ExtMaterial(Material originMaterial) {
-        this.origin = originMaterial;
-        this.customModelData = 0;
+        this(originMaterial, 0);
+    }
+    ExtMaterial() {
+        try {
+            origin = Material.valueOf(this.name());
+            customModelData = 0;
+        } catch (IllegalArgumentException exception) {
+            throw new RuntimeException("Для не ванильных материалов нужно указывать соответствующий ванильный");
+        }
     }
 
     public boolean isEmpty() {

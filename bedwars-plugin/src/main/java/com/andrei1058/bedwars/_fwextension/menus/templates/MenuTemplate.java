@@ -28,14 +28,30 @@ public abstract class MenuTemplate extends Sheet<ElementTemplate> {
     }
 
     ///! подумать над тем, чтобы в итоговом темплейте магаза не было доступно и addCell() и element() и slot()
-    protected MenuTemplate element(ElementTemplate element) {
+    public MenuTemplate e(ElementTemplate element) {
         Cell<ElementTemplate> newCell = new Cell<>();
         element.placeToCell(newCell);
         cell(newCell);
         return this;
     }
 
-    protected MenuTemplate element() {
-        return element(filler);
+    public MenuTemplate e() {
+        return e(filler);
+    }
+
+    public MenuTemplate elements(Object... objects) {
+        return this;
+    }
+
+    public MenuTemplate r() {
+        return e().e().e().e().e().e().e().e().e();
+    }
+
+    public MenuTemplate e(String e) {
+        return e(filler);
+    }
+
+    public MenuTemplate r(String r) {
+        return e().e().e().e().e().e().e().e().e();
     }
 }
