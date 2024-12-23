@@ -402,7 +402,6 @@ melee-category:
               material: FISHING_ROD
               data: 0
               amount: 1
-# enchants: KNOCKBACK 1
 armor-category:
   category-slot: 3
   category-item:
@@ -584,72 +583,6 @@ tools-category:
               data: 0
               amount: 1
               enchants: DIG_SPEED 3
-# axe:
-#   content-settings:
-#     content-slot: 21
-#     is-permanent: true
-#     is-downgradable: true
-#   content-tiers:
-#     tier1:
-#       tier-item:
-#         material: WOODEN_AXE
-#         data: 0
-#         amount: 1
-#         enchanted: false
-#       tier-settings:
-#         cost: 10
-#         currency: iron
-#       buy-items:
-#         wooden-axe:
-#           material: WOODEN_AXE
-#           data: 0
-#           amount: 1
-#           enchants: DIG_SPEED 1
-#     tier2:
-#       tier-item:
-#         material: IRON_AXE
-#         data: 0
-#         amount: 1
-#         enchanted: true
-#       tier-settings:
-#         cost: 10
-#         currency: iron
-#       buy-items:
-#         iron-axe:
-#           material: IRON_AXE
-#           data: 0
-#           amount: 1
-#           enchants: DIG_SPEED 1
-#     tier3:
-#       tier-item:
-#         material: GOLDEN_AXE
-#         data: 0
-#         amount: 1
-#         enchanted: true
-#       tier-settings:
-#         cost: 3
-#         currency: gold
-#       buy-items:
-#         gold-axe:
-#           material: GOLDEN_AXE
-#           data: 0
-#           amount: 1
-#           enchants: DIG_SPEED 2
-#     tier4:
-#       tier-item:
-#         material: DIAMOND_AXE
-#         data: 0
-#         amount: 1
-#         enchanted: true
-#       tier-settings:
-#         cost: 6
-#         currency: gold
-#       buy-items:
-#         diamond-axe:
-#           material: DIAMOND_AXE
-#           data: 0
-#           amount: 1
-#           enchants: DIG_SPEED 3
 ranged-category:
   category-slot: 5
   category-item:
@@ -795,29 +728,6 @@ potions-category:
               potion: SPEED 45 2
               potion-color: ''
               name: Speed Potion
-# invisibility:
-#   content-settings:
-#     content-slot: 21
-#     is-permanent: false
-#     is-downgradable: false
-#   content-tiers:
-#     tier1:
-#       tier-item:
-#         material: POTION
-#         data: 0
-#         amount: 1
-#         enchanted: false
-#       tier-settings:
-#         cost: 2
-#         currency: emerald
-#       buy-items:
-#         invisibility:
-#           material: POTION
-#           data: 0
-#           amount: 1
-#           potion: INVISIBILITY 30 1
-#           potion-color: ''
-#           name: Invisibility Potion
 utility-category:
   category-slot: 7
   category-item:
@@ -866,26 +776,6 @@ utility-category:
               material: SNOWBALL
               data: 0
               amount: 1
-    # dream-defender:
-    #   content-settings:
-    #     content-slot: 21
-    #     is-permanent: false
-    #     is-downgradable: false
-    #   content-tiers:
-    #     tier1:
-    #       tier-item:
-    #         material: HORSE_SPAWN_EGG
-    #         data: 0
-    #         amount: 1
-    #         enchanted: false
-    #       tier-settings:
-    #         cost: 120
-    #         currency: iron
-    #       buy-items:
-    #         defender:
-    #           material: HORSE_SPAWN_EGG
-    #           data: 0
-    #           amount: 1
     fireball:
       content-settings:
         content-slot: 21
@@ -927,26 +817,6 @@ utility-category:
               material: TNT
               data: 0
               amount: 1
-    # ender-pearl:
-    #   content-settings:
-    #     content-slot: 24
-    #     is-permanent: false
-    #     is-downgradable: false
-    #   content-tiers:
-    #     tier1:
-    #       tier-item:
-    #         material: ENDER_PEARL
-    #         data: 0
-    #         amount: 1
-    #         enchanted: false
-    #       tier-settings:
-    #         cost: 4
-    #         currency: emerald
-    #       buy-items:
-    #         ender-pearl:
-    #           material: ENDER_PEARL
-    #           data: 0
-    #           amount: 1
     water-bucket:
       content-settings:
         content-slot: 23

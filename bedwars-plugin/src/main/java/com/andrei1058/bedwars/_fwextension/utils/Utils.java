@@ -1,19 +1,40 @@
 package com.andrei1058.bedwars._fwextension.utils;
 
+import java.util.Collection;
+
 public class Utils {
 
-    ///? мб ints?
     public static int[] times(int times) {
-        int[] timesArray = new int[times];
-        for (int time = 1; time <= times; time++) {
-            timesArray[time-1] = time;
+        return ints(1, times);
+    }
+
+    public static int[] indexes(Collection<?> collection) {
+        return ints(0, collection.size() - 1);
+    }
+
+    public static int[] ints(int from, int to) {
+        int[] intsArray = new int[to - from];
+        for (int time = from; time <= to; time++) {
+            intsArray[time - from] = time;
         }
-        return timesArray;
+        return intsArray;
     }
 
     public static void checkNull(String valueName, Object value) {
         if (value == null) {
             throw new RuntimeException("Значение %s не может быть null.".formatted(valueName));
+        }
+    }
+
+    public static void checkZero(String valueName, int value) {
+        if (value == 0) {
+            throw new RuntimeException("Значение %s не может быть 0.".formatted(valueName));
+        }
+    }
+
+    public static void checkEmpty(String valueName, Collection<?> collection) {
+        if (collection.isEmpty()) {
+            throw new RuntimeException("%s не может быть пустым.".formatted(valueName));
         }
     }
 }

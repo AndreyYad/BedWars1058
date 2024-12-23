@@ -1,52 +1,57 @@
 package com.andrei1058.bedwars._fwextension.menus.templates.elements;
 
+import com.andrei1058.bedwars._fwextension.common.templates.ItemViewTemplate;
+import com.andrei1058.bedwars._fwextension.common.templates.ITemplate;
 import com.andrei1058.bedwars._fwextension.materials.ExtMaterial;
-import com.andrei1058.bedwars._fwextension.sheets.Cell;
-import com.andrei1058.bedwars._fwextension.menus.realiz.ElementClickHandler;
-import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NonNull;
 import lombok.ToString;
 import org.bukkit.inventory.ItemFlag;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
-import static com.andrei1058.bedwars._fwextension.utils.Utils.checkNull;
-
-@Getter
 @ToString
-@EqualsAndHashCode
 @SuppressWarnings("unused")
-public class ElementTemplate {
+public class ElementTemplate implements ITemplate {
 
-    /// дефолтные значения. А вообще значения задаются в блоке инициации наследника
-    protected ExtMaterial type = ExtMaterial.EMPTY;
-    protected int amount = 0;
-    protected boolean isEnchanted = false;
-    protected String name;
-    protected List<String> lore;
-    protected Set<ItemFlag> itemFlags;
+    @Getter private ItemViewTemplate view = new ItemViewTemplate();
 
-    ///! убедиться что эт вообще норм по производительности, юзать классы вместо обьектов
-    protected Class<? extends ElementClickHandler> clickHandler =
-        ((ElementClickHandler) event -> {
-            /// по дефолту никак не обрабатывается
-        }).getClass();
-
-    private final List<Cell<ElementTemplate>> cells = new ArrayList<>();
-
-    ///! вынести это мб в интерфейс потом
-    public void postInit() {
-        checkNull("type", type);
-        if (amount == 0 && !type.isEmpty()) {
-            amount = 1;
-        }
+    public void _read() {
+        view._read();
     }
 
-    public void placeToCell(@NonNull Cell<ElementTemplate> cell) {
-        cell.setContent(this);
-        this.getCells().add(cell);
+
+    public ElementTemplate view(@NonNull ItemViewTemplate view) {
+        this.view = view;
+        return this;
+    }
+
+
+    public ElementTemplate type(@NonNull ExtMaterial type) {
+        view.type(type);
+        return this;
+    }
+    public ElementTemplate amount(int amount) {
+        view.amount(amount);
+        return this;
+    }
+    public ElementTemplate enchanted() {
+        view.enchanted();
+        return this;
+    }
+    public ElementTemplate name(@NonNull String name) {
+        view.name(name);
+        return this;
+    }
+    public ElementTemplate lore(@NonNull List<String> lore) {
+        view.lore(lore);
+        return this;
+    }
+    public ElementTemplate lore(@NonNull String lore) {
+        return lore(List.of(lore));
+    }
+    public ElementTemplate itemFlags(@NonNull ItemFlag... itemFlags) {
+        view.itemFlags(itemFlags);
+        return this;
     }
 }

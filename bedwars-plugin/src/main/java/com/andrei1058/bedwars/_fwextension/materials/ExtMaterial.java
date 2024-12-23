@@ -7,6 +7,7 @@ import org.bukkit.Material;
 public enum ExtMaterial {
 
     EMPTY(Material.AIR),
+    DEFAULT(Material.STONE),
     NETHER_STAR(),
     GRAY_STAINED_GLASS_PANE(),
     SNOWBALL(),
@@ -15,8 +16,13 @@ public enum ExtMaterial {
     WHITE_WOOL(),
     LIME_STAINED_GLASS(),
     END_STONE(),
+    STONE(),
     LADDER(),
     IRON_INGOT(),
+    IRON(Material.IRON_INGOT),
+    GOLD(Material.GOLD_INGOT),
+    DIAMOND(),
+    EMERALD(),
     OBSIDIAN(),
     GOLDEN_SWORD(),
     STONE_SWORD(),
