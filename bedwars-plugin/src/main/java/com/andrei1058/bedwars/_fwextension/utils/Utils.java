@@ -1,5 +1,9 @@
 package com.andrei1058.bedwars._fwextension.utils;
 
+import lombok.NonNull;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
+
 import java.util.Collection;
 
 public class Utils {
@@ -36,5 +40,13 @@ public class Utils {
         if (collection.isEmpty()) {
             throw new RuntimeException("%s не может быть пустым.".formatted(valueName));
         }
+    }
+
+    public static ItemMeta takeMeta(@NonNull ItemStack itemStack) {
+        ItemMeta meta = itemStack.getItemMeta();
+        if (meta == null) {
+            throw new RuntimeException("Нельзя получить ItemMeta для %s".formatted(itemStack.getType()));
+        }
+        return meta;
     }
 }
